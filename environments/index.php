@@ -36,6 +36,7 @@ return [
         ],
         'setExecutable' => [
             'yii',
+            'pull.sh',
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
@@ -52,6 +53,7 @@ return [
         ],
         'setExecutable' => [
             'yii',
+            'pull.sh',
         ],
         'setCookieValidationKey' => [
             'backend/config/main-local.php',
