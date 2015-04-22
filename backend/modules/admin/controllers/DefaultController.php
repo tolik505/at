@@ -41,19 +41,6 @@ class DefaultController extends Controller
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'auth' => [
-                'class' => 'yii\authclient\AuthAction',
-                'successCallback' => [$this, 'onAuthSuccess'],
-            ],
-        ];
-    }
-
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -75,33 +62,5 @@ class DefaultController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
-
-    /**
-     * @param \yii\authclient\ClientInterface|\common\components\auth\Facebook $client
-     */
-    public function onAuthSuccess($client)
-    {
-        /** @var UserAuth $auth */
-        $auth = UserAuth::find()->where([
-            'source' => $client->getId(),
-            'source_id' => $client->getUserId(),
-        ])->one();
-
-        if (Yii::$app->user->isGuest) {
-            if ($auth) { // login
-                $user = $auth->user;
-                Yii::$app->user->login($user);
-            }
-        } else { // user already logged in
-            if (!$auth) { // add auth provider
-                $auth = new UserAuth([
-                    'user_id' => Yii::$app->user->id,
-                    'source' => $client->getId(),
-                    'source_id' => $client->getUserId(),
-                ]);
-                $auth->save();
-            }
-        }
     }
 }

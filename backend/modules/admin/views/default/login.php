@@ -25,11 +25,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             <?php ActiveForm::end(); ?>
         </div>
-        <div class="col-lg-5">
-            <?= yii\authclient\widgets\AuthChoice::widget([
-                'baseAuthUrl' => ['/admin/default/auth'],
-                'popupMode' => false,
-            ]) ?>
-        </div>
     </div>
 </div>
