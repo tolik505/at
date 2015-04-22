@@ -6,10 +6,8 @@ use Yii;
 
 /**
  * @inheritdoc
- *
- * @property UserAuth[] $userAuths
  */
-class User extends \common\models\base\User
+class Language extends \common\models\base\Language
 {
     /**
      * @inheritdoc
@@ -21,14 +19,6 @@ class User extends \common\models\base\User
                 'class' => \yii\behaviors\TimestampBehavior::className(),
             ],
         ]);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUserAuths()
-    {
-        return $this->hasMany(UserAuth::className(), ['user_id' => 'id']);
     }
 
 }

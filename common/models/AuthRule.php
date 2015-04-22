@@ -7,9 +7,9 @@ use Yii;
 /**
  * @inheritdoc
  *
- * @property UserAuth[] $userAuths
+ * @property AuthItem[] $authItems
  */
-class User extends \common\models\base\User
+class AuthRule extends \common\models\base\AuthRule
 {
     /**
      * @inheritdoc
@@ -26,9 +26,9 @@ class User extends \common\models\base\User
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserAuths()
+    public function getAuthItems()
     {
-        return $this->hasMany(UserAuth::className(), ['user_id' => 'id']);
+        return $this->hasMany(AuthItem::className(), ['rule_name' => 'name']);
     }
 
 }

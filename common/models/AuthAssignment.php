@@ -7,9 +7,9 @@ use Yii;
 /**
  * @inheritdoc
  *
- * @property UserAuth[] $userAuths
+ * @property AuthItem $itemName
  */
-class User extends \common\models\base\User
+class AuthAssignment extends \common\models\base\AuthAssignment
 {
     /**
      * @inheritdoc
@@ -19,6 +19,7 @@ class User extends \common\models\base\User
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
             'timestamp' => [
                 'class' => \yii\behaviors\TimestampBehavior::className(),
+                'updatedAtAttribute' => false,
             ],
         ]);
     }
@@ -26,9 +27,9 @@ class User extends \common\models\base\User
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserAuths()
+    public function getItemName()
     {
-        return $this->hasMany(UserAuth::className(), ['user_id' => 'id']);
+        return $this->hasOne(AuthItem::className(), ['name' => 'item_name']);
     }
 
 }

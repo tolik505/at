@@ -1,5 +1,6 @@
 # yii console command
 /yii
+/pull.sh
 
 # phpstorm project files
 .idea
