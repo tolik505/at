@@ -8,14 +8,36 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => 'Project',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
-    'modules' => [],
+    'bootstrap' => ['log', 'config'],
+    'modules' => [
+        'admin' => [
+            'class' => '\backend\modules\admin\Module',
+        ],
+        'menu' => [
+            'class' => 'backend\modules\menu\Module',
+        ],
+        'configuration' => [
+            'class' => 'backend\modules\configuration\Module',
+        ],
+        'i18n' => [
+            'class' => 'Zelenin\yii\modules\I18n\Module',
+        ],
+        'language' => [
+            'class' => 'backend\modules\language\Module',
+        ],
+        'meta' => [
+            'class' => 'notgosu\yii2\modules\metaTag\Module',
+        ],
+    ],
     'components' => [
+        'config' => [
+            'class' => '\common\components\ConfigurationComponent',
+        ],
         'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'loginUrl' => ['/admin/default/login'],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -27,7 +49,32 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/error',
+        ],
+        'urlManager' => [
+            'class' => '\metalguardian\language\UrlManager',
+            'showDefault' => false,
+            'enablePrettyUrl' => true,
+            'languages' => function () {
+                $models = \common\helpers\LanguageHelper::getLanguageModels();
+                $languages = [];
+                foreach ($models as $model) {
+                    $languages[$model->code] = $model->locale;
+                }
+                return $languages;
+            },
+            'showScriptName' => false,
+            'enableStrictParsing' => true,
+            'cacheKeySuffix' => 'back',
+            'rules' => [
+                '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
+                '<controller>/<action>' => '<controller>/<action>',
+                '' => 'site/index',
+            ],
+        ],
+        'assetManager' => [
+            'linkAssets' => true,
+            'appendTimestamp' => true,
         ],
     ],
     'params' => $params,

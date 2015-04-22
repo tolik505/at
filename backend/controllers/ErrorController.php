@@ -6,9 +6,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 
 /**
- * Site controller
+ * Error controller
  */
-class SiteController extends Controller
+class ErrorController extends Controller
 {
     /**
      * @inheritdoc
@@ -20,17 +20,23 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['error'],
                         'allow' => true,
-                        'roles' => [\common\models\User::ROLE_ADMIN],
                     ],
                 ],
             ],
         ];
     }
 
-    public function actionIndex()
+    /**
+     * @inheritdoc
+     */
+    public function actions()
     {
-        return $this->render('index');
+        return [
+            'error' => [
+                'class' => '\yii\web\ErrorAction',
+            ],
+        ];
     }
 }
