@@ -34,6 +34,12 @@ return [
             'class' => 'Zelenin\yii\modules\I18n\components\I18N',
             'languages' => ['uk', 'en'],
         ],
+        'urlManager' => [
+            'class' => 'codemix\localeurls\UrlManager',
+            'showScriptName' => false,
+            'enableStrictParsing' => true,
+        ],
     ],
     'sourceLanguage' => 'xx',
+    'language' => 'en',
 ];

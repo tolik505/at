@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "423850ad80bec3f0a107473ea39b44ca",
+    "hash": "e418da6506e2bd7d9bf5b4c6c7ef5293",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -336,6 +336,47 @@
             "time": "2015-03-20 11:07:08"
         },
         {
+            "name": "codemix/yii2-localeurls",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemix/yii2-localeurls.git",
+                "reference": "1bc36eecceee6e0835ba19080f5d0d7a97000930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/1bc36eecceee6e0835ba19080f5d0d7a97000930",
+                "reference": "1bc36eecceee6e0835ba19080f5d0d7a97000930",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "codemix\\localeurls\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Härtl",
+                    "email": "haertl.mike@gmail.com"
+                }
+            ],
+            "description": "Automatic locale/language management for URLs.",
+            "keywords": [
+                "i18n",
+                "locale",
+                "yii2"
+            ],
+            "time": "2015-04-24 13:52:34"
+        },
+        {
             "name": "creocoder/yii2-translateable",
             "version": "dev-master",
             "source": {
@@ -616,48 +657,6 @@
             "time": "2015-02-28 13:00:39"
         },
         {
-            "name": "metalguardian/yii2-language-url-manager",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MetalGuardian/yii2-language-url-manager.git",
-                "reference": "d6c06e3cc4812e080d0343b798ede3318b485c9d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MetalGuardian/yii2-language-url-manager/zipball/d6c06e3cc4812e080d0343b798ede3318b485c9d",
-                "reference": "d6c06e3cc4812e080d0343b798ede3318b485c9d",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "metalguardian\\language\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Pushkin",
-                    "email": "imetalguardi+yii2@gmail.com"
-                }
-            ],
-            "description": "Extension to manage languages in urls",
-            "keywords": [
-                "extension",
-                "language",
-                "url",
-                "yii2"
-            ],
-            "time": "2015-04-19 12:12:06"
-        },
-        {
             "name": "notgosu/yii2-i18n-module",
             "version": "dev-master",
             "source": {
@@ -717,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/notgosu/yii2-meta-tag-module.git",
-                "reference": "aca53623d43bb7001a57fcf0c81d7a0075754aa0"
+                "reference": "f9e25ea60f35ff61248d09657a77a08d83bc4b9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/aca53623d43bb7001a57fcf0c81d7a0075754aa0",
-                "reference": "aca53623d43bb7001a57fcf0c81d7a0075754aa0",
+                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/f9e25ea60f35ff61248d09657a77a08d83bc4b9d",
+                "reference": "f9e25ea60f35ff61248d09657a77a08d83bc4b9d",
                 "shasum": ""
             },
             "require": {
@@ -731,7 +730,7 @@
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "notgosu\\yii2\\modules\\metaTag\\": "src"
+                    "notgosu\\yii2\\modules\\metaTag\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -743,11 +742,6 @@
                     "name": "Naumenko Pavel",
                     "email": "not.gosu@gmail.com",
                     "role": "Developer"
-                },
-                {
-                    "name": "Pushkin Ivan",
-                    "email": "imetalguardi+yii2@gmail.com",
-                    "role": "Developer"
                 }
             ],
             "description": "Yii2 meta tag module for creating and setting meta tags for your site",
@@ -757,7 +751,7 @@
                 "seo",
                 "yii2"
             ],
-            "time": "2015-04-24 20:24:23"
+            "time": "2015-03-27 13:48:53"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -879,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "49fda04555f687d11e8046480417310d097c53a6"
+                "reference": "8cde6639b5f44320375d2edf42a3f1bdbbd5ae36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/49fda04555f687d11e8046480417310d097c53a6",
-                "reference": "49fda04555f687d11e8046480417310d097c53a6",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8cde6639b5f44320375d2edf42a3f1bdbbd5ae36",
+                "reference": "8cde6639b5f44320375d2edf42a3f1bdbbd5ae36",
                 "shasum": ""
             },
             "require": {
@@ -959,7 +953,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-04-27 03:03:26"
+            "time": "2015-04-22 13:32:37"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -1015,12 +1009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "72da96e3af490bbb240fd04c32bb445dcb5421ae"
+                "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/72da96e3af490bbb240fd04c32bb445dcb5421ae",
-                "reference": "72da96e3af490bbb240fd04c32bb445dcb5421ae",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/356ed62e5f445e6517aa81dd2d8df796c1f9317a",
+                "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a",
                 "shasum": ""
             },
             "require": {
@@ -1057,7 +1051,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2015-04-23 14:50:19"
+            "time": "2015-04-16 15:12:41"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1461,19 +1455,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "b0ed0ad42de3f9539c935b36794b880f78f9c39b"
+                "reference": "201119398a4b3be981b659080fb2b76062bc5904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/b0ed0ad42de3f9539c935b36794b880f78f9c39b",
-                "reference": "b0ed0ad42de3f9539c935b36794b880f78f9c39b",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/201119398a4b3be981b659080fb2b76062bc5904",
+                "reference": "201119398a4b3be981b659080fb2b76062bc5904",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/typeahead.js": "0.10.*",
                 "phpspec/php-diff": ">=1.0.2",
-                "yiisoft/yii2": "~2.0",
-                "yiisoft/yii2-bootstrap": "~2.0"
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
             },
             "type": "yii2-extension",
             "extra": {
@@ -1506,14 +1500,15 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2015-04-24 15:35:21"
+            "time": "2015-04-20 09:13:55"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "creocoder/yii2-translateable": 20,
-        "notgosu/yii2-i18n-module": 20
+        "notgosu/yii2-i18n-module": 20,
+        "codemix/yii2-localeurls": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

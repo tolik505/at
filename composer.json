@@ -24,9 +24,9 @@
         "vova07/yii2-imperavi-widget": "*",
         "metalguardian/yii2-form-builder": "~1.0",
         "metalguardian/yii2-datetime-picker-widget": "*",
-        "metalguardian/yii2-language-url-manager": "*",
         "notgosu/yii2-i18n-module": "dev-master",
-        "notgosu/yii2-meta-tag-module": "*"
+        "notgosu/yii2-meta-tag-module": "*",
+        "codemix/yii2-localeurls": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

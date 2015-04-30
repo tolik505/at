@@ -29,19 +29,6 @@ return [
             ],
         ],
         'urlManager' => [
-            'class' => '\metalguardian\language\UrlManager',
-            'showDefault' => false,
-            'enablePrettyUrl' => true,
-            'languages' => function () {
-                $models = \common\helpers\LanguageHelper::getLanguageModels();
-                $languages = [];
-                foreach ($models as $model) {
-                    $languages[$model->code] = $model->locale;
-                }
-                return $languages;
-            },
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
             'rules' => [
                 '' => 'site/index',
             ],

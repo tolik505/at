@@ -66,7 +66,7 @@ class LanguageHelper
     public static function getLanguageModels()
     {
         if (empty(static::$models)) {
-            static::$models = Language::find()->isPublished()->all();
+            static::$models = Language::find()->isPublished()->orderBy(['position' => SORT_DESC])->all();
         }
 
         return static::$models;

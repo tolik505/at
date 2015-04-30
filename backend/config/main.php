@@ -52,20 +52,6 @@ return [
             'errorAction' => 'error/error',
         ],
         'urlManager' => [
-            'class' => '\metalguardian\language\UrlManager',
-            'showDefault' => false,
-            'enablePrettyUrl' => true,
-            'languages' => function () {
-                $models = \common\helpers\LanguageHelper::getLanguageModels();
-                $languages = [];
-                foreach ($models as $model) {
-                    $languages[$model->code] = $model->locale;
-                }
-                return $languages;
-            },
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'cacheKeySuffix' => 'back',
             'rules' => [
                 '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
                 '<controller>/<action>' => '<controller>/<action>',
