@@ -20,7 +20,11 @@ if ($model instanceof \common\components\model\Translateable) {
         ]
     );
     ?>
-    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */ $form = \metalguardian\formBuilder\ActiveFormBuilder::begin(); ?>
+    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */ $form = \metalguardian\formBuilder\ActiveFormBuilder::begin([
+        'options' => [
+            'enctype' => 'multipart/form-data',
+        ]
+    ]); ?>
 
     <?php
     $items = [];
