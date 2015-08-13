@@ -71,3 +71,24 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANVmRacm1Vb3BtSU0/vi
 
 конфигурация отображения index, view и формы хранится в моделе в бекенде, в соответствующих методах
 
+
+загрузка файлов:
+
+поле в табице
+'file_id' => Schema::TYPE_INTEGER . ' NULL DEFAULT NULL COMMENT "File"'
+
+поле в форме:
+
+'file_id' => [
+    'type' => ActiveFormBuilder::INPUT_FILE,
+],
+
+бехевиор в моделе в common/models/base
+
+'file' => [
+    'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
+    'attribute' => 'file_id',
+    //'required' => false,
+],
+
+поле file_id необходимо убрать из рулов модели (для полей с именем image_id, file_id - gii делает это автоматически)
