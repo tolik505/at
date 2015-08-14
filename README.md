@@ -1,6 +1,9 @@
 Melon Yii 2 Advanced Application Template
 ===================================
 
+превоначальная настройка
+------------------------
+
 репозиторий `https://bitbucket.org/vintageua/melon.ng/branch/testing`
 находится в ветке `testing`
 
@@ -16,10 +19,19 @@ git branch -D master
 git checkout master
 ```
 
+фронт
+-----
+
 фронт используется как есть, все нужно делать вручную
+
+бекенд
+------
 
 на беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANZ2h2d054LXZ0SUU/view?usp=drivesdk
+
+миграции
+--------
 
 для начала нужно создать миграцию
 
@@ -43,7 +55,9 @@ or
 ./yii migrate
 ```
 
-генерация модели:
+генерация модели
+----------------
+
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/view?usp=drivesdk
 выбираем имя таблицы, выбираем имя модели. модели создадутся в common/models и common/models/base
 (не забываем про мультиязыковую таблицу, если она есть - ее нужно отдельно создать)
@@ -52,16 +66,24 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/vi
 
 код для мультиязыка будет добавлен автоматически (на основании названий таблиц, поэтому название таблицы переводов не нужно менять)
 
+так же будут автоматически добавлены мультиязычные поля
+
+модуль
+------
+
 дальше мы создаем модуль
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANLXl4YnpnZFo4THc/view?usp=drivesdk
 тут ничего необычного, просто структура генерируемых файлов немного изменена
 
 добавляем модуль в конфигурацию бекенда и делаем круд в gii
+
+круд
+----
+
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/view?usp=drivesdk
 вписываем путь к моделе, которая лежив в common/models
 вписываем название модели, которая должна создаться на бекенде (модель для поиска создастся автоматически)
 списываем название контроллера в бекенде
-
 
 теперь круд для таблицы готов
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANX1otTVhKSzJldnM/view?usp=drivesdk
@@ -72,7 +94,8 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANVmRacm1Vb3BtSU0/vi
 конфигурация отображения index, view и формы хранится в моделе в бекенде, в соответствующих методах
 
 
-загрузка файлов:
+загрузка файлов
+---------------
 
 поле в табице
 'file_id' => Schema::TYPE_INTEGER . ' NULL DEFAULT NULL COMMENT "File"'
@@ -92,3 +115,47 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANVmRacm1Vb3BtSU0/vi
 ],
 
 поле file_id необходимо убрать из рулов модели (для полей с именем image_id, file_id - gii делает это автоматически)
+
+ручная загрукза
+---------------
+
+если необходимо какие то сложные операции с файлами, или необходима мультизагрузка (имя поля должно быть 'file[]'), можно загружать так:
+
+для примера мультизагрузка:
+
+```
+$this->images = UploadedFile::getInstances($this, 'images');
+
+foreach ($this->images as $image) {
+    $model = new ImageModel();
+    $model->image_id = FPM::transfer()->saveUploadedFile($image);
+    $model->save();
+}
+```
+
+отображение на фронте
+---------------------
+
+в common конфиге в модуле fileProcessor добавляются размеры изображений для ресайза
+
+```
+'modules' => [
+    'fileProcessor' => [
+        'class' => '\metalguardian\fileProcessor\Module',
+        'imageSections' => [
+
+            'profile' => [
+                'view' => [
+                    'action' => \metalguardian\fileProcessor\helpers\FPM::ACTION_ADAPTIVE_THUMBNAIL,
+                    'width' => 120,
+                    'height' => 120,
+                ],
+            ],
+        ],
+    ],
+],
+```
+
+во вьюхах вызывать так:
+
+<?= \metalguardian\fileProcessor\helpers\FPM::image($model->image_id, 'profile', 'view') ?>
