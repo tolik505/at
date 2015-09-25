@@ -10,13 +10,18 @@ Melon Yii 2 Advanced Application Template
 склонить, удалить origin, добавить origin нового репозитория, залить ветку в мастер нового ориджина, сменить ветку на мастер
 
 ```
-git clone git@bitbucket.org:vintageua/melon.ng.git
-git checkout testing
+git clone git@bitbucket.org:vintageua/melon.ng.git project-name
+cd project-name
 git remote remove origin
 git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
+git merge --no-ff testing
 git push origin master
-git branch -D master
-git checkout master
+```
+
+первой миграцией выполнить:
+
+```
+./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
 ```
 
 фронт
