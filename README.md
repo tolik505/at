@@ -12,7 +12,7 @@ Melon Yii 2 Advanced Application Template
 ```
 git clone git@bitbucket.org:vintageua/melon.ng.git project-name
 cd project-name
-git merge --no-ff origin/testing
+git merge --no-ff --no-edit origin/testing
 git remote remove origin
 git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
