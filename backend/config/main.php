@@ -11,7 +11,7 @@ return [
     'name' => 'Project',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log', 'config'],
+    'bootstrap' => ['log', 'config', 'fileProcessor'],
     'modules' => [
         'admin' => [
             'class' => '\backend\modules\admin\Module',
