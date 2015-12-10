@@ -31,6 +31,9 @@ return [
         'meta' => [
             'class' => 'notgosu\yii2\modules\metaTag\Module',
         ],
+        'redirects' => [
+            'class' => 'backend\modules\redirects\Module',
+        ],
     ],
     'components' => [
         'config' => [

@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e418da6506e2bd7d9bf5b4c6c7ef5293",
+    "hash": "2ba7438e5892ff2e8ea87c410bbee311",
+    "content-hash": "6a5ef020919325a700956aff66795da1",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -345,7 +346,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/1bc36eecceee6e0835ba19080f5d0d7a97000930",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/7c2544e006c4971d29747632985d6401492cd9ef",
                 "reference": "1bc36eecceee6e0835ba19080f5d0d7a97000930",
                 "shasum": ""
             },
@@ -375,6 +376,51 @@
                 "yii2"
             ],
             "time": "2015-04-24 13:52:34"
+        },
+        {
+            "name": "cosenary/simple-php-cache",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cosenary/Simple-PHP-Cache.git",
+                "reference": "39607c9307b32248bae2fd6a945183c7249156da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cosenary/Simple-PHP-Cache/zipball/39607c9307b32248bae2fd6a945183c7249156da",
+                "reference": "39607c9307b32248bae2fd6a945183c7249156da",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "."
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Metz",
+                    "email": "christian-metz1@gmx.net",
+                    "homepage": "http://metzweb.net"
+                }
+            ],
+            "description": "A light, simple but powerful PHP5 Cache Class which uses the filesystem for caching.",
+            "homepage": "https://github.com/cosenary/Simple-PHP-Cache",
+            "keywords": [
+                "Simple",
+                "cache",
+                "filesystem",
+                "json"
+            ],
+            "time": "2015-01-03 18:28:23"
         },
         {
             "name": "creocoder/yii2-translateable",
@@ -532,7 +578,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MetalGuardian/yii2-datetime-picker-widget/zipball/aadb1d902ca19dedba098cc38965e69e8fcd6540",
+                "url": "https://api.github.com/repos/MetalGuardian/yii2-datetime-picker-widget/zipball/82ebf1ef2e691550946d426425b6c79bd44819e7",
                 "reference": "aadb1d902ca19dedba098cc38965e69e8fcd6540",
                 "shasum": ""
             },
@@ -581,7 +627,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MetalGuardian/yii2-file-processor-module/zipball/1b008b99c27158cc23f670d62176bdec6257b006",
+                "url": "https://api.github.com/repos/MetalGuardian/yii2-file-processor-module/zipball/21d38e7a7bc74dc6c2384e21bbf6938cdf4a56b9",
                 "reference": "1b008b99c27158cc23f670d62176bdec6257b006",
                 "shasum": ""
             },
@@ -720,7 +766,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/f9e25ea60f35ff61248d09657a77a08d83bc4b9d",
+                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/2a453a63b7a3690a139dcb7ae4af22c14fda46bf",
                 "reference": "f9e25ea60f35ff61248d09657a77a08d83bc4b9d",
                 "shasum": ""
             },
@@ -763,7 +809,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/728eba28e355e081b0729b4c18cb9c13abe12560",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/6522539daf0a7bdada1cc2dccb7ec37dc0712136",
                 "reference": "728eba28e355e081b0729b4c18cb9c13abe12560",
                 "shasum": ""
             },
@@ -815,7 +861,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/d51f5708f123984cb16644c944fdfeb49de45a2d",
+                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/afb59bff9a4ce18f5ecd144cf1fe224bf939ec15",
                 "reference": "d51f5708f123984cb16644c944fdfeb49de45a2d",
                 "shasum": ""
             },
@@ -877,7 +923,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8cde6639b5f44320375d2edf42a3f1bdbbd5ae36",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/c9c5f652b16dd589e07de5a39a8520590631cfea",
                 "reference": "8cde6639b5f44320375d2edf42a3f1bdbbd5ae36",
                 "shasum": ""
             },
@@ -965,7 +1011,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/cec2d454c528ba9861e77cfe874e6cd1bf9ad40e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/4248a5ddb425103488ee4c1bdb5d9a5730627775",
                 "reference": "cec2d454c528ba9861e77cfe874e6cd1bf9ad40e",
                 "shasum": ""
             },
@@ -1013,7 +1059,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/356ed62e5f445e6517aa81dd2d8df796c1f9317a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/3b792412bd0fdfef4e48aff3781279e28dfd19a4",
                 "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a",
                 "shasum": ""
             },
@@ -1063,7 +1109,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/24f53b745b6517258aedcff4f7dda7459aae503b",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/574dcb1d101ae55be230e0c00a2428af6ec4c5c1",
                 "reference": "24f53b745b6517258aedcff4f7dda7459aae503b",
                 "shasum": ""
             },
@@ -1110,7 +1156,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/a30c1ce8487d12c81af0aec177ad5d77bc1692ee",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/2cca1bb86444a6438b0720f8c60120a400982366",
                 "reference": "a30c1ce8487d12c81af0aec177ad5d77bc1692ee",
                 "shasum": ""
             },
@@ -1234,7 +1280,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/901bde792eddf6907f33634ff8aafb2dfddd4784",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/3037df47eca2e534f62f061415a071f9b5d1a1a4",
                 "reference": "901bde792eddf6907f33634ff8aafb2dfddd4784",
                 "shasum": ""
             },
@@ -1320,7 +1366,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/71bde805b9e063215114dd4ff9b9978ec1505283",
+                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/ee239c244fd011f11c8827f97ebe7600d03f1841",
                 "reference": "71bde805b9e063215114dd4ff9b9978ec1505283",
                 "shasum": ""
             },
@@ -1365,7 +1411,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/150efc56f56bd58ca8d1aae195b2f11223cf8b40",
                 "reference": "14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560",
                 "shasum": ""
             },
@@ -1412,7 +1458,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/8f9beea41bc47c8d3100edc822f589fb2b6cdc71",
+                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/42c1ca7621ecbf0a29eaaf479e9f7743e93899fd",
                 "reference": "8f9beea41bc47c8d3100edc822f589fb2b6cdc71",
                 "shasum": ""
             },
@@ -1459,7 +1505,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/201119398a4b3be981b659080fb2b76062bc5904",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/2c1db8efa40b8bfa6f2f95b9c57033f271d85c3d",
                 "reference": "201119398a4b3be981b659080fb2b76062bc5904",
                 "shasum": ""
             },
@@ -1508,7 +1554,8 @@
     "stability-flags": {
         "creocoder/yii2-translateable": 20,
         "notgosu/yii2-i18n-module": 20,
-        "codemix/yii2-localeurls": 20
+        "codemix/yii2-localeurls": 20,
+        "cosenary/simple-php-cache": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

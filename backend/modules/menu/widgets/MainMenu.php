@@ -50,6 +50,10 @@ class MainMenu extends Nav
                         'label' => 'Language',
                         'url' => ['/language/language/index'],
                     ],
+                    [
+                        'label' => 'Redirects',
+                        'url' => ['/redirects/redirects/index'],
+                    ],
                 ],
             ];
         }
