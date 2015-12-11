@@ -102,13 +102,21 @@ class Redirect {
     protected function findUrlFromDB()
     {
         $mysqli = $this->setupDbConnection();
-        $result = $mysqli->query("SELECT * FROM {$this->getTableName()} WHERE `from`='" .
-            $this->currentUrl . "' AND is_active=1 ORDER BY updated_at DESC LIMIT 2;");
-        for ($rowNumber = 0; $rowNumber <= $result->num_rows - 1; $rowNumber++) {
-            $result->data_seek($rowNumber);
-            $row = $result->fetch_assoc();
-            return $row['to'];
+
+        $query = "SELECT `to` FROM {$this->getTableName()} WHERE `from`=?"
+            . " AND is_active=1 ORDER BY updated_at DESC LIMIT 1;";
+
+        if ($stmt = $mysqli->prepare($query)) {
+            $from = $this->currentUrl;
+            $stmt->bind_param("s", $from);
+            $stmt->execute();
+            $stmt->bind_result($to);
+            $stmt->fetch();
+            $stmt->close();
         }
+        $mysqli->close();
+        if(isset($to))
+            return $to;
         return false;
     }
 
