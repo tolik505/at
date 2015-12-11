@@ -34,6 +34,9 @@ return [
         'redirects' => [
             'class' => 'backend\modules\redirects\Module',
         ],
+        'seo' => [
+            'class' => 'backend\modules\seo\Module',
+        ],
     ],
     'components' => [
         'config' => [

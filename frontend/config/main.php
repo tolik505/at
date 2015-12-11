@@ -31,6 +31,7 @@ return [
         'urlManager' => [
             'rules' => [
                 '' => 'site/index',
+                'robots.txt' => 'site/robots'
             ],
         ],
         'errorHandler' => [

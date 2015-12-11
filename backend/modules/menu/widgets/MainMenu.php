@@ -47,6 +47,10 @@ class MainMenu extends Nav
                         'url' => ['/meta/tag/index'],
                     ],
                     [
+                        'label' => 'Robots.txt',
+                        'url' => ['/seo/robots/index'],
+                    ],
+                    [
                         'label' => 'Language',
                         'url' => ['/language/language/index'],
                     ],
