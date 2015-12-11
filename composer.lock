@@ -762,12 +762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/notgosu/yii2-meta-tag-module.git",
-                "reference": "f9e25ea60f35ff61248d09657a77a08d83bc4b9d"
+                "reference": "2a453a63b7a3690a139dcb7ae4af22c14fda46bf"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/2a453a63b7a3690a139dcb7ae4af22c14fda46bf",
-                "reference": "f9e25ea60f35ff61248d09657a77a08d83bc4b9d",
+                "reference": "2a453a63b7a3690a139dcb7ae4af22c14fda46bf",
                 "shasum": ""
             },
             "require": {
@@ -776,7 +776,7 @@
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "notgosu\\yii2\\modules\\metaTag\\": ""
+                    "notgosu\\yii2\\modules\\metaTag\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -788,6 +788,11 @@
                     "name": "Naumenko Pavel",
                     "email": "not.gosu@gmail.com",
                     "role": "Developer"
+                },
+                {
+                    "name": "Pushkin Ivan",
+                    "email": "imetalguardi+yii2@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "Yii2 meta tag module for creating and setting meta tags for your site",
@@ -797,7 +802,7 @@
                 "seo",
                 "yii2"
             ],
-            "time": "2015-03-27 13:48:53"
+            "time": "2015-05-06 08:24:55"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -861,7 +866,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/afb59bff9a4ce18f5ecd144cf1fe224bf939ec15",
+                "url": "https://api.github.com/repos/vova07/yii2-imperavi-widget/zipball/0e719a3f1d4fadfe8f6de2ed506a15dd8b16535d",
                 "reference": "d51f5708f123984cb16644c944fdfeb49de45a2d",
                 "shasum": ""
             },

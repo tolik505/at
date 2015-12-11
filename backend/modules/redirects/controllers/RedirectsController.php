@@ -18,10 +18,27 @@ class RedirectsController extends BackendController
         return Redirects::className();
     }
 
-    public function actionEraseCache($id)
+
+    /**
+     * Lists all Menu models.
+     * @return mixed
+     */
+    public function actionIndex()
     {
-        $model = $this->findModel($id);
-        $model->clearCache();
+        $class = $this->getModelClass();
+        /** @var BackendModel $searchModel */
+        $searchModel = (new $class)->getSearchModel();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+    }
+
+    public function actionClearCache()
+    {
+        Redirects::clearAllCache();
 
         return $this->redirect(['index']);
     }

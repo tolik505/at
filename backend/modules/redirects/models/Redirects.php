@@ -48,22 +48,7 @@ class Redirects extends \common\models\Redirects implements BackendModel
                     'from',
                     'to',
                     'is_active:boolean',
-                    [
-                        'class' => 'yii\grid\ActionColumn',
-                        'template' => '{view}{update}{delete}{erase-cache}',
-                        'buttons' => [
-                            'erase-cache' => function ($url, $model) {
-                                    return Html::a(
-                                        '<span class="glyphicon glyphicon-erase"></span>',
-                                        $url,
-                                        [
-                                            'title' => \Yii::t('yii', 'Erase cache'),
-                                            'aria-label' => \Yii::t('yii', 'Erase cache'),
-                                        ]
-                                    );
-                                }
-                        ]
-                    ],
+                    [ 'class' => 'yii\grid\ActionColumn' ],
                 ];
                 break;
             case 'view':
@@ -132,5 +117,15 @@ class Redirects extends \common\models\Redirects implements BackendModel
         if ($cache->retrieve($this->from)) {
             $cache->erase($this->from);
         }
+    }
+
+    public static function clearAllCache()
+    {
+        $cache = new \Cache([
+            'path' => __DIR__ . '/../../../../frontend/runtime/redirectCache/',
+            'name' => 'default',
+            'extension' => '.cache',
+        ]);
+        $cache->eraseAll();
     }
 }
