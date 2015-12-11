@@ -2,13 +2,14 @@
 namespace frontend\controllers;
 
 use common\models\Robots;
+use frontend\components\FrontendController;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends FrontendController
 {
     public function actionIndex()
     {
