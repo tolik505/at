@@ -80,6 +80,7 @@ class Robots extends \common\models\Robots implements BackendModel
                 'options' => [
                     'rows' => 6,
                 ],
+                'hint' => \Yii::t('app', 'Each new option must be on new line.')
             ],
         ];
     }

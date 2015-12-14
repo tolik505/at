@@ -26,18 +26,18 @@ class RobotsController extends BackendController
         $model =  $this->getModelClass();
         $page = $model::find()->one();
 
-        if($page){
-            $this->redirect('/seo/robots/update?id='.$page->id);
-        }else{
-            $this->redirect('/seo/robots/create');
+        if ($page) {
+            $this->redirect(['update', 'id' => $page->id]);
+        } else {
+            $this->redirect(['create']);
         }
     }
 
     public function actionCreate()
     {
         $page = Robots::find()->one();
-        if(is_object($page))
-            $this->redirect('/seo/robots/update?id='.$page->id);
+        if (is_object($page))
+            $this->redirect(['update', 'id' => $page->id]);
 
         $class = $this->getModelClass();
         /** @var \yii\db\ActiveRecord $model */
