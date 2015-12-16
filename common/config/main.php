@@ -35,7 +35,7 @@ return [
             'languages' => ['uk', 'en'],
         ],
         'urlManager' => [
-            'class' => 'codemix\localeurls\UrlManager',
+            'class' => '\common\components\UrlManager',
             'showScriptName' => false,
             'enableStrictParsing' => true,
         ],
