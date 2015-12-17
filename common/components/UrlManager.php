@@ -21,7 +21,6 @@ class UrlManager extends \codemix\localeurls\UrlManager {
     public function parseRequest($request)
     {
         $parent = parent::parseRequest($request);
-        print_r($request->get($this->pageParam));
         if ($parent && (isset($parent[1][$this->pageParam]) || $request->get($this->pageParam) != null)) {
             $this->checkPagerUrl($parent[0], $parent[1]);
         }
@@ -55,7 +54,7 @@ class UrlManager extends \codemix\localeurls\UrlManager {
     }
 
     /**
-     * @param $route
+     * @param $url
      */
     public function redirectToCorrectPagerUrl($url)
     {
