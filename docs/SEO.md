@@ -17,20 +17,20 @@ robots.txt
 
 robots.txt редактируєтся в админке "Configurations -> Robots.txt"
 Каждая опция должа быть добавлена с новой строки
-/site/robots - экшн для вывода robots.txt
-Файла robots.txt в /frontend/web быть не должно.
+```/site/robots``` - экшн для вывода robots.txt
+Файла robots.txt в ```/frontend/web``` быть не должно.
 
 sitemap.xml
 -----------
 
 Для генерации sitemap.xml используется:
-https://github.com/himiklab/yii2-sitemap-module
+[https://github.com/himiklab/yii2-sitemap-module](https://github.com/himiklab/yii2-sitemap-module)
 
 ajax и внешние ссылки
 ---------------------
 
-Для создания ajax ссылки в /frontend/helpers/ExtendedHtml сущестувует метод ajaxLink($text, $url = null, $options = []).
-Он создает ссылку добавляя к ней клас ajax-link и rel noindex/nofollow. Для клика на .ajax-link в frontend/web/js/frontend.js есть обработчик.
+Для создания ajax ссылки в ```/frontend/helpers/ExtendedHtml``` сущестувует метод ```ajaxLink($text, $url = null, $options = [])```.
+Он создает ссылку добавляя к ней клас ajax-link и rel ```noindex/nofollow```. Для клика на .ajax-link в ```frontend/web/js/frontend.js``` есть обработчик.
 
-Для создания ссылки на внешний ресурс /frontend/helpers/ExtendedHtml сущестувует метод externalLink($text, $url = null, $options = []).
-Он создает ссылку добавляя к ней rel noindex/nofollow.
+Для создания ссылки на внешний ресурс ```/frontend/helpers/ExtendedHtml``` сущестувует метод ```externalLink($text, $url = null, $options = [])```.
+Он создает ссылку добавляя к ней rel ```noindex/nofollow```.
