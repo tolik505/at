@@ -301,4 +301,4 @@ $data = [
 SEO
 ---------------
 
-./docs/SEO.md
+<a href="docs/SEO.md">SEO</a>
