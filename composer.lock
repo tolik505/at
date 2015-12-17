@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2ba7438e5892ff2e8ea87c410bbee311",
-    "content-hash": "6a5ef020919325a700956aff66795da1",
+    "hash": "0c52197741016b56fae3cd8126ba462a",
+    "content-hash": "2d9b739201575f0949d6340b2f4fdf7d",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -512,6 +512,48 @@
             "time": "2013-11-30 08:25:19"
         },
         {
+            "name": "himiklab/yii2-sitemap-module",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/himiklab/yii2-sitemap-module.git",
+                "reference": "83ac08e23673d5d6de4f11aee3b44a1bf77972df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/himiklab/yii2-sitemap-module/zipball/83ac08e23673d5d6de4f11aee3b44a1bf77972df",
+                "reference": "83ac08e23673d5d6de4f11aee3b44a1bf77972df",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "himiklab\\sitemap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HimikLab",
+                    "homepage": "https://github.com/himiklab"
+                }
+            ],
+            "description": "Yii2 module for automatically generation XML Sitemap",
+            "keywords": [
+                "Sitemap",
+                "module",
+                "xml",
+                "yii2"
+            ],
+            "time": "2015-07-31 15:11:09"
+        },
+        {
             "name": "imagine/imagine",
             "version": "0.6.2",
             "source": {
@@ -766,7 +808,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/2a453a63b7a3690a139dcb7ae4af22c14fda46bf",
+                "url": "https://api.github.com/repos/notgosu/yii2-meta-tag-module/zipball/eb2ef978b2cbb515dbe622f9f8e57fb56f279763",
                 "reference": "2a453a63b7a3690a139dcb7ae4af22c14fda46bf",
                 "shasum": ""
             },
@@ -928,7 +970,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/c9c5f652b16dd589e07de5a39a8520590631cfea",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/91554ec5166e709d24c9a21cccf731bfb841421b",
                 "reference": "8cde6639b5f44320375d2edf42a3f1bdbbd5ae36",
                 "shasum": ""
             },
@@ -1016,7 +1058,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/4248a5ddb425103488ee4c1bdb5d9a5730627775",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/e593da06f6477d2fcb21323dfd0b766291c67fe5",
                 "reference": "cec2d454c528ba9861e77cfe874e6cd1bf9ad40e",
                 "shasum": ""
             },
@@ -1064,7 +1106,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/3b792412bd0fdfef4e48aff3781279e28dfd19a4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/d841fe6f4767d2fdc24ebe91cc95a61b3465fd8f",
                 "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a",
                 "shasum": ""
             },
@@ -1416,7 +1458,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/150efc56f56bd58ca8d1aae195b2f11223cf8b40",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/4d6056e3ec68d3db21e9a1878e5dcb7f418b1aaa",
                 "reference": "14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560",
                 "shasum": ""
             },
@@ -1510,7 +1552,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/2c1db8efa40b8bfa6f2f95b9c57033f271d85c3d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/b94ed4fbb2afc9a8f165ee3cfef3e8df597d39e7",
                 "reference": "201119398a4b3be981b659080fb2b76062bc5904",
                 "shasum": ""
             },

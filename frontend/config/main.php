@@ -12,7 +12,28 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'fileProcessor', 'config'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'sitemap' => [
+            'class' => 'himiklab\sitemap\Sitemap',
+            'models' => [
+                // your models
+            ],
+            'urls'=> [
+                [
+                    'loc' => '/',
+                    'lastmod' => time(),
+                    'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_DAILY,
+                    'priority' => 0.8
+                ],
+            ],
+            'cacheKey' => 'sitemapCacheKey',
+            'enableGzip' => false, // default is false
+        ],
+    ],
     'components' => [
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
         'config' => [
             'class' => '\common\components\ConfigurationComponent',
         ],
@@ -31,7 +52,8 @@ return [
         'urlManager' => [
             'rules' => [
                 '' => 'site/index',
-                'robots.txt' => 'site/robots'
+                'robots.txt' => 'site/robots',
+                'sitemap.xml' => 'sitemap/default/index',
             ],
         ],
         'errorHandler' => [
