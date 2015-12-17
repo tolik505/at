@@ -23,7 +23,7 @@ robots.txt редактируєтся в админке "Configurations -> Robot
 sitemap.xml
 -----------
 
-Для генерации sitemap.xml используется
+Для генерации sitemap.xml используется:
 https://github.com/himiklab/yii2-sitemap-module
 
 ajax и внешние ссылки
