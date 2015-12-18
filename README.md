@@ -5,7 +5,7 @@ Melon Yii 2 Advanced Application Template
 ------------------------
 
 репозиторий `https://bitbucket.org/vintageua/melon.ng/branch/seo_ready`
-находится в ветке `testing`
+находится в ветке `seo_ready`
 
 склонить, удалить origin, добавить origin нового репозитория, залить ветку в мастер нового ориджина, сменить ветку на мастер
 
