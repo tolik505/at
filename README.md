@@ -28,6 +28,7 @@ git push origin master
 -----
 
 фронт используется как есть, все нужно делать вручную
+Контроллеры наследуэм от `frontend/components/FrontendController`
 
 бекенд
 ------
