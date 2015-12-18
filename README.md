@@ -4,7 +4,7 @@ Melon Yii 2 Advanced Application Template
 превоначальная настройка
 ------------------------
 
-репозиторий `https://bitbucket.org/vintageua/melon.ng/branch/testing`
+репозиторий `https://bitbucket.org/vintageua/melon.ng/branch/seo_ready`
 находится в ветке `testing`
 
 склонить, удалить origin, добавить origin нового репозитория, залить ветку в мастер нового ориджина, сменить ветку на мастер
@@ -12,7 +12,7 @@ Melon Yii 2 Advanced Application Template
 ```
 git clone git@bitbucket.org:vintageua/melon.ng.git project-name
 cd project-name
-git merge --no-ff --no-edit origin/testing
+git merge --no-ff --no-edit origin/seo_ready
 git remote remove origin
 git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
