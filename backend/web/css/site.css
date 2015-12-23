@@ -98,3 +98,60 @@ div.required label:after {
     content: " *";
     color: red;
 }
+
+/** upload widget  **/
+.kv-file-upload.btn, .close.fileinput-remove {
+    display: none!important;
+}
+
+.list-group-item{
+    margin-top: 10px!important;
+}
+
+.ui-sortable .badge{
+    cursor: pointer;
+}
+
+.ui-sortable-placeholder {
+    background: #cffdff !important;
+}
+
+.left-margin {
+    margin-left: 10px;
+}
+
+.sortable li div {
+    margin-bottom: 10px;
+}
+
+.file-upload-indicator{
+    padding-top: 0!important;
+}
+
+.img-container {
+    padding: 0;
+    max-width: 600px;
+    max-height: 500px;
+}
+
+.img-preview {
+    padding: 0;
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 215px;
+    height: 245px;
+    overflow: hidden;
+}
+
+.centered {
+    text-align:center;
+}
+
+.margined {
+    margin: 20px;
+}
+
+.file-upload-indicator .kv-file-remove {
+    display: none;
+}
+/** upload widget  **/
