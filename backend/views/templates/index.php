@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use \backend\components\ModifiedDataColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\components\BackendModel */
@@ -26,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => $searchModel->getColumns('index'),
+            'dataColumnClass' =>ModifiedDataColumn::className()
         ]); ?>
 
     </div>

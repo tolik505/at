@@ -40,6 +40,9 @@ return [
         'imagesUpload' => [
             'class' => 'backend\modules\imagesUpload\ImagesUploadModule',
         ],
+        'article' => [
+            'class' => 'backend\modules\article\ArticleModule',
+        ],
     ],
     'components' => [
         'config' => [

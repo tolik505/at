@@ -145,3 +145,16 @@ function fixMultiUploadImageCropUrl()
         }
     });
 }
+//Multi-upload widget
+
+
+$(function () {
+	$(document).on('click', '.ajax-checkbox', function(){
+		var that = $(this);
+		jQuery.ajax({
+			'cache': false,
+			'type': 'POST',
+			'data': {'modelId': that.data('id'), 'modelName': that.data('modelname'), 'attribute': that.data('attribute')},
+			'url': '/site/ajax-checkbox'});
+	});
+});
