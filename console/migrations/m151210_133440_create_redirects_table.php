@@ -40,8 +40,6 @@ class m151210_133440_create_redirects_table extends Migration
      */
     public function safeDown()
     {
-        echo "m151210_133440_create_redirects_table cannot be reverted.\n";
-
-        return false;
+        $this->dropTable($this->tableName);
     }
 }

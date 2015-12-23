@@ -91,6 +91,7 @@ abstract class BackendController extends Controller
         $class = $this->getModelClass();
         /** @var \yii\db\ActiveRecord $model */
         $model = new $class();
+        $model->loadDefaultValues();
 
         if ($this->loadModels($model) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

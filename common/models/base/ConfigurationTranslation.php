@@ -36,7 +36,7 @@ abstract class ConfigurationTranslation extends \common\components\model\ActiveR
     public function rules()
     {
         return [
-            [['value'], 'required', 'except' => ['file', 'image']],
+            //[['value'], 'required', 'except' => ['file', 'image']],
 
             [['value'], 'integer', 'on' => 'integer'],
 
