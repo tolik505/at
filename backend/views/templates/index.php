@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => $searchModel->getColumns('index'),
-            'dataColumnClass' =>ModifiedDataColumn::className()
+            'dataColumnClass' => ModifiedDataColumn::className()
         ]); ?>
 
     </div>

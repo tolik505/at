@@ -1,4 +1,6 @@
 <?php
+use \metalguardian\fileProcessor\helpers\FPM;
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
@@ -14,6 +16,13 @@ return [
                         'startY' => 100,
                     ],
                 ],*/
+                'admin' => [
+                    'file' => [
+                        'action' => FPM::ACTION_THUMBNAIL,
+                        'width' => 100,
+                        'height' => 100,
+                    ]
+                ]
             ],
         ],
     ],

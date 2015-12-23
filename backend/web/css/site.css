@@ -162,3 +162,12 @@ div.required label:after {
 .ajax-checkbox {
     cursor: pointer;
 }
+
+.file-name {
+    margin-top: -65px;
+    margin-bottom: 40px;
+    margin-left: 280px;
+}
+.file-name a, .file-name img {
+    margin-left: 20px;
+}

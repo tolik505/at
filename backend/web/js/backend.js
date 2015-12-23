@@ -157,4 +157,23 @@ $(function () {
 			'data': {'modelId': that.data('id'), 'modelName': that.data('modelname'), 'attribute': that.data('attribute')},
 			'url': '/site/ajax-checkbox'});
 	});
+
+	$(document).on('click', '.delete-file', function(){
+		var that = $(this);
+		jQuery.ajax({
+			'cache': false,
+			'type': 'POST',
+			'data': {'modelId': that.data('modelid'), 'modelName': that.data('modelname'), 'attribute': that.data('attribute')},
+			'success':
+				function (response) {
+					if (response.error) {
+						alert('Не удалось удалить файл');
+					} else {
+						that.parent('.file-name').remove();
+					}
+				}, 'error': function (response) {
+				alert(response.responseText);
+			},
+			'url': '/site/delete-file'});
+	});
 });
