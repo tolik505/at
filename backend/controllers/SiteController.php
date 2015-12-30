@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\components\model\ActiveRecord;
 use metalguardian\fileProcessor\helpers\FPM;
 use Yii;
 use yii\filters\AccessControl;
@@ -46,7 +47,7 @@ class SiteController extends Controller
             $model = $modelName::findOne($modelID);
             if ($model) {
                 $model->$attribute = $model->$attribute ? 0 : 1;
-                $model->save();
+                $model->save(false);
             }
         }
     }
@@ -56,14 +57,20 @@ class SiteController extends Controller
         $modelID = Yii::$app->request->post('modelId');
         $modelName = Yii::$app->request->post('modelName');
         $attribute = Yii::$app->request->post('attribute');
+        $language = Yii::$app->request->post('language');
 
         if (Yii::$app->request->isAjax && $modelID && $modelName && $attribute) {
             $error = true;
-            $model = $modelName::findOne($modelID);
+            /** @var $model ActiveRecord */
+            if ($language) {
+                $model = $modelName::find()->where(['model_id' => $modelID, 'language' => $language])->one();
+            } else {
+                $model = $modelName::findOne($modelID);
+            }
             if ($model) {
                 $fileId = $model->$attribute;
                 $model->$attribute = null;
-                if ($model->save()) {
+                if ($model->save(false)) {
                     FPM::deleteFile($fileId);
                     $error = false;
                 }

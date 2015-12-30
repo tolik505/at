@@ -24,6 +24,7 @@ abstract class Configuration extends \common\components\model\ActiveRecord
     const TYPE_HTML = 3;
     const TYPE_BOOLEAN = 4;
     const TYPE_DOUBLE = 5;
+    const TYPE_FILE = 6;
 
     protected static $type = [
         self::TYPE_STRING => 'String',
@@ -32,6 +33,7 @@ abstract class Configuration extends \common\components\model\ActiveRecord
         self::TYPE_HTML => 'Html text',
         self::TYPE_BOOLEAN => 'Boolean',
         self::TYPE_DOUBLE => 'Double',
+        self::TYPE_FILE => 'File',
     ];
 
     /**

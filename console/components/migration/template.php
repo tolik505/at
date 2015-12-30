@@ -9,7 +9,6 @@
 echo "<?php\n";
 ?>
 
-use yii\db\Schema;
 use console\components\Migration;
 
 /**
@@ -30,16 +29,16 @@ class <?= $className ?> extends Migration
         $this->createTable(
             $this->tableName,
             [
-                'id' => Schema::TYPE_PK,
+                'id' => $this->primaryKey(),
 
-                'label' => Schema::TYPE_STRING . ' NOT NULL COMMENT "Label"',
-                'content' => Schema::TYPE_TEXT . ' NULL DEFAULT NULL COMMENT "Content"',
+                'label' => $this->string()->notNull() . ' COMMENT "Label"',
+                'content' => $this->text()->defaultValue(null) . ' COMMENT "Content"',
 
-                'published' => Schema::TYPE_SMALLINT . '(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT "Published"',
-                'position' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL DEFAULT 0 COMMENT "Position"',
+                'published' => $this->boolean()->notNull()->defaultValue(1) . ' COMMENT "Published"',
+                'position' => $this->integer()->notNull()->defaultValue(0) . ' COMMENT "Position"',
 
-                'created_at' => Schema::TYPE_INTEGER . ' NOT NULL COMMENT "Created at"',
-                'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL COMMENT "Updated at"',
+                'created_at' => $this->integer()->notNull() . ' COMMENT "Created at"',
+                'updated_at' => $this->integer()->notNull() . ' COMMENT "Updated at"',
             ],
             $this->tableOptions
         );

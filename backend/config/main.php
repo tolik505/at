@@ -40,6 +40,9 @@ return [
         'imagesUpload' => [
             'class' => 'backend\modules\imagesUpload\ImagesUploadModule',
         ],
+        'article' => [
+            'class' => 'backend\modules\article\ArticleModule',
+        ],
     ],
     'components' => [
         'config' => [
@@ -71,6 +74,10 @@ return [
         'assetManager' => [
             'linkAssets' => true,
             'appendTimestamp' => true,
+        ],
+        'formatter' => [
+            'class' => '\backend\components\Formatter',
+            'datetimeFormat' => 'php:d.m.y H:i:s',
         ],
     ],
     'params' => $params,

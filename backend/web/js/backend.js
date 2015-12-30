@@ -149,6 +149,7 @@ function fixMultiUploadImageCropUrl()
 
 
 $(function () {
+	//For checkbox in gridView (index page)
 	$(document).on('click', '.ajax-checkbox', function(){
 		var that = $(this);
 		jQuery.ajax({
@@ -158,12 +159,18 @@ $(function () {
 			'url': '/site/ajax-checkbox'});
 	});
 
+	//For file deleting in forms
 	$(document).on('click', '.delete-file', function(){
 		var that = $(this);
 		jQuery.ajax({
 			'cache': false,
 			'type': 'POST',
-			'data': {'modelId': that.data('modelid'), 'modelName': that.data('modelname'), 'attribute': that.data('attribute')},
+			'data': {
+				'modelId': that.data('modelid'),
+				'modelName': that.data('modelname'),
+				'attribute': that.data('attribute'),
+				'language': that.data('language')
+			},
 			'success':
 				function (response) {
 					if (response.error) {
@@ -175,5 +182,28 @@ $(function () {
 				alert(response.responseText);
 			},
 			'url': '/site/delete-file'});
+	});
+
+	//For changing configuration form
+	$(document).on('change', '.config-type', function (event) {
+		event.preventDefault();
+		var that = this;
+		var url = $(that).data('url');
+		var form = $(this).parents('form');
+		var action = form.attr('action');
+
+		jQuery.ajax({
+			'cache': false,
+			'type': 'POST',
+			'dataType': 'json',
+			'data': form.serialize()+'&action='+action,
+			'success':
+				function (response) {
+					parseResponse(response);
+				}, 'error': function (response) {
+				alert(response.responseText);
+			}, 'beforeSend': function () {
+			}, 'complete': function () {
+			}, 'url': url});
 	});
 });

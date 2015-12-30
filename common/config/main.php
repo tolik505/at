@@ -41,7 +41,9 @@ return [
         ],
         'i18n' => [
             'class' => 'Zelenin\yii\modules\I18n\components\I18N',
-            'languages' => ['uk', 'en'],
+            'languages' => function () {
+                return \common\helpers\LanguageHelper::getApplicationLanguages();
+            },
         ],
         'urlManager' => [
             'class' => '\common\components\UrlManager',

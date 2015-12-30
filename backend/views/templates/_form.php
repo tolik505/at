@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use metalguardian\fileProcessor\helpers\FPM;
+use  \backend\components\FormBuilder;
 
 /* @var $this yii\web\View */
 /* @var $model \backend\components\BackendModel */
@@ -10,6 +11,7 @@ $translationModels = [];
 if ($model instanceof \common\components\model\Translateable) {
     $translationModels = $model->getTranslationModels();
 }
+$action = isset($action) ? $action : '';
 ?>
 
 <div class="menu-form">
@@ -20,8 +22,11 @@ if ($model instanceof \common\components\model\Translateable) {
         ]
     );
     ?>
-    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */ $form = \metalguardian\formBuilder\ActiveFormBuilder::begin([
+    <?php /** @var FormBuilder $form */ $form = FormBuilder::begin([
+        'action' => $action,
+        'enableClientValidation' => false,
         'options' => [
+            'id' => 'main-form',
             'enctype' => 'multipart/form-data',
         ]
     ]); ?>
@@ -35,32 +40,11 @@ if ($model instanceof \common\components\model\Translateable) {
     $content = null;
     foreach ($formConfig as $attribute => $element) {
         $content .= $form->renderField($model, $attribute, $element);
-        if ($element['type'] == \metalguardian\formBuilder\ActiveFormBuilder::INPUT_FILE && isset($model->$attribute)) {
-            $file = FPM::transfer()->getData($model->$attribute);
-            $content .= Html::beginTag('div', ['class' => 'file-name']);
-            $content .= Html::button(Yii::t('app', 'Delete file'), [
-                    'class' => 'delete-file',
-                    'data' => [
-                        'modelName' => $model->className(),
-                        'modelId' => $model->id,
-                        'attribute' => $attribute
-                    ]
-                ]);
-            if (in_array($file->extension, ['jpg', 'png', 'gif', 'tif', 'bmp'])) {
-                $linkLabel = FPM::image($file->id, 'admin', 'file');
-            } else {
-                $linkLabel = FPM::getOriginalFileName($file->id, $file->base_name, $file->extension);
-            }
-            $content .= Html::a(
-                $linkLabel,
-                FPM::originalSrc($model->$attribute),
-                ['target' => '_blank']
-            );
-            $content .= Html::endTag('div');
-        }
+        $content .= $form->renderUploadedFile($model, $attribute, $element);
         if ($model instanceof \common\components\model\Translateable && $model->isTranslateAttribute($attribute)) {
             foreach ($translationModels as $languageModel) {
                 $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $element);
+                $content .= $form->renderUploadedFile($languageModel, $attribute, $element, $languageModel->language);
             }
         }
     }
@@ -101,6 +85,6 @@ if ($model instanceof \common\components\model\Translateable) {
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php \metalguardian\formBuilder\ActiveFormBuilder::end(); ?>
+    <?php FormBuilder::end(); ?>
 
 </div>

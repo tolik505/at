@@ -9,7 +9,6 @@
 echo "<?php\n";
 ?>
 
-use yii\db\Schema;
 use console\components\Migration;
 
 /**
@@ -35,12 +34,12 @@ class <?= $className ?> extends Migration
         $this->createTable(
             $this->tableName,
             [
-                'model_id' => Schema::TYPE_INTEGER . ' NOT NULL COMMENT "Related model id"',
-                'language' => Schema::TYPE_STRING . '(16) NOT NULL COMMENT "Language"',
+                'model_id' => $this->integer()->notNull() . ' COMMENT "Related model id"',
+                'language' => $this->string(16)->notNull() . ' COMMENT "Язык"',
 
                 // examples:
-                //'label' => Schema::TYPE_STRING . ' NOT NULL COMMENT "Label"',
-                //'content' => Schema::TYPE_TEXT . ' NULL DEFAULT NULL COMMENT "Content"',
+                //'label' => $this->string() . ' COMMENT "Label"',
+                //'content' => $this->text() . ' COMMENT "Content"',
             ],
             $this->tableOptions
         );
