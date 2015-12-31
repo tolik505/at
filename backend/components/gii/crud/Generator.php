@@ -371,6 +371,8 @@ class Generator extends \yii\gii\generators\crud\Generator
     {
         if (stripos($column->name, 'published') !== false) {
             return 'boolean';
+        } elseif (stripos($column->name, 'file') !== false) {
+            return 'file';
         } elseif ($column->phpType === 'boolean' || ($column->type === Schema::TYPE_SMALLINT && $column->size === 1)) {
             return 'boolean';
         } elseif (stripos($column->name, 'link') !== false) {
@@ -492,6 +494,10 @@ class Generator extends \yii\gii\generators\crud\Generator
         } elseif ($column->phpType === 'boolean' || ($column->type === Schema::TYPE_SMALLINT && $column->size === 1)) {
             return "[
                 'type' => ActiveFormBuilder::INPUT_CHECKBOX,
+            ]";
+        } elseif (stripos($column->name, 'file') !== false) {
+            return "[
+                'type' => ActiveFormBuilder::INPUT_FILE,
             ]";
         } elseif ($column->type === Schema::TYPE_DATE) {
             return "[

@@ -28,7 +28,7 @@ class Generator extends \yii\gii\generators\model\Generator
     public $ns = 'common\models';
     public $baseClass = 'common\components\model\ActiveRecord';
     public $generateLabelsFromComments = true;
-    public $useTablePrefix = true;
+    public $useTablePrefix = false;
     public $enableI18N = true;
     public $createBaseModel = true;
     public $hideExistingBaseModel = true;

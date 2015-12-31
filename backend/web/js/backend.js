@@ -206,4 +206,16 @@ $(function () {
 			}, 'complete': function () {
 			}, 'url': url});
 	});
+
+	//For main menu tree
+	$(document).ready(function(){
+		var a = $('.site-index .dropdown a');
+		if (a.length) {
+			a.each(function(indx, el){
+				if ($(el).attr('href') == '#') {
+					$(el).addClass('no-href');
+				}
+			});
+		}
+	});
 });
