@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/jquery.li-translit.js',
         'js/backend.js',
     ];
     public $depends = [

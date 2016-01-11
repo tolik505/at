@@ -100,14 +100,21 @@ return [
             ],
         ],
         'urlManager' => [
-            'rules' => [
-                '' => 'site/index',
-                'robots.txt' => 'site/robots',
-                'sitemap.xml' => 'sitemap/default/index',
-            ],
+            'enableLanguageDetection' => false,
+            //'languages' => ['ru'],
         ],
         'errorHandler' => [
             'errorAction' => 'error/error',
+        ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@app/themes/basic',
+                'pathMap' => [
+                    '@app/views' => ['@app/themes/basic'],
+                    '@app/modules' => ['@app/themes/basic/modules']
+                ],
+                'baseUrl' => '@web/themes/basic',
+            ],
         ],
         'assetManager' => [
             'linkAssets' => true,

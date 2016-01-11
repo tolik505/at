@@ -218,4 +218,11 @@ $(function () {
 			});
 		}
 	});
+
+    var s_name = $('.s_name');
+    if (s_name.length) {
+        s_name.addClass('form-control');
+        $('.s_alias').addClass('form-control');
+        $('#main-form').liTranslit();
+    }
 });

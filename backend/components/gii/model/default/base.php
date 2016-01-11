@@ -22,6 +22,9 @@ echo "<?php\n";
 namespace <?= ltrim($generator->ns, '\\') . '\\base' ?>;
 
 use Yii;
+<?php if ($generator->isSeo) { ?>
+use notgosu\yii2\modules\metaTag\components\MetaTagBehavior;
+<?php } ?>
 
 /**
  * This is the model class for table "<?= $generator->generateTableName($tableName) ?>".
@@ -56,6 +59,11 @@ abstract class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass,
     public function behaviors()
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
+<?php if ($generator->isSeo) { ?>
+            'seo' => [
+                'class' => MetaTagBehavior::className(),
+            ],
+<?php } ?>
         ]);
     }
 

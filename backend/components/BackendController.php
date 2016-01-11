@@ -7,6 +7,8 @@
 namespace backend\components;
 
 use common\helpers\LanguageHelper;
+use vova07\imperavi\actions\GetAction;
+use vova07\imperavi\actions\UploadAction;
 use Yii;
 use yii\base\Model;
 use yii\base\NotSupportedException;
@@ -51,6 +53,36 @@ abstract class BackendController extends Controller
      */
     abstract public function getModelClass();
 
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'images-get' => [
+                'class' => GetAction::className(),
+                'url' => '/uploads/redactor/', // Directory URL address, where files are stored.
+                'path' => '@webroot/uploads/redactor',
+                'type' => GetAction::TYPE_IMAGES,
+                'options' => [
+                    'basePath' => Yii::getAlias('@webroot/uploads/redactor'),
+                    'except' => ['.gitkeep']
+                ]
+
+            ],
+            'image-upload' => [
+                'class' => UploadAction::className(),
+                'url' => '/uploads/redactor/', // Directory URL address, where files are stored.
+                'path' => 'uploads/redactor' // Absolute path to directory where files are stored.
+            ],
+        ];
+    }
+
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
 
     /**
      * Lists all Menu models.

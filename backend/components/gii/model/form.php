@@ -17,6 +17,7 @@ echo $form->field($generator, 'generateRelations')->dropDownList([
     'none' => 'Нет',
     'all' => 'Все реляции'
 ]);
+echo $form->field($generator, 'isSeo')->checkbox();
 echo $form->field($generator, 'generateLabelsFromComments')->checkbox();
 echo $form->field($generator, 'enableI18N')->checkbox();
 echo $form->field($generator, 'messageCategory');
