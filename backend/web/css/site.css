@@ -192,12 +192,16 @@ div.required label:after {
     color: #337AB7;
     background-color: white;
 }
-.site-index .dropdown-menu > li > a.no-href:hover {
+.site-index .dropdown-menu > li > a[href='#']:hover {
     color: inherit;
 }
-.site-index a.no-href {
+.site-index a[href='#'] {
     cursor: default;
     text-decoration: none;
     color: inherit;
 }
 /*For menu tree*/
+
+.svg {
+    max-width: 100px;
+}

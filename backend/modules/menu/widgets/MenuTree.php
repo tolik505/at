@@ -48,10 +48,6 @@ class MenuTree extends MainMenu
         Html::addCssClass($options, 'active');
         Html::addCssClass($options, 'open');
 
-        if (!isset($item['url'])) {
-            Html::addCssClass($linkOptions, ['widget' => 'no-href']);
-        }
-
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
     }
 }

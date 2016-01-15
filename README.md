@@ -102,6 +102,31 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/vi
 При этом в моделе сгенерируется небходимый код для фунционирования виджета, останется только прописать константу в EntityToFile
 Если таких виджетов нужно больше одного, то достаточно в моделе создать дополнительные публичные переменные для каждого нового виджета,
 в attributeLabels() прописать их названия, добавить виджеты в getFormConfig() и не забыть создать для них константы в EntityToFile.
+Например, в back-моделе нужно прописать EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES
+ 'galleryImages' => [
+                'type' => ActiveFormBuilder::INPUT_RAW,
+                'value' => ImageUpload::widget([
+                    'model' => $this,
+                    'attribute' => 'galleryImages',
+                    'saveAttribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
+                    'multiple' => true,
+                    'aspectRatio' => 300/200,
+                    'uploadUrl' => ImagesUploadModel::uploadUrl([
+                        'model_name' => static::className(),
+                        'attribute' => 'galleryImages',
+                        'entity_attribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
+                    ]),
+                ])
+            ],
+а в базовой моделе EntityToFile определить эту константу, например
+abstract class EntityToFile extends \common\components\model\ActiveRecord
+{
+    const TYPE_ARTICLE_GALLERY_IMAGES = 'article_gallery_images';
+    const TYPE_ARTICLE_TITLE_IMAGE = 'article_title_image';<-------
+
+Это нужно для идентификации типа картинок в таблице entity_to_file, если для одной модели есть несколько типов изображений,
+например, titleImage и galleryImage.
+
 
 теперь круд для таблицы готов
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANX1otTVhKSzJldnM/view?usp=drivesdk

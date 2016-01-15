@@ -34,7 +34,7 @@ class DefaultController extends BackendController
         if (!$model) {
             $model = new Configuration();
         }
-        $model->load(\Yii::$app->request->post());
+        $model->load($post);
 
         $model->value = null;
         /** @var ConfigurationTranslation[] $translationModels */

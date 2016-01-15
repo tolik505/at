@@ -29,7 +29,7 @@ class Generator extends \yii\gii\generators\model\Generator
     public $baseClass = 'common\components\model\ActiveRecord';
     public $isSeo = false;
     public $generateLabelsFromComments = true;
-    public $useTablePrefix = false;
+    public $useTablePrefix = true;
     public $enableI18N = true;
     public $createBaseModel = true;
     public $hideExistingBaseModel = true;

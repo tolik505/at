@@ -39,16 +39,7 @@ class FormBuilder extends ActiveFormBuilder
                     'language' => $language
                 ]
             ]);
-            if (in_array($file->extension, ['jpg', 'png', 'gif', 'tif', 'bmp'])) {
-                $linkLabel = FPM::image($file->id, 'admin', 'file');
-            } else {
-                $linkLabel = FPM::getOriginalFileName($file->id, $file->base_name, $file->extension);
-            }
-            $content .= Html::a(
-                $linkLabel,
-                FPM::originalSrc($model->$attribute),
-                ['target' => '_blank']
-            );
+            $content .= Formatter::getFileLink($file);
             $content .= Html::endTag('div');
         }
         return $content;
