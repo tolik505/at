@@ -14,6 +14,13 @@ git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
 ```
 
+```
+./init
+composer install
+
+конфигурируем подключение к БД в common/config/main-local.php
+```
+
 первыми миграциями выполнить:
 
 ```
