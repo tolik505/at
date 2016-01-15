@@ -25,7 +25,7 @@ class Configuration extends \common\models\Configuration implements BackendModel
                 'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
                 'attribute' => 'value',
                 'validator' => [
-                    'extensions' => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'png', 'gif', 'jpg', 'jpeg'],
+                    'extensions' => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'ico', 'svg'],
                     'on' => ['file', 'image'],
                 ],
                 'required' => true,

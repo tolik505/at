@@ -587,9 +587,9 @@ class Generator extends \yii\gii\generators\crud\Generator
             } else {
                 $class = '';
                 if ($column->name == 'label' && isset($tableSchema->columns['alias'])) {
-                    $class = "'class' => 's_name'";
+                    $class = "'class' => 's_name form-control'";
                 } elseif ($column->name == 'alias' && isset($tableSchema->columns['label'])) {
-                    $class = "'class' => 's_alias'";
+                    $class = "'class' => 's_alias form-control'";
                 }
                 return "[
                 'type' => ActiveFormBuilder::{$input},

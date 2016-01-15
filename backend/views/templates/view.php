@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use \backend\modules\seo\models\Robots;
 
 /* @var $this yii\web\View */
 /* @var $model \backend\components\BackendModel */
@@ -17,14 +18,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel-body">
         <p>
             <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                    'method' => 'post',
-                ],
-            ]) ?>
-            <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+            <?php if (!$model instanceof Robots) { ?>
+                <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                        'method' => 'post',
+                    ],
+                ]) ?>
+                <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+            <?php } ?>
         </p>
 
         <?= \backend\components\LanguageDetailView::widget([

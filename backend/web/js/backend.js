@@ -207,22 +207,7 @@ $(function () {
 			}, 'url': url});
 	});
 
-	//For main menu tree
-	$(document).ready(function(){
-		var a = $('.site-index .dropdown a');
-		if (a.length) {
-			a.each(function(indx, el){
-				if ($(el).attr('href') == '#') {
-					$(el).addClass('no-href');
-				}
-			});
-		}
-	});
-
-    var s_name = $('.s_name');
-    if (s_name.length) {
-        s_name.addClass('form-control');
-        $('.s_alias').addClass('form-control');
+    if ($('.s_name').length) {
         $('#main-form').liTranslit();
     }
 });

@@ -1,10 +1,11 @@
 <?php
 /**
- * 
+ *
  */
 
 namespace backend\components;
 use metalguardian\fileProcessor\helpers\FPM;
+use metalguardian\fileProcessor\models\File;
 use yii\helpers\Html;
 
 /**
@@ -25,15 +26,32 @@ class Formatter extends \yii\i18n\Formatter
         }
         $file = FPM::transfer()->getData($value);
 
-        if (in_array($file->extension, ['jpg', 'png', 'gif', 'tif', 'bmp'])) {
-            $linkLabel = FPM::image($file->id, 'admin', 'file');
-        } else {
-            $linkLabel = FPM::getOriginalFileName($file->id, $file->base_name, $file->extension);
+        return static::getFileLink($file);
+    }
+
+    /**
+     * @param $file File
+     * @return string
+     */
+    public static function getFileLink($file)
+    {
+        switch (true) {
+            case in_array($file->extension, ['jpg', 'png', 'gif', 'tif', 'bmp']):
+                $linkLabel = FPM::image($file->id, 'admin', 'file');
+                break;
+            case $file->extension == 'ico':
+                $linkLabel = Html::img(FPM::originalSrc($file->id));
+                break;
+            case $file->extension == 'svg':
+                $linkLabel = Html::img(FPM::originalSrc($file->id), ['class' => 'svg']);
+                break;
+            default:
+                $linkLabel = FPM::getOriginalFileName($file->id, $file->base_name, $file->extension);
         }
 
         return Html::a(
             $linkLabel,
-            FPM::originalSrc($value),
+            FPM::originalSrc($file->id),
             ['target' => '_blank']
         );
     }

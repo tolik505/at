@@ -110,18 +110,6 @@ abstract class EntityToFile extends \common\components\model\ActiveRecord
         );
     }
 
-    /**
-     * @param $entityModelName
-     * @param $entityModelGuid
-     */
-    public static function deleteImagesByGuid($entityModelName, $entityModelGuid)
-    {
-        static::deleteAll(
-            'entity_model_name = :enm AND entity_model_guid = :emi',
-            [':enm' => $entityModelName, ':emi' => $entityModelGuid]
-        );
-    }
-
     public static function updateImages($model_id, $sign)
     {
         \Yii::$app->db->createCommand()
