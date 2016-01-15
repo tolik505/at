@@ -31,7 +31,8 @@
         "himiklab/yii2-sitemap-module": "^1.1",
         "kartik-v/yii2-widget-fileinput": "v1.0.0",
         "bower-asset/cropper": "v0.7.9",
-        "yiisoft/yii2-jui": "~2.0.0"
+        "yiisoft/yii2-jui": "~2.0.0",
+        "kartik-v/yii2-nav-x": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

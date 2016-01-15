@@ -20,13 +20,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo $searchModel->hasSearch() ? $this->render('//templates/_search', ['model' => $searchModel]) : null; ?>
 
         <p>
-            <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'create btn btn-success']) ?>
         </p>
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => $searchModel->getColumns('index'),
+            'tableOptions' => ['class' => 'table table-striped table-bordered table-filtered'],
             'dataColumnClass' => ModifiedDataColumn::className()
         ]); ?>
 

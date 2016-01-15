@@ -18,9 +18,11 @@ git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
 ```
 
-первой миграцией выполнить:
+первыми миграциями выполнить:
 
 ```
+./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
+./yii migrate --migrationPath=vendor/metalguardian/yii2-file-processor-module/src/migrations
 ./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
 ```
 

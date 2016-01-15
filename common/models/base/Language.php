@@ -43,7 +43,7 @@ abstract class Language extends \common\components\model\ActiveRecord
     {
         return [
             [['label', 'code', 'locale'], 'required'],
-            [['published', 'position'], 'integer'],
+            [['published', 'position', 'is_default'], 'integer'],
             [['label'], 'string', 'max' => 20],
             [['code', 'locale'], 'string', 'max' => 5],
             [['published'], 'default', 'value' => 1],

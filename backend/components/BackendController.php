@@ -126,6 +126,7 @@ abstract class BackendController extends Controller
         $model->loadDefaultValues();
 
         if ($this->loadModels($model) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Record successfully created!'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('//templates/create', [
@@ -174,6 +175,7 @@ abstract class BackendController extends Controller
         $model = $this->findModel($id);
 
         if ($this->loadModels($model) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('info', Yii::t('app', 'Record successfully updated!'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('//templates/update', [
@@ -191,6 +193,8 @@ abstract class BackendController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        \Yii::$app->getSession()->setFlash('warning', Yii::t('app', 'Record successfully deleted!'));
 
         return $this->redirect(['index']);
     }

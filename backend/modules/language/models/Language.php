@@ -103,6 +103,9 @@ class Language extends \common\models\Language implements BackendModel
                     'maxlength' => true,
                 ],
             ],
+            'is_default' => [
+                'type' => ActiveFormBuilder::INPUT_CHECKBOX,
+            ],
             'published' => [
                 'type' => ActiveFormBuilder::INPUT_CHECKBOX,
             ],

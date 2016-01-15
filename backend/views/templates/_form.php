@@ -39,14 +39,22 @@ $action = isset($action) ? $action : '';
 
     $content = null;
     foreach ($formConfig as $attribute => $element) {
+        $content .= Html::beginTag('div', ['class' => 'row']);
+        $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
         $content .= $form->renderField($model, $attribute, $element);
         $content .= $form->renderUploadedFile($model, $attribute, $element);
         if ($model instanceof \common\components\model\Translateable && $model->isTranslateAttribute($attribute)) {
             foreach ($translationModels as $languageModel) {
+                $content .= Html::beginTag('div', ['class' => 'row']);
+                $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
                 $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $element);
                 $content .= $form->renderUploadedFile($languageModel, $attribute, $element, $languageModel->language);
+                $content .= Html::endTag('div');
+                $content .= Html::endTag('div');
             }
         }
+        $content .= Html::endTag('div');
+        $content .= Html::endTag('div');
     }
 
     $items[] = [
@@ -80,9 +88,12 @@ $action = isset($action) ? $action : '';
     ?>
 
     <?= \yii\bootstrap\Tabs::widget(['items' => $items]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group">
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']); ?>
+            </div>
+        </div>
     </div>
 
     <?php FormBuilder::end(); ?>

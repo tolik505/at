@@ -18,11 +18,20 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/select2_v3.4.3.css',
+        'css/jquery.mCustomScrollbar.min_v2.8.1.css',
+        'css/new_admin.css',
+        'css/new_admin_for_user.css',
+        'http://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,cyrillic',
+        'http://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,cyrillic',
+        'css/site.css'
     ];
     public $js = [
         'js/jquery.li-translit.js',
-        'js/backend.js',
+        'js/jquery.mCustomScrollbar.min_v2.8.1.js',
+        'js/select2.min__v3.4.3.js',
+        'js/new_admin.js',
+        'js/backend.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

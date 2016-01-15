@@ -4,6 +4,7 @@ namespace backend\modules\redirects\controllers;
 
 use backend\components\BackendController;
 use backend\modules\redirects\models\Redirects;
+use yii\web\NotFoundHttpException;
 
 /**
  * RedirectsController implements the CRUD actions for Redirects model.

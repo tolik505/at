@@ -1,3 +1,17 @@
+var ajax = $.ajax;
+$.ajax = function()
+{
+        arguments[0].complete = [
+            arguments[0].complete,
+            function()
+            {
+                addClassForNewAdminStyle();
+                customSelect2();
+            }
+        ];
+
+    ajax.apply(ajax, arguments);
+}
 function parseResponse(response) {
     if (response.replaces instanceof Array) {
         for (var i = 0, ilen = response.replaces.length; i < ilen; i++) {
@@ -147,8 +161,37 @@ function fixMultiUploadImageCropUrl()
 }
 //Multi-upload widget
 
+function addClassForNewAdminStyle()
+{
+    if (!$('.grid-view').hasClass('table-responsive')) {
+        $('.grid-view').addClass('table-responsive')
+    }
+    $('.grid-view .filters .form-control').addClass('form-control-filters');
+    if ($('.glyphicon.glyphicon-pencil').length) {
+        $('.grid-view .table').addClass('vertical-options');
+    }
+
+    if (!$('.grid-view .filters td input').length) {
+        $('.grid-view table').addClass('no-filters');
+    }
+
+    if ($('.grid-view .filters td').length) {
+        $('.grid-view .filters td').addClass('form-group');
+    }
+
+    if ($('li.active a[href="/configuration/configuration/index"]').length) {
+        $('.grid-view .table').addClass('l-height');
+    }
+}
+
+addClassForNewAdminStyle();
+
 
 $(function () {
+    $(document).on('pjax:success', function(event, data) {
+        addClassForNewAdminStyle();
+        customSelect2();
+    });
 	//For checkbox in gridView (index page)
 	$(document).on('click', '.ajax-checkbox', function(){
 		var that = $(this);
