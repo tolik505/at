@@ -27,7 +27,7 @@ class Pagination extends \yii\data\Pagination {
         $page = isset($page) ? $page + 1 : $this->getQueryParam($this->pageParam, 1);
         if ($page) {
             $pagesCount = ceil($this->totalCount/$this->pageSize);
-            if ($pagesCount < (int) $page) {
+            if ($this->totalCount > 0 && $pagesCount < (int) $page) {
                 throw new NotFoundHttpException;
             }
         }
