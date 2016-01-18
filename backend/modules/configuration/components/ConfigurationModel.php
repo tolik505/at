@@ -9,9 +9,12 @@ namespace backend\modules\configuration\components;
 use backend\modules\configuration\models\Configuration;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 /**
  * Class ConfigurationModel
+ *
  * @package backend\modules\configuration\models
  */
 abstract class ConfigurationModel extends Model
@@ -63,6 +66,8 @@ abstract class ConfigurationModel extends Model
      */
     public function getModels()
     {
+        $types = $this->getFormTypes();
+
         if (null === $this->models) {
             $models = [];
             foreach ($this->getKeys() as $key) {
@@ -71,12 +76,14 @@ abstract class ConfigurationModel extends Model
                     // create model if it is not created yet
                     $model = new Configuration();
                     $model->id = $key;
-                    $model->type = Configuration::TYPE_STRING;
+                    $model->type = ArrayHelper::getValue($types, $key, Configuration::TYPE_STRING);
                     $model->preload = 0;
                     $model->published = 1;
                 }
+
                 $models[$key] = $model;
             }
+
             $this->models = $models;
         }
 
@@ -130,6 +137,14 @@ abstract class ConfigurationModel extends Model
         }
 
         return $config;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFormTypes()
+    {
+        return [];
     }
 
     /**
