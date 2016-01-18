@@ -83,3 +83,9 @@ class PageController extends \backend\modules\configuration\components\Configura
 Для frontend
 
 Просто используем Configuration как обычно
+
+Текущие проблеммы
+===================================
+
+Не загружает файлы.
+Смена типа поля в коде требует ручной смены типа УЖЕ СОЗДАНОГО поля в админке или его удаления.
