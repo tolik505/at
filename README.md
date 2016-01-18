@@ -342,3 +342,7 @@ $data = [
 SEO
 ---------------
 [SEO](docs/SEO.md)
+
+Configuration Form
+---------------
+[Configuration Form](docs/Configuration.md)
