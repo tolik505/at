@@ -29,6 +29,18 @@ class Page extends \backend\modules\configuration\components\ConfigurationModel
             'content',
         ];
     }
+    
+    /**
+     * @return array
+     */
+     public function getFormTypes()
+     {
+        return [
+            'label' => Configuration::TYPE_STRING,
+            'announce' => Configuration::TYPE_HTML,
+            'content' => Configuration::TYPE_HTML,
+        ];
+     }
 
     /**
      * Title of the form

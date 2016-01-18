@@ -17,7 +17,8 @@ $values = $model->getModels();
         ]
     );
     ?>
-    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */ $form = \metalguardian\formBuilder\ActiveFormBuilder::begin(); ?>
+    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */
+    $form = \metalguardian\formBuilder\ActiveFormBuilder::begin(); ?>
 
     <?php
     $items = [];
@@ -27,11 +28,12 @@ $values = $model->getModels();
         $attribute = '[' . $value->id . ']value';
         $configuration = $value->getValueFieldConfig();
         $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . LanguageHelper::getCurrent()->code . ']';
-        $content .= $form->renderField($value, $attribute, $configuration);
+        $content .= $form->renderField($value, $attribute, $configuration, false);
         if ($value instanceof \common\components\model\Translateable && $value->isTranslateAttribute($attribute)) {
             foreach ($value->getTranslationModels() as $languageModel) {
                 $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . $languageModel->language . ']';
-                $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $configuration);
+                $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute,
+                    $configuration, false);
             }
         }
     }
