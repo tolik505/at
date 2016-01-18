@@ -106,6 +106,7 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/vi
 Если таких виджетов нужно больше одного, то достаточно в моделе создать дополнительные публичные переменные для каждого нового виджета,
 в attributeLabels() прописать их названия, добавить виджеты в getFormConfig() и не забыть создать для них константы в EntityToFile.
 Например, в back-моделе нужно прописать EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES
+```
  'galleryImages' => [
                 'type' => ActiveFormBuilder::INPUT_RAW,
                 'value' => ImageUpload::widget([
@@ -121,12 +122,15 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/vi
                     ]),
                 ])
             ],
+```
 а в базовой моделе EntityToFile определить эту константу, например
+```
 abstract class EntityToFile extends \common\components\model\ActiveRecord
 {
     const TYPE_ARTICLE_GALLERY_IMAGES = 'article_gallery_images';
-    const TYPE_ARTICLE_TITLE_IMAGE = 'article_title_image';<-------
-
+    const TYPE_ARTICLE_TITLE_IMAGE = 'article_title_image';
+}
+```
 Это нужно для идентификации типа картинок в таблице entity_to_file, если для одной модели есть несколько типов изображений,
 например, titleImage и galleryImage.
 
