@@ -76,10 +76,11 @@ abstract class ConfigurationModel extends Model
                     // create model if it is not created yet
                     $model = new Configuration();
                     $model->id = $key;
-                    $model->type = ArrayHelper::getValue($types, $key, Configuration::TYPE_STRING);
                     $model->preload = 0;
                     $model->published = 1;
                 }
+
+                $model->type = ArrayHelper::getValue($types, $key, Configuration::TYPE_STRING);
 
                 $models[$key] = $model;
             }

@@ -18,7 +18,12 @@ $values = $model->getModels();
     );
     ?>
     <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */
-    $form = \metalguardian\formBuilder\ActiveFormBuilder::begin(); ?>
+    $form = \metalguardian\formBuilder\ActiveFormBuilder::begin([
+        'enableClientValidation' => false,
+        'options' => [
+            'enctype' => 'multipart/form-data',
+        ]
+    ]); ?>
 
     <?php
     $items = [];
