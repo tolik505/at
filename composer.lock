@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "892e5a8b4ceee7498c434b50e5375140",
-    "content-hash": "5ec8aab9c2f4ce92ae408e9c1a59f0f0",
+    "hash": "a9c2d68a6189542a41a64b6fd1b0d260",
+    "content-hash": "ef1405a4de7a43b2b7d4d64714e09f7a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -756,16 +756,16 @@
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "dev-master",
+            "version": "v4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "598f23a93101d1fbf201aa85ac186ddebe63a0fd"
+                "reference": "f95a7e5fa0a9db1ead445e438653aa71e9f599f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/c0ef0778a9d1686e06564b9d346f6a750347d997",
-                "reference": "598f23a93101d1fbf201aa85ac186ddebe63a0fd",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/f95a7e5fa0a9db1ead445e438653aa71e9f599f9",
+                "reference": "f95a7e5fa0a9db1ead445e438653aa71e9f599f9",
                 "shasum": ""
             },
             "type": "library",
@@ -776,7 +776,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause"
+                "BSD 3-Clause"
             ],
             "authors": [
                 {
@@ -800,7 +800,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2015-12-23 12:49:57"
+            "time": "2015-02-13 14:26:42"
         },
         {
             "name": "kartik-v/yii2-dropdown-x",
@@ -1353,7 +1353,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/90c922c919588142d9ef02991cae55bba9e6f140",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5bf2d29eb31ea044581ae36685b9e1b25b62656a",
                 "reference": "90c922c919588142d9ef02991cae55bba9e6f140",
                 "shasum": ""
             },

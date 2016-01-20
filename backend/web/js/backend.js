@@ -1,17 +1,3 @@
-var ajax = $.ajax;
-$.ajax = function()
-{
-        arguments[0].complete = [
-            arguments[0].complete,
-            function()
-            {
-                addClassForNewAdminStyle();
-                customSelect2();
-            }
-        ];
-
-    ajax.apply(ajax, arguments);
-}
 function parseResponse(response) {
     if (response.replaces instanceof Array) {
         for (var i = 0, ilen = response.replaces.length; i < ilen; i++) {
@@ -72,6 +58,12 @@ $(function(){
             }, 'complete': function () {
             }, 'url': url});
 
+    });
+
+    $(document).on('click', '.cancel-crop', function(){
+        event.preventDefault();
+
+        hideModal('.modal');
     });
 
     $('.modal').on('hidden.bs.modal', function (e) {
@@ -247,6 +239,8 @@ $(function () {
 				alert(response.responseText);
 			}, 'beforeSend': function () {
 			}, 'complete': function () {
+                addClassForNewAdminStyle();
+                customSelect2();
 			}, 'url': url});
 	});
 
