@@ -22,6 +22,7 @@ use yii\helpers\Html;
 
     <div class="col-sm-8 margined centered">
         <?= Html::a('Сохранить', ImagesUploadModel::getSaveCroppedImageUrl(), ['class' => 'btn btn-info save-cropped']); ?>
+        <?= Html::a('Отмена', '#', ['class' => 'btn btn-warning cancel-crop']); ?>
     </div>
 </div>
 
