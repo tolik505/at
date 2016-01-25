@@ -7,10 +7,8 @@
 namespace backend\modules\configuration\components;
 
 use backend\modules\configuration\models\Configuration;
-use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
-use yii\helpers\VarDumper;
 
 /**
  * Class ConfigurationModel
@@ -151,5 +149,5 @@ abstract class ConfigurationModel extends Model
     /**
      * @return array
      */
-    abstract public static function getUpdateUrl();
+    abstract public function getUpdateUrl();
 }

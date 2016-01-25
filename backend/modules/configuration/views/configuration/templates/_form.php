@@ -32,11 +32,11 @@ $values = $model->getModels();
     foreach ($values as $value) {
         $attribute = '[' . $value->id . ']value';
         $configuration = $value->getValueFieldConfig();
-        $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . LanguageHelper::getCurrent()->code . ']';
+        $configuration['label'] = $value->description . $value->id . ' [' . LanguageHelper::getCurrent()->code . ']';
         $content .= $form->renderField($value, $attribute, $configuration, false);
         if ($value instanceof \common\components\model\Translateable && $value->isTranslateAttribute($attribute)) {
             foreach ($value->getTranslationModels() as $languageModel) {
-                $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . $languageModel->language . ']';
+                $configuration['label'] = $value->description . $value->id . ' [' . $languageModel->language . ']';
                 $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute,
                     $configuration, false);
             }

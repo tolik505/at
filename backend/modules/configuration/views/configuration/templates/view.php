@@ -25,13 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => $item->getColumns('model'),
             ]); ?>
 
-            <p>
-                <?= Html::a(
-                    Yii::t('app', 'Update this item'), $item->getUpdateUrl(),
-                    ['class' => 'btn btn-xs btn-default', 'target' => '_blank'])
-                ?>
-            </p>
-
         <?php endforeach ?>
     </div>
 
