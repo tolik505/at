@@ -1,7 +1,7 @@
 ### Backend CRUD
 
 На беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
-![gii templates](/docs/img/Welcome to Gii.png)
+![gii templates](/docs/img/Welcome_to_Gii.png)
 
 1. Для начала нужно создать миграцию
 
