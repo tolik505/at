@@ -1,7 +1,7 @@
 ### Backend CRUD
 
 На беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
-![gii templates](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANZ2h2d054LXZ0SUU/view?usp=drivesdk)
+![gii templates](/docs/img/Welcome to Gii.png)
 
 1. Для начала нужно создать миграцию
 

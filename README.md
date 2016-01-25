@@ -8,7 +8,7 @@ Melon.ng Yii 2 Advanced Application Template
 
 ### Install
 
-1. Клонируем, устанавливаем новую ветку на репозиторий вашего проекта
+1.Клонируем, устанавливаем новую ветку на репозиторий вашего проекта
 
 ```
 git clone git@bitbucket.org:vintageua/melon.ng.git project-name
@@ -20,14 +20,14 @@ git push origin master
 git remote add upstream git@bitbucket.org:vintageua/melon.ng.git
 ```
 
-2. Инициализация приложения и установка всех зависимостей
+2.Инициализация приложения и установка всех зависимостей
 
 ```
 ./init
 composer install
 ```
 
-3. Поднимаем миграции
+3.Поднимаем миграции
 
 ```
 ./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
