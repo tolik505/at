@@ -1,9 +1,9 @@
 ### Backend CRUD
 
-На беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
+На беке есть готовый круд, который генерируется в специально созданых gii темплейтах
 ![gii templates](/docs/img/welcometogii.png)
 
-1. Для начала нужно создать миграцию
+1.Для начала нужно создать миграцию
 
 ```bash
 ./yii migrate/create
@@ -28,9 +28,9 @@ or
 Если в таблице одновременно присутствуют поля label и alias, то в генерируемой моделе в бэке будет работать автозаполнение
 поля alias транслитом по значению из label.
 
-2. Генерация модели
+2.Генерация модели
 
-![model generation](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/view?usp=drivesdk)
+![model generation](/docs/img/advancedmodelgenerator.png)
 Выбираем имя таблицы, выбираем имя модели. модели создадутся в common/models и common/models/base
 (не забываем про мультиязыковую таблицу, если она есть - ее нужно отдельно создать)
 модель в common/models/base можно менять как угодно, и она дальше не будет перегенериваться в gii
@@ -42,16 +42,16 @@ or
 
 Если нужно подключить SeoBehavior, то достаточно поставить галочку в чекбоксе Is Seo.
 
-3. Генерация модуля
+3.Генерация модуля
 
-![module generation](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANLXl4YnpnZFo4THc/view?usp=drivesdk)
+![module generation](/docs/img/advancedmodulegenerator.png)
 Тут ничего необычного, просто структура генерируемых файлов немного изменена
 
 добавляем модуль в конфигурацию бекенда
 
-4. CRUD
+4.CRUD
 
-![crud](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/view?usp=drivesdk)
+![crud](/docs/img/advancedcrudgenerator.png)
 Вписываем путь к моделе, которая лежит в common/models
 вписываем название модели, которая должна создаться на бекенде (модель для поиска создастся автоматически)
 списываем название контроллера в бекенде
@@ -60,10 +60,10 @@ or
 
 
 Теперь круд для таблицы готов
-![crud](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANX1otTVhKSzJldnM/view?usp=drivesdk)
+![crud](/docs/img/contenttable.png)
 можно создать запись и посмотреть ее
-![crud](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANNDIwU1ZOVnF2aWs/view?usp=drivesdk)
-![crud](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANVmRacm1Vb3BtSU0/view?usp=drivesdk)
+![crud](/docs/img/createcontenttable.png)
+![crud](/docs/img/test.png)
 
 конфигурация отображения index, view и формы хранится в моделе в бекенде, в соответствующих методах
 
