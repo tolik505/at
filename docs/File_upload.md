@@ -1,22 +1,21 @@
 1. Загрузка файлов(одиночная)
----------------------
 
 поле в таблице
-```
+```php
 'file_id' => Schema::TYPE_INTEGER . ' NULL DEFAULT NULL COMMENT "File"'
 ```
 
 поле в форме:
 
-```
+```php
 'file_id' => [
     'type' => ActiveFormBuilder::INPUT_FILE,
 ],
 ```
 
-бехевиор в моделе в common/models/base
+бихевиор в моделе в common/models/base
 
-```
+```php
 'file' => [
     'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
     'attribute' => 'file_id',
@@ -33,7 +32,7 @@
 
 для примера мультизагрузка:
 
-```
+```php
 $this->images = UploadedFile::getInstances($this, 'images');
 
 foreach ($this->images as $image) {
@@ -45,13 +44,14 @@ foreach ($this->images as $image) {
 
 
 2. Загрузка файлов(множественная)
----------------
+
 Если при генерации CRUD вы поставили галочку Is Image, то в код модели будет добавлен
 небходимый код для фунционирования виджета, останется только прописать константу в EntityToFile
 Если таких виджетов нужно больше одного, то достаточно в моделе создать дополнительные публичные переменные для каждого нового виджета,
 в attributeLabels() прописать их названия, добавить виджеты в getFormConfig() и не забыть создать для них константы в EntityToFile.
 Например, в back-моделе нужно прописать EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES
-```
+
+```php
  'galleryImages' => [
                 'type' => ActiveFormBuilder::INPUT_RAW,
                 'value' => ImageUpload::widget([
@@ -69,7 +69,7 @@ foreach ($this->images as $image) {
             ],
 ```
 а в базовой моделе EntityToFile определить эту константу, например
-```
+```php
 abstract class EntityToFile extends \common\components\model\ActiveRecord
 {
     const TYPE_ARTICLE_GALLERY_IMAGES = 'article_gallery_images';
@@ -80,11 +80,11 @@ abstract class EntityToFile extends \common\components\model\ActiveRecord
 например, titleImage и galleryImage.
 
 3. Отображение изображений(ресайзнутых) на фронте
----------------------
+
 
 в common конфиге в модуле fileProcessor добавляются размеры изображений для ресайза
 
-```
+```php
 'modules' => [
     'fileProcessor' => [
         'class' => '\metalguardian\fileProcessor\Module',
@@ -104,6 +104,6 @@ abstract class EntityToFile extends \common\components\model\ActiveRecord
 
 во вьюхах вызывать так:
 
-```
+```php
 <?= \metalguardian\fileProcessor\helpers\FPM::image($model->image_id, 'profile', 'view') ?>
 ```

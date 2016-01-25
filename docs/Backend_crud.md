@@ -1,12 +1,11 @@
 ### Backend CRUD
----------------------
 
 На беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
 ![gii templates](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANZ2h2d054LXZ0SUU/view?usp=drivesdk)
 
 1. Для начала нужно создать миграцию
----------------------
-```
+
+```bash
 ./yii migrate/create
 or
 ./yii migrate/create table_name # prefer
@@ -22,7 +21,7 @@ or
 
 внести все необходимые поля в миграции и выполнить ее
 
-```
+```bash
 ./yii migrate
 ```
 
@@ -30,7 +29,7 @@ or
 поля alias транслитом по значению из label.
 
 2. Генерация модели
----------------------
+
 ![model generation](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/view?usp=drivesdk)
 Выбираем имя таблицы, выбираем имя модели. модели создадутся в common/models и common/models/base
 (не забываем про мультиязыковую таблицу, если она есть - ее нужно отдельно создать)
@@ -44,14 +43,14 @@ or
 Если нужно подключить SeoBehavior, то достаточно поставить галочку в чекбоксе Is Seo.
 
 3. Генерация модуля
----------------------
+
 ![module generation](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANLXl4YnpnZFo4THc/view?usp=drivesdk)
 Тут ничего необычного, просто структура генерируемых файлов немного изменена
 
 добавляем модуль в конфигурацию бекенда
 
 4. CRUD
----------------------
+
 ![crud](https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/view?usp=drivesdk)
 Вписываем путь к моделе, которая лежит в common/models
 вписываем название модели, которая должна создаться на бекенде (модель для поиска создастся автоматически)

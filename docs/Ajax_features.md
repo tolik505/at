@@ -2,7 +2,7 @@
 перезагрузки страницы. Для этого используем ajax-обработчики, а в success событии ajax-запроса вызываем указанную ниже
 функцию.
 
-```
+```javascript
 function parseResponse(response) {
 	if (response.replaces instanceof Array) {
 		for (var i = 0, ilen = response.replaces.length; i < ilen; i++) {
@@ -35,7 +35,7 @@ function parseResponse(response) {
 
 - replaces, заменить 1 и/или более блоков на странице. На сервере формируем в таком виде:
 
-```
+```php
 $data = [
                 'replaces' => [
                     [
@@ -54,7 +54,7 @@ $data = [
 
 - append, добавить к элементу 1 и/или более блоков. На сервере формируем в таком виде:
 
-```
+```php
 $data = [
                 'append' => [
                     [
@@ -73,7 +73,7 @@ $data = [
 
 - content, вставить контент в блок с указанным селектором. На сервере формируем в таком виде:
 
-```
+```php
 $data = [
                 'content' => [
                     [
@@ -92,7 +92,7 @@ $data = [
 
 - js, добавить на страницу, и соответственно выполнить js-код. На сервере:
 
-```
+```php
 $data = [
                 'js' => Html::script('showPopup(); $(".cart-form").remove();')
             ];
@@ -101,7 +101,7 @@ $data = [
 
 - refresh, перезагрузить страницу. На сервере:
 
-```
+```php
 $data = [
                 'refresh' => true
             ];
@@ -110,7 +110,7 @@ $data = [
 
 - redirect, перенаправить на указанную страницу. На сервере:
 
-```
+```php
 $data = [
                 'redirect' => News::getViewLink(['alias' => $model->alias])
             ];
