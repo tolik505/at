@@ -17,10 +17,6 @@ class ExtendedHtml extends Html
 
     /**
      * Generates ajax hyperlink tag
-     * @param $text
-     * @param null $url
-     * @param array $options
-     * @return string
      */
     public static function ajaxLink($text, $url = null, $options = [])
     {
@@ -28,21 +24,24 @@ class ExtendedHtml extends Html
             ? $options['class'] . ' ajax-link'
             :
             'ajax-link';
-        $options['rel'] = 'noindex/nofollow';
-        return parent::a($text, $url, $options);
+        $options['rel'] = 'nofollow';
+        $link = parent::a($text, $url, $options);
+        return self::wrapInNoindexTag($link);
     }
 
     /**
      * Generates a hyperlink tag to another sites
-     * @param $text
-     * @param null $url
-     * @param array $options
-     * @return string
      */
     public static function externalLink($text, $url = null, $options = [])
     {
-        $options['rel'] = 'noindex/nofollow';
-        return parent::a($text, $url, $options);
+        $options['rel'] = 'nofollow';
+        $link = parent::a($text, $url, $options);
+        return self::wrapInNoindexTag($link);
+    }
+
+    public static function wrapInNoindexTag($html)
+    {
+        return '<!--noindex-->' . $html . '<!--/noindex-->';
     }
 
 }
