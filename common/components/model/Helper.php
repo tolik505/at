@@ -3,6 +3,7 @@
 namespace common\components\model;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 /**
  * Class Helper
@@ -81,5 +82,35 @@ trait Helper
         $all = $class::find()->select([$key, $label])->asArray()->all();
 
         return ArrayHelper::map($all, $key, $label);
+    }
+
+    /**
+     * Additional method for the {getList}
+     *
+     * @param string $attribute the attribute name
+     * @param string|boolean $category the translation category
+     * @return array
+     */
+    public function getListValue($attribute, $category = 'app')
+    {
+        return isset(static::getList($attribute, $category)[$this->$attribute])
+            ? static::getList($attribute, $category)[$this->$attribute]
+            : Yii::t('app', 'Error get attribute value label');
+    }
+
+    /**
+     * @param $route
+     * @param $params
+     *
+     * @return string
+     */
+    public static function createUrl($route, $params)
+    {
+        return Url::to(
+            ArrayHelper::merge(
+                [$route],
+                $params
+            )
+        );
     }
 }

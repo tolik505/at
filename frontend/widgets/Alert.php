@@ -6,6 +6,7 @@
  */
 
 namespace frontend\widgets;
+use yii\helpers\Html;
 
 /**
  * Alert widget renders a message from session flash. All flash messages are displayed
@@ -58,18 +59,21 @@ class Alert extends \yii\bootstrap\Widget
         foreach ($flashes as $type => $data) {
             if (isset($this->alertTypes[$type])) {
                 $data = (array) $data;
-                foreach ($data as $i => $message) {
+                foreach ($data as $message) {
                     /* initialize css class for each alert box */
                     $this->options['class'] = $this->alertTypes[$type] . $appendCss;
 
                     /* assign unique id to each alert box */
-                    $this->options['id'] = $this->getId() . '-' . $type . '-' . $i;
+                    $this->options['id'] = $this->getId() . '-' . $type;
+                    echo Html::beginTag('div', ['class' => 'alerts-box']);
 
                     echo \yii\bootstrap\Alert::widget([
-                        'body' => $message,
+                        'body' =>  Html::tag('i', 'i') . ' ' . $message,
                         'closeButton' => $this->closeButton,
                         'options' => $this->options,
                     ]);
+
+                    echo Html::endTag('div');
                 }
 
                 $session->removeFlash($type);

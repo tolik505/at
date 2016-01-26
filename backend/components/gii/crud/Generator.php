@@ -30,6 +30,7 @@ class Generator extends \yii\gii\generators\crud\Generator
     public $template = 'advanced';
     public $baseModelClass;
     public $baseControllerClass = '\backend\components\BackendController';
+    public $isImage = false;
 
     /**
      * @inheritdoc
@@ -67,7 +68,7 @@ class Generator extends \yii\gii\generators\crud\Generator
             [['controllerClass'], 'match', 'pattern' => '/(^|\\\\)[A-Z][^\\\\]+Controller$/', 'message' => 'Controller class name must start with an uppercase letter.'],
             [['controllerClass', 'modelClass'], 'validateNewClass'],
             [['baseModelClass'], 'validateBaseModelClass'],
-            [['enableI18N'], 'boolean'],
+            [['enableI18N', 'isImage'], 'boolean'],
             [['messageCategory'], 'validateMessageCategory', 'skipOnEmpty' => false],
             ['viewPath', 'safe'],
         ];
@@ -343,7 +344,14 @@ class Generator extends \yii\gii\generators\crud\Generator
                     continue;
                 }
                 $format = $this->generateColumnFormat($column);
-                $columns[] = "'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                if ($format == 'ntext') {
+                    $columns[] = "[
+                        'attribute' => '$column->name',
+                        'format' => 'html',
+                    ]";
+                } else {
+                    $columns[] = "'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                }
             }
         }
 
@@ -371,6 +379,8 @@ class Generator extends \yii\gii\generators\crud\Generator
     {
         if (stripos($column->name, 'published') !== false) {
             return 'boolean';
+        } elseif (stripos($column->name, 'file') !== false) {
+            return 'file';
         } elseif ($column->phpType === 'boolean' || ($column->type === Schema::TYPE_SMALLINT && $column->size === 1)) {
             return 'boolean';
         } elseif (stripos($column->name, 'link') !== false) {
@@ -401,8 +411,9 @@ class Generator extends \yii\gii\generators\crud\Generator
                     continue;
                 }
                 $format = $this->generateColumnFormat($column);
-                if (++$count < 6) {
+                if ($count < 6 && $format !== 'ntext' && $column->name != 'id' || in_array($column->name, ['published', 'position'])) {
                     $columns[] = "'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                    $count++;
                 } else {
                     $columns[] = "// '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
                 }
@@ -493,6 +504,10 @@ class Generator extends \yii\gii\generators\crud\Generator
             return "[
                 'type' => ActiveFormBuilder::INPUT_CHECKBOX,
             ]";
+        } elseif (stripos($column->name, 'file') !== false) {
+            return "[
+                'type' => ActiveFormBuilder::INPUT_FILE,
+            ]";
         } elseif ($column->type === Schema::TYPE_DATE) {
             return "[
                 'type' => ActiveFormBuilder::INPUT_WIDGET,
@@ -527,10 +542,12 @@ class Generator extends \yii\gii\generators\crud\Generator
             ]";
         } elseif ($column->type === 'text') {
             return "[
-                'type' => ActiveFormBuilder::INPUT_TEXTAREA,
+                'type' => ActiveFormBuilder::INPUT_WIDGET,
+                'widgetClass' => \\backend\\components\\ImperaviContent::className(),
                 'options' => [
-                    'rows' => 6,
-                ],
+                    'model' => \$this,
+                    'attribute' => '$attribute',
+                ]
             ]";
         } elseif (in_array($column->name, $foreignKeys, true)) {
             $foreignKeysTables = $this->getForeignKeysTables($tableSchema);
@@ -568,10 +585,17 @@ class Generator extends \yii\gii\generators\crud\Generator
                 'type' => ActiveFormBuilder::{$input},
             ]";
             } else {
+                $class = '';
+                if ($column->name == 'label' && isset($tableSchema->columns['alias'])) {
+                    $class = "'class' => 's_name form-control'";
+                } elseif ($column->name == 'alias' && isset($tableSchema->columns['label'])) {
+                    $class = "'class' => 's_alias form-control'";
+                }
                 return "[
                 'type' => ActiveFormBuilder::{$input},
                 'options' => [
                     'maxlength' => true,
+                    $class
                 ],
             ]";
             }

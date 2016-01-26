@@ -6,14 +6,14 @@
 
 namespace backend\modules\menu\widgets;
 
+use kartik\nav\NavX;
 use Yii;
-use yii\bootstrap\Nav;
 
 /**
  * Class LoginMenu
  * @package backend\modules\menu\widgets
  */
-class LoginMenu extends Nav
+class LoginMenu extends NavX
 {
     public $options = ['class' => 'navbar-nav navbar-right'];
 
@@ -24,12 +24,6 @@ class LoginMenu extends Nav
         $items = [];
         if (Yii::$app->user->isGuest) {
             $items[] = ['label' => 'Login', 'url' => ['/admin/default/login']];
-        } else {
-            $items[] = [
-                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                'url' => ['/admin/default/logout'],
-                'linkOptions' => ['data-method' => 'post']
-            ];
         }
 
         $this->items = $items;

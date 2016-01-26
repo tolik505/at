@@ -1,4 +1,6 @@
 <?php
+use \metalguardian\fileProcessor\helpers\FPM;
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
@@ -14,6 +16,13 @@ return [
                         'startY' => 100,
                     ],
                 ],*/
+                'admin' => [
+                    'file' => [
+                        'action' => FPM::ACTION_THUMBNAIL,
+                        'width' => 100,
+                        'height' => 100,
+                    ]
+                ]
             ],
         ],
     ],
@@ -32,12 +41,15 @@ return [
         ],
         'i18n' => [
             'class' => 'Zelenin\yii\modules\I18n\components\I18N',
-            'languages' => ['uk', 'en'],
+            'languages' => [
+                'ru'
+            ]
         ],
         'urlManager' => [
             'class' => '\common\components\UrlManager',
             'showScriptName' => false,
             'enableStrictParsing' => true,
+            'rules' => require(__DIR__ . '/url-rules.php'),
         ],
     ],
     'sourceLanguage' => 'xx',

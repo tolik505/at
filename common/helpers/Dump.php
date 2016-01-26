@@ -17,7 +17,7 @@ class Dump extends VarDumper
     /**
      * @inheritdoc
      */
-    public static function dump($var, $exit = 0, $depth = 10, $highlight = true)
+    public static function dump($var, $exit = 1, $depth = 10, $highlight = true)
     {
         parent::dump($var, $depth, $highlight);
         if ($exit) {

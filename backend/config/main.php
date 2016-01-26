@@ -37,6 +37,9 @@ return [
         'seo' => [
             'class' => 'backend\modules\seo\Module',
         ],
+        'imagesUpload' => [
+            'class' => 'backend\modules\imagesUpload\ImagesUploadModule',
+        ],
     ],
     'components' => [
         'config' => [
@@ -58,6 +61,7 @@ return [
             'errorAction' => 'error/error',
         ],
         'urlManager' => [
+            'enableLocaleUrls' => false,
             'rules' => [
                 '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
                 '<controller>/<action>' => '<controller>/<action>',
@@ -67,6 +71,10 @@ return [
         'assetManager' => [
             'linkAssets' => true,
             'appendTimestamp' => true,
+        ],
+        'formatter' => [
+            'class' => '\backend\components\Formatter',
+            'datetimeFormat' => 'php:d.m.y H:i:s',
         ],
     ],
     'params' => $params,

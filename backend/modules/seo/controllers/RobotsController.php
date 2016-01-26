@@ -4,6 +4,7 @@ namespace backend\modules\seo\controllers;
 
 use backend\components\BackendController;
 use backend\modules\seo\models\Robots;
+use yii\web\NotFoundHttpException;
 
 /**
  * RobotsController implements the CRUD actions for Robots model.
@@ -50,5 +51,33 @@ class RobotsController extends BackendController
                     'model' => $model,
                 ]);
         }
+    }
+
+    /**
+     * Updates an existing Robots model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($this->loadModels($model) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('info', \Yii::t('app', 'Record successfully updated!'));
+            return $this->redirect(['update', 'id' => $model->id]);
+        } else {
+            return $this->render('//templates/update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * @throws NotFoundHttpException
+     */
+    public function actionDelete($id)
+    {
+        throw new NotFoundHttpException;
     }
 }

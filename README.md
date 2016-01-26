@@ -4,23 +4,28 @@ Melon Yii 2 Advanced Application Template
 превоначальная настройка
 ------------------------
 
-репозиторий `https://bitbucket.org/vintageua/melon.ng/branch/seo_ready`
-находится в ветке `seo_ready`
-
 склонить, удалить origin, добавить origin нового репозитория, залить ветку в мастер нового ориджина, сменить ветку на мастер
 
 ```
 git clone git@bitbucket.org:vintageua/melon.ng.git project-name
 cd project-name
-git merge --no-ff --no-edit origin/seo_ready
 git remote remove origin
 git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
 ```
 
-первой миграцией выполнить:
+```
+./init
+composer install
+
+конфигурируем подключение к БД в common/config/main-local.php
+```
+
+первыми миграциями выполнить:
 
 ```
+./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
+./yii migrate --migrationPath=vendor/metalguardian/yii2-file-processor-module/src/migrations
 ./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
 ```
 
@@ -28,7 +33,7 @@ git push origin master
 -----
 
 фронт используется как есть, все нужно делать вручную
-Контроллеры наследуэм от `frontend/components/FrontendController`
+Контроллеры наследуeм от `frontend/components/FrontendController`
 
 бекенд
 ------
@@ -61,6 +66,9 @@ or
 ./yii migrate
 ```
 
+Если в таблице одновременно присутствуют поля label и alias, то в генерируемой моделе в бэке будет работать автозаполнение поля alias
+транслитом по значению из label.
+
 генерация модели
 ----------------
 
@@ -73,6 +81,8 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/vi
 код для мультиязыка будет добавлен автоматически (на основании названий таблиц, поэтому название таблицы переводов не нужно менять)
 
 так же будут автоматически добавлены мультиязычные поля
+
+Если нужно подключить SeoBehavior, то достаточно поставить галочку в чекбоксе Is Seo.
 
 модуль
 ------
@@ -90,6 +100,36 @@ https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/vi
 вписываем путь к моделе, которая лежив в common/models
 вписываем название модели, которая должна создаться на бекенде (модель для поиска создастся автоматически)
 списываем название контроллера в бекенде
+
+Если нужно подключить виджет для загрузки картинок (ImageUpload), то достаточно поставить галочку на чекбоксе Is Image.
+При этом в моделе сгенерируется небходимый код для фунционирования виджета, останется только прописать константу в EntityToFile
+Если таких виджетов нужно больше одного, то достаточно в моделе создать дополнительные публичные переменные для каждого нового виджета,
+в attributeLabels() прописать их названия, добавить виджеты в getFormConfig() и не забыть создать для них константы в EntityToFile.
+Например, в back-моделе нужно прописать EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES
+ 'galleryImages' => [
+                'type' => ActiveFormBuilder::INPUT_RAW,
+                'value' => ImageUpload::widget([
+                    'model' => $this,
+                    'attribute' => 'galleryImages',
+                    'saveAttribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
+                    'multiple' => true,
+                    'aspectRatio' => 300/200,
+                    'uploadUrl' => ImagesUploadModel::uploadUrl([
+                        'model_name' => static::className(),
+                        'attribute' => 'galleryImages',
+                        'entity_attribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
+                    ]),
+                ])
+            ],
+а в базовой моделе EntityToFile определить эту константу, например
+abstract class EntityToFile extends \common\components\model\ActiveRecord
+{
+    const TYPE_ARTICLE_GALLERY_IMAGES = 'article_gallery_images';
+    const TYPE_ARTICLE_TITLE_IMAGE = 'article_title_image';<-------
+
+Это нужно для идентификации типа картинок в таблице entity_to_file, если для одной модели есть несколько типов изображений,
+например, titleImage и galleryImage.
+
 
 теперь круд для таблицы готов
 https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANX1otTVhKSzJldnM/view?usp=drivesdk

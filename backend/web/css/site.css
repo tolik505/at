@@ -10,9 +10,6 @@ body {
     padding: 0 0 60px;
 }
 
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
 
 .footer {
     height: 60px;
@@ -97,4 +94,114 @@ a.desc:after {
 div.required label:after {
     content: " *";
     color: red;
+}
+
+/** upload widget  **/
+.kv-file-upload.btn, .close.fileinput-remove {
+    display: none!important;
+}
+
+.list-group-item{
+    margin-top: 10px!important;
+}
+
+.ui-sortable .badge{
+    cursor: pointer;
+}
+
+.ui-sortable-placeholder {
+    background: #cffdff !important;
+}
+
+.left-margin {
+    margin-left: 10px;
+}
+
+.sortable li div {
+    margin-bottom: 10px;
+}
+
+.file-upload-indicator{
+    padding-top: 0!important;
+}
+
+.img-container {
+    padding: 0;
+    max-width: 600px;
+    max-height: 500px;
+}
+
+.img-preview {
+    padding: 0;
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 215px;
+    height: 245px;
+    overflow: hidden;
+}
+
+.centered {
+    text-align:center;
+}
+
+.margined {
+    margin: 20px;
+}
+
+.file-upload-indicator .kv-file-remove {
+    display: none;
+}
+/** upload widget  **/
+
+.table-bordered > tbody > tr > td {
+    text-align: center;
+}
+.ajax-checkbox {
+    cursor: pointer;
+}
+
+.file-name {
+    margin-top: -65px;
+    margin-bottom: 40px;
+    margin-left: 280px;
+}
+.file-name a, .file-name img {
+    margin-left: 20px;
+}
+
+/*For menu tree*/
+.site-index {
+    text-align: center;
+}
+.site-index .navbar-nav {
+    display:inline-block;
+    float: none;
+}
+.site-index .nav .open > a {
+    background-color: white;
+}
+.site-index .dropdown {
+    text-align: left;
+}
+.site-index .dropdown-menu {
+    position: relative;
+    border: none;
+    box-shadow: none;
+}
+.site-index .dropdown-menu > li > a:hover {
+    color: #337AB7;
+    background-color: white;
+}
+.site-index .dropdown-menu > li > a[href='#']:hover {
+    color: inherit;
+}
+.site-index a[href='#'] {
+    cursor: default;
+    text-decoration: none;
+    color: inherit;
+}
+/*For menu tree*/
+
+.svg {
+    max-width: 100px;
 }

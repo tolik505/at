@@ -7,6 +7,8 @@
 namespace backend\components;
 
 use common\helpers\LanguageHelper;
+use vova07\imperavi\actions\GetAction;
+use vova07\imperavi\actions\UploadAction;
 use Yii;
 use yii\base\Model;
 use yii\base\NotSupportedException;
@@ -51,6 +53,36 @@ abstract class BackendController extends Controller
      */
     abstract public function getModelClass();
 
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'images-get' => [
+                'class' => GetAction::className(),
+                'url' => '/uploads/redactor/', // Directory URL address, where files are stored.
+                'path' => '@webroot/uploads/redactor',
+                'type' => GetAction::TYPE_IMAGES,
+                'options' => [
+                    'basePath' => Yii::getAlias('@webroot/uploads/redactor'),
+                    'except' => ['.gitkeep']
+                ]
+
+            ],
+            'image-upload' => [
+                'class' => UploadAction::className(),
+                'url' => '/uploads/redactor/', // Directory URL address, where files are stored.
+                'path' => 'uploads/redactor' // Absolute path to directory where files are stored.
+            ],
+        ];
+    }
+
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
 
     /**
      * Lists all Menu models.
@@ -91,8 +123,10 @@ abstract class BackendController extends Controller
         $class = $this->getModelClass();
         /** @var \yii\db\ActiveRecord $model */
         $model = new $class();
+        $model->loadDefaultValues();
 
         if ($this->loadModels($model) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Record successfully created!'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('//templates/create', [
@@ -141,6 +175,7 @@ abstract class BackendController extends Controller
         $model = $this->findModel($id);
 
         if ($this->loadModels($model) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('info', Yii::t('app', 'Record successfully updated!'));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('//templates/update', [
@@ -158,6 +193,8 @@ abstract class BackendController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        \Yii::$app->getSession()->setFlash('warning', Yii::t('app', 'Record successfully deleted!'));
 
         return $this->redirect(['index']);
     }

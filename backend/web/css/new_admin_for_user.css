@@ -1,0 +1,98 @@
+.form-control .select2-choice .select2-arrow b {
+    background: none;
+}
+
+#login-form .form-group.required .control-label::after {
+    content: ' ';
+}
+
+.navbar a.active.navbar-brand::after {
+    background-color: #28292a!important;
+    width: 100%;
+}
+
+.table.detail-view td, .table.detail-view th, .table.detail-view tbody tr td:last-child {
+    padding: 22px;
+}
+
+.modal-content .alerts-box {
+    padding-top: 0;
+}
+
+.form-group input[type="file"] {
+    margin-bottom: 25px;
+}
+
+.table tbody td .empty {
+    padding: 16px
+}
+
+.no-checkbox-padding .form-group {
+    margin: 0px;
+    margin-bottom: 30px;
+}
+.no-checkbox-padding .form-group .checkbox {
+    padding: 0px;
+}
+
+.table:not(.vertical-options) tbody tr td:last-child {
+    padding-left: 22px!important;
+}
+
+.form-control .select2-choice .select2-arrow b {
+    position: relative;
+    background: none!important;
+}
+
+.btn-group a.btn {
+    line-height: 48px;
+    color: white;
+}
+
+.panel-default > .panel-heading {
+    margin-bottom: 30px!important;
+}
+
+.panel-default {
+    margin-top: 40px!important;
+}
+
+.navbar .navbar-nav.no-active-background > li > .dropdown-menu .active > a.dropdown-toggle,
+.navbar .navbar-nav.no-active-background > li > .dropdown-menu .active > a{
+    background:  #fff;
+    color: #a5a5a8;
+}
+
+.navbar .navbar-nav.no-active-background > li > .dropdown-menu .active > a.dropdown-toggle:hover,
+.navbar .navbar-nav.no-active-background > li > .dropdown-menu .active > a:hover{
+    background:  #28292a;
+    color: #fff;
+}
+
+.navbar .navbar-nav.no-active-background .dropdown .dropdown-submenu .dropdown-menu .active a {
+    background:  #28292a;
+    color: #a5a5a8;
+}
+
+.navbar .navbar-nav.no-active-background .dropdown .dropdown-submenu .dropdown-menu .active a:hover {
+    color: #fff;
+}
+.panel-body .btn.btn-danger {
+    line-height: 46px;
+    color: white;
+}
+
+.btn.btn-success {
+    background: #28292a;
+    line-height: 48px;
+    color: white;
+}
+
+.btn.btn-primary {
+    background: #979797;
+    line-height: 48px;
+}
+
+.btn.btn-success:first-child, .btn.btn-primary:first-child {
+    margin-left: 0;
+}

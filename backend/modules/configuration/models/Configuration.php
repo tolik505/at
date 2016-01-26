@@ -3,8 +3,10 @@
 namespace backend\modules\configuration\models;
 
 use backend\components\BackendModel;
+use backend\components\Imperavi;
+use backend\components\ImperaviContent;
+use metalguardian\fileProcessor\helpers\FPM;
 use metalguardian\formBuilder\ActiveFormBuilder;
-use vova07\imperavi\Widget;
 use Yii;
 use yii\helpers\Html;
 
@@ -13,6 +15,24 @@ use yii\helpers\Html;
  */
 class Configuration extends \common\models\Configuration implements BackendModel
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
+            'file' => [
+                'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
+                'attribute' => 'value',
+                'validator' => [
+                    'extensions' => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'ico', 'svg'],
+                    'on' => ['file', 'image'],
+                ],
+                'required' => true,
+            ],
+        ]);
+    }
+
     /**
      * @inheritdoc
      */
@@ -41,10 +61,9 @@ class Configuration extends \common\models\Configuration implements BackendModel
      */
     public function attributeLabels()
     {
-        $label = $this->description ? Yii::t('app', 'Value') . ' (' . $this->description . ')' : Yii::t('app', 'Value');
         return [
             'id' => Yii::t('app', 'Key'),
-            'value' => $label,
+            'value' => Yii::t('app', 'Value'),
             'type' => Yii::t('app', 'Field type'),
             'description' => Yii::t('app', 'Description'),
             'preload' => Yii::t('app', 'Preload'),
@@ -87,12 +106,12 @@ class Configuration extends \common\models\Configuration implements BackendModel
                         'attribute' => 'type',
                         'filter' => static::getList('type'),
                         'value' => function (Configuration $data) {
-                            return $data->getListLabel('type');
+                            return $data->getListValue('type');
                         },
                     ],
                     'description',
-                    'published:boolean',
-                    'preload:boolean',
+                    //'published:boolean',
+                    //'preload:boolean',
 
                     ['class' => 'yii\grid\ActionColumn'],
                 ];
@@ -103,11 +122,11 @@ class Configuration extends \common\models\Configuration implements BackendModel
                     $this->getTypeValueView(),
                     [
                         'attribute' => 'type',
-                        'value' => $this->getListLabel('type'),
+                        'value' => $this->getListValue('type'),
                     ],
                     'description',
-                    'published:boolean',
-                    'preload:boolean',
+                    //'published:boolean',
+                    //'preload:boolean',
                 ];
                 break;
             case 'model':
@@ -115,7 +134,7 @@ class Configuration extends \common\models\Configuration implements BackendModel
                     'id',
                     'description',
                     $this->getTypeValueView(),
-                    'published:boolean',
+                    //'published:boolean',
                 ];
                 break;
         }
@@ -142,26 +161,28 @@ class Configuration extends \common\models\Configuration implements BackendModel
                     'maxlength' => 20
                 ],
             ],
-            'value' => $this->getValueFieldConfig(),
             'type' => [
                 'type' => ActiveFormBuilder::INPUT_DROPDOWN_LIST,
                 'items' => static::getList('type'),
                 'options' => [
+                    'class' => 'config-type form-control',
+                    'data-url' => $this->getChangeTypeUrl(),
                     'prompt' => 'select',
                 ],
             ],
+            'value' => $this->getValueFieldConfig(),
             'description' => [
                 'type' => ActiveFormBuilder::INPUT_TEXT,
                 'options' => [
                     'maxlength' => 255
                 ],
             ],
-            'preload' => [
+            /*'preload' => [
                 'type' => ActiveFormBuilder::INPUT_CHECKBOX,
             ],
             'published' => [
                 'type' => ActiveFormBuilder::INPUT_CHECKBOX,
-            ],
+            ],*/
         ];
     }
 
@@ -172,41 +193,65 @@ class Configuration extends \common\models\Configuration implements BackendModel
         $this->setScenario($this->getTypeScenario());
     }
 
+    public function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+            $this->setScenario($this->getTypeScenario());
+
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @return array
      */
     public function getValueFieldConfig()
     {
+        $description = $this->description ? $this->description : null;
         switch ($this->type) {
             case static::TYPE_STRING:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
+                    'hint' => $description,
                 ];
                 break;
             case static::TYPE_TEXT:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXTAREA,
+                    'hint' => $description,
                 ];
                 break;
             case static::TYPE_HTML:
                 return [
                     'type' => ActiveFormBuilder::INPUT_WIDGET,
-                    'widgetClass' => Widget::className(),
+                    'widgetClass' => ImperaviContent::className(),
+                    'hint' => $description,
                 ];
                 break;
             case static::TYPE_INTEGER:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
+                    'hint' => $description,
                 ];
                 break;
             case static::TYPE_DOUBLE:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
+                    'hint' => $description,
                 ];
                 break;
             case static::TYPE_BOOLEAN:
                 return [
                     'type' => ActiveFormBuilder::INPUT_CHECKBOX,
+                    'hint' => $description,
+                ];
+                break;
+            case static::TYPE_FILE:
+                return [
+                    'type' => ActiveFormBuilder::INPUT_FILE,
+                    //'hint' => $description . '<p>' . Html::a(FPM::originalSrc($this->value), FPM::originalSrc($this->value)) . '</p>',
                 ];
                 break;
         }
@@ -235,6 +280,9 @@ class Configuration extends \common\models\Configuration implements BackendModel
             case static::TYPE_BOOLEAN:
                 return 'boolean';
                 break;
+            case static::TYPE_FILE:
+                return 'file';
+                break;
         }
         return 'string';
     }
@@ -255,6 +303,9 @@ class Configuration extends \common\models\Configuration implements BackendModel
             case static::TYPE_BOOLEAN:
                 return 'value:boolean';
                 break;
+            case static::TYPE_FILE:
+                return 'value:file';
+                break;
         }
         return 'value:text';
     }
@@ -266,5 +317,23 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function getUpdateUrl($params = [])
     {
         return ['/configuration/default/update', 'id' => $this->id];
+    }
+
+    /**
+     * @param array $params
+     *
+     * @return string
+     */
+    public static function getChangeTypeUrl($params = [])
+    {
+        return static::createUrl('/configuration/default/get-form', $params);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTranslations()
+    {
+        return $this->hasMany(ConfigurationTranslation::className(), ['model_id' => 'id']);
     }
 }

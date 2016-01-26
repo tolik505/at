@@ -27,6 +27,7 @@ class Generator extends \yii\gii\generators\model\Generator
     public $template = 'advanced';
     public $ns = 'common\models';
     public $baseClass = 'common\components\model\ActiveRecord';
+    public $isSeo = false;
     public $generateLabelsFromComments = true;
     public $useTablePrefix = true;
     public $enableI18N = true;
@@ -64,7 +65,7 @@ class Generator extends \yii\gii\generators\model\Generator
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['createBaseModel', 'hideExistingBaseModel'], 'boolean'],
+            [['createBaseModel', 'hideExistingBaseModel', 'isSeo'], 'boolean'],
         ]);
     }
 

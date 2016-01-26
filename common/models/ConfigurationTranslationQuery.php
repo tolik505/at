@@ -1,0 +1,29 @@
+<?php
+
+namespace common\models;
+
+/**
+ * This is the ActiveQuery class for [[ConfigurationTranslation]].
+ *
+ * @see ConfigurationTranslation
+ */
+class ConfigurationTranslationQuery extends \common\components\model\ActiveQuery
+{
+    /**
+     * @inheritdoc
+     * @return ConfigurationTranslation[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * @inheritdoc
+     * @return ConfigurationTranslation|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
+    }
+}

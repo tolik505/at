@@ -1,15 +1,17 @@
 <?php
 
-use common\helpers\LanguageHelper;
 use yii\helpers\Html;
+use metalguardian\fileProcessor\helpers\FPM;
+use  \backend\components\FormBuilder;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\menu\models\Menu */
+/* @var $model \backend\components\BackendModel */
 /* @var $form yii\bootstrap\ActiveForm */
 $translationModels = [];
 if ($model instanceof \common\components\model\Translateable) {
     $translationModels = $model->getTranslationModels();
 }
+$action = isset($action) ? $action : '';
 ?>
 
 <div class="menu-form">
@@ -20,8 +22,11 @@ if ($model instanceof \common\components\model\Translateable) {
         ]
     );
     ?>
-    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */ $form = \metalguardian\formBuilder\ActiveFormBuilder::begin([
+    <?php /** @var FormBuilder $form */ $form = FormBuilder::begin([
+        'action' => $action,
+        'enableClientValidation' => false,
         'options' => [
+            'id' => 'main-form',
             'enctype' => 'multipart/form-data',
         ]
     ]); ?>
@@ -34,12 +39,22 @@ if ($model instanceof \common\components\model\Translateable) {
 
     $content = null;
     foreach ($formConfig as $attribute => $element) {
+        $content .= Html::beginTag('div', ['class' => 'row']);
+        $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
         $content .= $form->renderField($model, $attribute, $element);
+        $content .= $form->renderUploadedFile($model, $attribute, $element);
         if ($model instanceof \common\components\model\Translateable && $model->isTranslateAttribute($attribute)) {
             foreach ($translationModels as $languageModel) {
+                $content .= Html::beginTag('div', ['class' => 'row']);
+                $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
                 $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $element);
+                $content .= $form->renderUploadedFile($languageModel, $attribute, $element, $languageModel->language);
+                $content .= Html::endTag('div');
+                $content .= Html::endTag('div');
             }
         }
+        $content .= Html::endTag('div');
+        $content .= Html::endTag('div');
     }
 
     $items[] = [
@@ -73,11 +88,14 @@ if ($model instanceof \common\components\model\Translateable) {
     ?>
 
     <?= \yii\bootstrap\Tabs::widget(['items' => $items]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group">
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']); ?>
+            </div>
+        </div>
     </div>
 
-    <?php \metalguardian\formBuilder\ActiveFormBuilder::end(); ?>
+    <?php FormBuilder::end(); ?>
 
 </div>

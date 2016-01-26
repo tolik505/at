@@ -29,7 +29,7 @@ class m150218_111134_create_configuration_table_translation extends Migration
                 'model_id' => 'CHAR(100) NOT NULL COMMENT "Related model id"',
                 'language' => Schema::TYPE_STRING . '(16) NOT NULL COMMENT "Language"',
 
-                'value' => Schema::TYPE_TEXT . ' NOT NULL COMMENT "Value"',
+                'value' => Schema::TYPE_TEXT . ' COMMENT "Value"',
             ],
             $this->tableOptions
         );
