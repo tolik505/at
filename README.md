@@ -51,12 +51,12 @@ canonical url для страниц, но в будущем будут еще о
 
 ### Useful
 
-1. [Загрузка и отображение файлов/изображений](docs/File_upload.md)
+1.[Загрузка и отображение файлов/изображений](docs/File_upload.md)
 
 
-2. [Работа с данными при ajax-запросах](docs/Ajax_features.md)
+2.[Работа с данными при ajax-запросах](docs/Ajax_features.md)
 
-3. Работа с переводами:
+3.Работа с переводами:
 
 Для добавления нового языка, вам нужно добавить его в админке Translations->Language и в common/main.php добавить его:
 ```php
@@ -71,23 +71,30 @@ canonical url для страниц, но в будущем будут еще о
 ```
 для того что бы перевод для данного языка появился в Translations.
 
-При использовании Yii::t('app', 'your_key'), ключ перевода будет автоматически добавлен в БД в таблицу для переводов.
+При использовании `Yii::t('app', 'your_key')`, ключ перевода будет автоматически добавлен в БД в таблицу для переводов.
 Заполнить нужные переводы для ключа можна в админке, раздел Translations.
 
-4. Хранение полей в Configuration.
+4.Хранение полей в Configuration.
 
 В админке, раздел Configuration можна хранить данные вида key => value. Это часто удобно для таких вещей, как
 * номер телефона на сайте
 * email для рассылок
 * изобрежение-подложка на главной и т.д.
 value может быть следующих типов:
-* 'String'
-* 'Integer'
-* 'Text'
-* 'Html text'
-* 'Boolean'
-* 'Double'
-* 'File'
+
+* String
+
+* Integer
+
+* Text
+
+* Html text
+
+* Boolean
+
+* Double
+
+* File
 
 Для получения значения, сохраненного в конфигурации, во frontend запрашиваем следующим образом:
 
@@ -104,7 +111,7 @@ echo \Yii::$app->config->get('key');
 ```
 
 
-5. [Configuration form builder](docs/Configuration.md)
+5.[Configuration form builder](docs/Configuration.md)
 
 
 
