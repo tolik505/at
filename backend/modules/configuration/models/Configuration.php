@@ -19,10 +19,23 @@ class Configuration extends \common\models\Configuration implements BackendModel
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
             'file' => [
-                'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
+                'class' => \metalguardian\fileProcessor\behaviors\UploadDeleteBehavior::className(),
                 'attribute' => 'value',
                 'validator' => [
-                    'extensions' => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'ico', 'svg'],
+                    'extensions' => [
+                        'pdf',
+                        'doc',
+                        'docx',
+                        'xls',
+                        'xlsx',
+                        'txt',
+                        'png',
+                        'gif',
+                        'jpg',
+                        'jpeg',
+                        'ico',
+                        'svg'
+                    ],
                     'on' => ['file', 'image'],
                 ],
                 'required' => true,
@@ -316,6 +329,7 @@ class Configuration extends \common\models\Configuration implements BackendModel
 
     /**
      * @param array $params
+     *
      * @return array
      */
     public function getUpdateUrl($params = [])

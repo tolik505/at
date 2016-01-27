@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a9c2d68a6189542a41a64b6fd1b0d260",
-    "content-hash": "ef1405a4de7a43b2b7d4d64714e09f7a",
+    "hash": "9ec6c1e7de1cead1c64ea3997da66f34",
+    "content-hash": "e6ac050dd5e118704e515f1f44402c70",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1042,49 +1042,6 @@
             "time": "2015-10-31 20:50:45"
         },
         {
-            "name": "metalguardian/yii2-file-processor-module",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MetalGuardian/yii2-file-processor-module.git",
-                "reference": "21d38e7a7bc74dc6c2384e21bbf6938cdf4a56b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MetalGuardian/yii2-file-processor-module/zipball/21d38e7a7bc74dc6c2384e21bbf6938cdf4a56b9",
-                "reference": "21d38e7a7bc74dc6c2384e21bbf6938cdf4a56b9",
-                "shasum": ""
-            },
-            "require": {
-                "imagine/imagine": "0.6.*",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "metalguardian\\fileProcessor\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ivan Pushkin",
-                    "email": "imetalguardi+yii2@gmail.com"
-                }
-            ],
-            "description": "Extension to upload and store files",
-            "keywords": [
-                "extension",
-                "file",
-                "upload",
-                "yii2"
-            ],
-            "time": "2015-10-21 19:30:15"
-        },
-        {
             "name": "metalguardian/yii2-form-builder",
             "version": "1.0.0",
             "source": {
@@ -1280,6 +1237,54 @@
                 "mailer"
             ],
             "time": "2016-01-03 15:42:47"
+        },
+        {
+            "name": "vadymsemeniuk/yii2-file-processor-module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vadimsemenykv/yii2-file-processor-module.git",
+                "reference": "66401bf3195bc953f71f73ac6b3f56d25607b677"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vadimsemenykv/yii2-file-processor-module/zipball/66401bf3195bc953f71f73ac6b3f56d25607b677",
+                "reference": "66401bf3195bc953f71f73ac6b3f56d25607b677",
+                "shasum": ""
+            },
+            "require": {
+                "imagine/imagine": "0.6.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "metalguardian\\fileProcessor\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Pushkin",
+                    "email": "imetalguardi+yii2@gmail.com"
+                },
+                {
+                    "name": "Vadym Semeniuk",
+                    "email": "vadimsemenykv@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extension to upload and store files",
+            "keywords": [
+                "extension",
+                "file",
+                "upload",
+                "yii2"
+            ],
+            "time": "2016-01-26 12:20:20"
         },
         {
             "name": "vova07/yii2-imperavi-widget",

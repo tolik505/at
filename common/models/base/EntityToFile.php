@@ -2,6 +2,7 @@
 
 namespace common\models\base;
 
+use metalguardian\fileProcessor\behaviors\DeleteBehavior;
 use Yii;
 
 /**
@@ -32,6 +33,10 @@ abstract class EntityToFile extends \common\components\model\ActiveRecord
     public function behaviors()
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
+            'file_delete' => [
+                'class' => DeleteBehavior::className(),
+                'attribute' => 'file_id',
+            ],
         ]);
     }
 
@@ -104,10 +109,16 @@ abstract class EntityToFile extends \common\components\model\ActiveRecord
      */
     public static function deleteImages($entityModelName, $entityModelId)
     {
-        static::deleteAll(
-            'entity_model_name = :enm AND entity_model_id = :emi',
-            [':enm' => $entityModelName, ':emi' => $entityModelId]
-        );
+        $m = new \common\models\EntityToFile();
+
+        $models = $m::findAll([
+            'entity_model_name' => $entityModelName,
+            'entity_model_id' => $entityModelId
+        ]);
+
+        foreach ($models as $model) {
+            $model->delete();
+        }
     }
 
     public static function updateImages($model_id, $sign)

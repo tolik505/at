@@ -20,7 +20,7 @@
         "yiisoft/yii2-swiftmailer": "*",
         "creocoder/yii2-translateable": "dev-master",
         "yiisoft/yii2-authclient": "*",
-        "metalguardian/yii2-file-processor-module": "*",
+        "vadymsemeniuk/yii2-file-processor-module": "*",
         "vova07/yii2-imperavi-widget": "*",
         "metalguardian/yii2-form-builder": "~1.0",
         "metalguardian/yii2-datetime-picker-widget": "*",
