@@ -34,7 +34,7 @@ abstract class BackendController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => [\common\models\User::ROLE_ADMIN],
+                        'roles' => [\common\models\AdminUser::ROLE_ADMIN],
                     ],
                 ],
             ],

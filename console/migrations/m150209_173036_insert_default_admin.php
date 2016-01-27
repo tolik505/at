@@ -11,7 +11,7 @@ class m150209_173036_insert_default_admin extends Migration
     /**
      * migration table name
      */
-    public $tableName = '{{%user}}';
+    public $tableName = '{{%admin_user}}';
 
     /**
      * @inheritdoc
@@ -24,10 +24,8 @@ class m150209_173036_insert_default_admin extends Migration
                 'username' => 'admin',
                 'auth_key' => Yii::$app->security->generateRandomString(),
                 'password_hash' => Yii::$app->security->generatePasswordHash('admin'),
-                'password_reset_token' => Yii::$app->security->generateRandomString(). '_'. time(),
                 'email' => 'admin@dev.dev',
-
-                'status' => \common\models\User::STATUS_ACTIVE,
+                'status' => \common\models\AdminUser::STATUS_ACTIVE,
 
                 'created_at' => time(),
                 'updated_at' => time(),

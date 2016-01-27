@@ -2,6 +2,10 @@
 
 return [
     [
+        'label' => Yii::t('app', 'Admin User'),
+        'url' => ['/admin/admin-user/index'],
+    ],
+    [
         'label' => Yii::t('app', 'Configuration'),
         'url' => ['/configuration/default/index'],
     ],

@@ -31,10 +31,10 @@ class m150212_160541_insert_admin_assignment extends Migration
         $authManager = $this->getAuthManager();
         $this->db = $authManager->db;
 
-        $userId = \common\models\User::findByEmail('admin@dev.dev')->id;
+        $userId = \common\models\AdminUser::findByEmail('admin@dev.dev')->id;
 
         $this->insert($authManager->assignmentTable, [
-            'item_name' => \common\models\User::ROLE_ADMIN,
+            'item_name' => \common\models\AdminUser::ROLE_ADMIN,
             'user_id' => $userId,
             'created_at' => time(),
         ]);
