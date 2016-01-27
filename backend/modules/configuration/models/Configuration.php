@@ -3,12 +3,9 @@
 namespace backend\modules\configuration\models;
 
 use backend\components\BackendModel;
-use backend\components\Imperavi;
 use backend\components\ImperaviContent;
-use metalguardian\fileProcessor\helpers\FPM;
 use metalguardian\formBuilder\ActiveFormBuilder;
 use Yii;
-use yii\helpers\Html;
 
 /**
  *
@@ -44,7 +41,7 @@ class Configuration extends \common\models\Configuration implements BackendModel
             [['id'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 255],
 
-            [['value'], 'required', 'except' => ['file', 'image']],
+            [['value'], 'required', 'except' => ['file', 'image', 'boolean']],
 
             [['value'], 'integer', 'on' => 'integer'],
 
@@ -196,7 +193,14 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function beforeValidate()
     {
         if (parent::beforeValidate()) {
-            $this->setScenario($this->getTypeScenario());
+            $scenario = $this->getTypeScenario();
+
+            $this->setScenario($scenario);
+
+            //Detach UploadBehavior if field type not file/image
+            if (!in_array($scenario, ['file', 'image'])) {
+                $this->detachBehavior('file');
+            }
 
             return true;
         }
