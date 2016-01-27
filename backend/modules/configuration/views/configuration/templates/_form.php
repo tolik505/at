@@ -17,8 +17,8 @@ $values = $model->getModels();
         ]
     );
     ?>
-    <?php /** @var \metalguardian\formBuilder\ActiveFormBuilder $form */
-    $form = \metalguardian\formBuilder\ActiveFormBuilder::begin([
+    <?php /** @var \backend\modules\configuration\components\ConfigurationFormBuilder $form */
+    $form = \backend\modules\configuration\components\ConfigurationFormBuilder::begin([
         'enableClientValidation' => false,
         'options' => [
             'enctype' => 'multipart/form-data',
@@ -32,13 +32,16 @@ $values = $model->getModels();
     foreach ($values as $value) {
         $attribute = '[' . $value->id . ']value';
         $configuration = $value->getValueFieldConfig();
-        $configuration['label'] = $value->description . $value->id . ' [' . LanguageHelper::getCurrent()->code . ']';
-        $content .= $form->renderField($value, $attribute, $configuration, false);
+        $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . LanguageHelper::getCurrent()->code . ']';
+        $content .= $form->renderField($value, $attribute, $configuration);
+        $content .= $form->renderUploadedFile($value, 'value', $configuration);
         if ($value instanceof \common\components\model\Translateable && $value->isTranslateAttribute($attribute)) {
             foreach ($value->getTranslationModels() as $languageModel) {
-                $configuration['label'] = $value->description . $value->id . ' [' . $languageModel->language . ']';
+                $configuration['label'] = $value->description . ' [key: ' . $value->id . '] [language: ' . $languageModel->language . ']';
                 $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute,
-                    $configuration, false);
+                    $configuration);
+                $content .= $form->renderUploadedFile($languageModel, 'value', $configuration,
+                    $languageModel->language);
             }
         }
     }
@@ -50,6 +53,6 @@ $values = $model->getModels();
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php \metalguardian\formBuilder\ActiveFormBuilder::end(); ?>
+    <?php \backend\modules\configuration\components\ConfigurationFormBuilder::end(); ?>
 
 </div>
