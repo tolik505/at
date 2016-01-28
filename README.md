@@ -27,7 +27,7 @@ git remote add upstream git@bitbucket.org:vintageua/melon.ng.git
 composer install
 ```
 
-3.Поднимаем миграции
+3.Конфигурируем подключение к БД, в common/config/main-local.php и поднимаем миграции
 
 ```
 ./yii migrate
