@@ -31,7 +31,7 @@ class AdminUser extends \common\models\AdminUser implements BackendModel
      */
     public function getTitle()
     {
-        return \Yii::t('app', 'User');
+        return \Yii::t('app', 'Admin User');
     }
 
     /**
@@ -197,7 +197,7 @@ class AdminUser extends \common\models\AdminUser implements BackendModel
                 ],
             ],
             'newPassword' => [
-                'type' => ActiveFormBuilder::INPUT_TEXT,
+                'type' => ActiveFormBuilder::INPUT_PASSWORD,
                 'options' => [
                     'maxlength' => true,
                 ],
@@ -292,7 +292,7 @@ class AdminUser extends \common\models\AdminUser implements BackendModel
 
     public static function getModeratorList()
     {
-        $all = User::find()
+        $all = AdminUser::find()
             ->select(['id', 'username', 'email'])
             ->innerJoinWith(['authModerator'])
             ->asArray()
