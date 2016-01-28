@@ -7,8 +7,10 @@
 namespace backend\modules\configuration\components;
 
 use backend\modules\configuration\models\Configuration;
+use metalguardian\fileProcessor\helpers\FPM;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * Class ConfigurationModel
@@ -40,6 +42,10 @@ abstract class ConfigurationModel extends Model
         $models = $this->getModels();
 
         foreach ($models as $item) {
+            if ($item->type == Configuration::TYPE_FILE) {
+                $this->uploadFile($item);
+            }
+
             $saved &= $item->save();
         }
 
@@ -150,4 +156,26 @@ abstract class ConfigurationModel extends Model
      * @return array
      */
     abstract public function getUpdateUrl();
+
+    /**
+     * @param Configuration $item
+     */
+    protected function uploadFile(Configuration &$item)
+    {
+        $files = UploadedFile::getInstances($item, $item->id);
+        $file = ArrayHelper::getValue($files, 0);
+
+        if ($file) {
+            $item->value = FPM::transfer()->saveUploadedFile($file);
+        }
+
+        foreach ($item->getTranslationModels() as $languageModel) {
+            $files = UploadedFile::getInstances($languageModel, $languageModel->language . '[' . $item->id . ']');
+            $file = ArrayHelper::getValue($files, 0);
+
+            if ($file) {
+                $languageModel->value = (string)FPM::transfer()->saveUploadedFile($file);
+            }
+        }
+    }
 }

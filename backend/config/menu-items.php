@@ -12,6 +12,10 @@ return [
                 'label' => Yii::t('app', 'Language'),
                 'url' => ['/language/language/index'],
             ],
+            [
+                'label' => Yii::t('app', 'Sample'),
+                'url' => ['/configuration/sample/update'],
+            ],
         ],
     ]
 ];
