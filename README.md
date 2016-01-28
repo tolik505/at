@@ -30,13 +30,16 @@ composer install
 3.Поднимаем миграции
 
 ```
-./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
-./yii migrate --migrationPath=vendor/metalguardian/yii2-file-processor-module/src/migrations
-./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
-
 ./yii migrate
 ```
 
+Для добавления новых директорий миграций нужно в `console/config/params.php`
+
+```php
+"yii.migrations"=> [
+	// Добавить сюда новую директорию
+]
+```
 
 ### CRUD
 

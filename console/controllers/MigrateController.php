@@ -16,7 +16,7 @@ use yii\helpers\Console;
  * Class MigrateController
  * @package console\controllers
  */
-class MigrateController extends \yii\console\controllers\MigrateController
+class MigrateController extends \dmstr\console\controllers\MigrateController
 {
     /**
      * Generate language migration or not
@@ -64,6 +64,9 @@ class MigrateController extends \yii\console\controllers\MigrateController
 
         $originName = $name;
         $name = 'm' . gmdate('ymd_His') . '_' . $originName;
+
+        $this->migrationPath = Yii::getAlias($this->migrationPath);
+
         $file = $this->migrationPath . DIRECTORY_SEPARATOR . $name . '.php';
 
         if ($this->confirm("Create new migration '{$file}' with used table name '{$tableName}'?")) {
