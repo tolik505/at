@@ -23,6 +23,24 @@
 ],
 ```
 
+Можно настроить автоматическое удаление файлов, после удаления модели
+
+```php
+'delete_file'=>[
+	'class' => \metalguardian\fileProcessor\behaviors\DeleteBehavior::className(),
+	'attribute' => 'file_id',
+],
+```
+
+Или совмещенный бихевиор как для загрузки, так и удаления
+
+```php
+'file'=>[
+	'class' => \metalguardian\fileProcessor\behaviors\UploadDeleteBehavior::className(),
+	'attribute' => 'file_id',
+],
+```
+
 поле file_id необходимо убрать из rules модели (для полей с именем image_id, file_id - gii делает это автоматически)
 
 ручная загрузка
