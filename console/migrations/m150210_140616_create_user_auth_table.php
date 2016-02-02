@@ -16,7 +16,7 @@ class m150210_140616_create_user_auth_table extends Migration
     /**
      * related table name, to make constraints
      */
-    public $tableNameRelated = '{{%admin_user}}';
+    public $tableNameRelated = '{{%user}}';
 
     /**
      * @inheritdoc
@@ -39,7 +39,7 @@ class m150210_140616_create_user_auth_table extends Migration
         );
 
         $this->addForeignKey(
-            'fk-user_auth-user_id-admin_user-id',
+            'fk-user_auth-user_id-user-id',
             $this->tableName,
             'user_id',
             $this->tableNameRelated,

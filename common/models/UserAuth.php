@@ -7,7 +7,7 @@ use Yii;
 /**
  * @inheritdoc
  *
- * @property AdminUser $user
+ * @property User $user
  */
 class UserAuth extends \common\models\base\UserAuth
 {
@@ -28,7 +28,7 @@ class UserAuth extends \common\models\base\UserAuth
      */
     public function getUser()
     {
-        return $this->hasOne(AdminUser::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
 }

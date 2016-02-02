@@ -25,7 +25,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['index', 'ajax-checkbox', 'delete-file'],
                         'allow' => true,
-                        'roles' => [\common\models\AdminUser::ROLE_ADMIN],
+                        'roles' => [\common\models\User::ROLE_ADMIN],
                     ],
                 ],
             ],

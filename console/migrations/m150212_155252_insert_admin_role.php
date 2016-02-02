@@ -30,7 +30,7 @@ class m150212_155252_insert_admin_role extends Migration
         $this->db = $authManager->db;
 
         $this->insert($authManager->itemTable, [
-            'name' => \common\models\AdminUser::ROLE_ADMIN,
+            'name' => \common\models\User::ROLE_ADMIN,
             'type' => \yii\rbac\Item::TYPE_ROLE,
             'description' => 'admin role',
             'rule_name' => null,
@@ -48,6 +48,6 @@ class m150212_155252_insert_admin_role extends Migration
         $authManager = $this->getAuthManager();
         $this->db = $authManager->db;
 
-        $this->delete($authManager->itemTable, ['name' => \common\models\AdminUser::ROLE_ADMIN]);
+        $this->delete($authManager->itemTable, ['name' => \common\models\User::ROLE_ADMIN]);
     }
 }

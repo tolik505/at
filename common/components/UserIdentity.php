@@ -1,7 +1,7 @@
 <?php
 namespace common\components;
 
-use common\models\AdminUser;
+use common\models\User;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
@@ -11,10 +11,10 @@ use yii\web\IdentityInterface;
  */
 class UserIdentity implements IdentityInterface
 {
-    /** @var AdminUser */
+    /** @var User */
     private $user;
 
-    public function __construct(AdminUser $user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
@@ -25,7 +25,7 @@ class UserIdentity implements IdentityInterface
     public static function findIdentity($id)
     {
         /** @var User $user */
-        $user = AdminUser::findOne(['id' => $id, 'status' => AdminUser::STATUS_ACTIVE]);
+        $user = User::findOne(['id' => $id, 'status' => User::STATUS_ACTIVE]);
         if (!$user) {
             return null;
         }
@@ -84,7 +84,7 @@ class UserIdentity implements IdentityInterface
     public static function findByEmail($username)
     {
         /** @var User $user */
-        $user = AdminUser::findOne(['email' => $username, 'status' => AdminUser::STATUS_ACTIVE]);
+        $user = User::findOne(['email' => $username, 'status' => User::STATUS_ACTIVE]);
         if (!$user) {
             return null;
         }
