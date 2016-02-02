@@ -30,7 +30,7 @@ class ActionColumn extends \yii\grid\ActionColumn
                     'aria-label' => Yii::t('yii', 'Clone'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-copy"></span>', $url, $options);
+                return Html::a('<span class="glyphicon glyphicon-duplicate"></span>', $url, $options);
             };
         }
     }
