@@ -27,16 +27,19 @@ git remote add upstream git@bitbucket.org:vintageua/melon.ng.git
 composer install
 ```
 
-3.Поднимаем миграции
+3.Конфигурируем подключение к БД, в common/config/main-local.php и поднимаем миграции
 
 ```
-./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
-./yii migrate --migrationPath=vendor/metalguardian/yii2-file-processor-module/src/migrations
-./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
-
 ./yii migrate
 ```
 
+Для добавления новых директорий миграций нужно в `console/config/params.php`
+
+```php
+"yii.migrations"=> [
+	// Добавить сюда новую директорию
+]
+```
 
 ### CRUD
 
@@ -77,9 +80,13 @@ canonical url для страниц, но в будущем будут еще о
 4.Хранение полей в Configuration.
 
 В админке, раздел Configuration можна хранить данные вида key => value. Это часто удобно для таких вещей, как
+
 * номер телефона на сайте
+
 * email для рассылок
+
 * изобрежение-подложка на главной и т.д.
+
 value может быть следующих типов:
 
 * String

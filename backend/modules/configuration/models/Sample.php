@@ -47,7 +47,7 @@ class Sample extends ConfigurationModel
         return [
             'email' => Configuration::TYPE_STRING,
             'subject' => Configuration::TYPE_HTML,
-            'optional' => Configuration::TYPE_BOOLEAN,
+            'optional' => Configuration::TYPE_FILE,
         ];
     }
 

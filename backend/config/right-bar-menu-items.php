@@ -2,10 +2,6 @@
 
 return [
     [
-        'label' => Yii::t('app', 'Configuration'),
-        'url' => ['/configuration/default/index'],
-    ],
-    [
         'label' => Yii::t('app', 'Seo Tags'),
         'url' => ['/meta/tag/index'],
     ],
