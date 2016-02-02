@@ -128,11 +128,11 @@ echo \Yii::$app->config->get('key');
 [SEO](docs/SEO.md)
 
 ###  Markup
-# Верстка новой корпоративной админки, примеры готовых элементов
-http://vintage-admin.com.dev.vintagedev.com.ua/index.html
-http://vintage-admin.com.dev.vintagedev.com.ua/blog_page.html
-http://vintage-admin.com.dev.vintagedev.com.ua/main_table_list.html
-http://vintage-admin.com.dev.vintagedev.com.ua/one_order.html
-http://vintage-admin.com.dev.vintagedev.com.ua/order_grid_view.html
-http://vintage-admin.com.dev.vintagedev.com.ua/products_grid_view.html
-http://vintage-admin.com.dev.vintagedev.com.ua/sortable_categories.html
+#### Верстка новой корпоративной админки, примеры готовых элементов
+* http://vintage-admin.com.dev.vintagedev.com.ua/index.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/blog_page.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/main_table_list.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/one_order.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/order_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/products_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/sortable_categories.html
