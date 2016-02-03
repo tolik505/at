@@ -5,6 +5,7 @@ Melon.ng Yii 2 Advanced Application Template
 2. [Кастомный CRUD](#markdown-header-crud)
 3. [Полезности](#markdown-header-useful)
 4. [SEO](#markdown-header-seo)
+5. [Html-элементы новой верстки](#markdown-header-markup)
 
 ### Install
 
@@ -125,3 +126,13 @@ echo \Yii::$app->config->get('key');
 ### SEO
 
 [SEO](docs/SEO.md)
+
+###  Markup
+#### Верстка новой корпоративной админки, примеры готовых элементов
+* http://vintage-admin.com.dev.vintagedev.com.ua/index.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/blog_page.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/main_table_list.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/one_order.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/order_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/products_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/sortable_categories.html
