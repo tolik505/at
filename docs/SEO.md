@@ -34,3 +34,15 @@ ajax и внешние ссылки
 
 Для создания ссылки на внешний ресурс ```/frontend/helpers/ExtendedHtml``` сущестувует метод ```externalLink($text, $url = null, $options = [])```.
 Он создает ссылку добавляя к ней rel ```noindex/nofollow```.
+
+meta tags для шеров:
+---------------------
+
+```php
+<?= \frontend\widgets\openGraphMetaTags\Widget::widget([
+            'title' => 'Test title',
+            'url' => Url::to(Url::current(['_pjax' => null]), true),
+            'description' => 'Some test description',
+            'image' => 'http://pbs.twimg.com/media/CaNtqoYUMAAENl3.jpg',
+        ]); ?>
+```
