@@ -49,6 +49,7 @@ return [
             'class' => '\common\components\UrlManager',
             'showScriptName' => false,
             'enableStrictParsing' => true,
+            'enableLanguageDetection' => false,
             'rules' => require(__DIR__ . '/url-rules.php'),
         ],
     ],
