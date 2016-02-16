@@ -13,22 +13,22 @@ namespace frontend\widgets\openGraphMetaTags;
 class Widget extends \yii\base\Widget
 {
     /**
-     * @var
+     * @var string
      */
     public $title;
 
     /**
-     * @var
+     * @var string
      */
     public $description;
 
     /**
-     * @var
+     * @var string
      */
     public $url;
 
     /**
-     * @var
+     * @var string
      */
     public $image;
 
