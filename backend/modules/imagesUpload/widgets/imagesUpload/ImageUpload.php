@@ -2,6 +2,7 @@
 namespace backend\modules\imagesUpload\widgets\imagesUpload;
 
 use backend\modules\imagesUpload\models\ImagesUploadModel;
+use common\components\model\ActiveRecord;
 use common\models\EntityToFile;
 use kartik\file\FileInput;
 use metalguardian\fileProcessor\helpers\FPM;
@@ -11,12 +12,12 @@ use yii\helpers\Url;
 
 /**
  * Class ImageUpload
- * @package backend\modules\store\widgets\imagesUpload
+ * @package backend\modules\imagesUpload\widgets\imagesUpload
  */
 class ImageUpload extends Widget
 {
     /**
-     * @var Practice $model
+     * @var ActiveRecord $model
      */
     public $model;
 
@@ -86,6 +87,8 @@ class ImageUpload extends Widget
             ];
         }
 
+        $multiple = $this->multiple ? 'true' : 'false';
+
         $output = Html::hiddenInput('urlForSorting', ImagesUploadModel::sortImagesUrl(), ['id' => 'urlForSorting']);
         $output .= Html::hiddenInput('aspectRatio', $this->aspectRatio, ['class' => 'aspect-ratio']);
 
@@ -119,11 +122,23 @@ class ImageUpload extends Widget
                     ],
                 ],
                 'pluginEvents' => [
+                    'filebrowse' => "function(file, previewId, index, reader) {
+                        var multiple = $multiple;
+                        if (!multiple) {
+                            var buttonId = file.target.id;
+                            var filePreview = $('#' + buttonId).parents('.file-input');
+                            var isImage = filePreview.find('.file-preview-image').length;
+                            if (isImage) {
+                                event.preventDefault();
+                                alert('Можно загрузить только одно изображение! Для загрузки нового, удалите первое.');
+                            }
+                        }
+                    }",
                     'fileuploaded' => 'function(event, data, previewId, index) {
                        var elem = $("#"+previewId).find(".file-actions .file-upload-indicator .kv-file-remove");
                        var cropElem = $("#"+previewId).find(".file-actions .crop-link");
                        var img = $("#"+previewId).find("img");
-					   //id for cropped image replace
+                       //id for cropped image replace
                        img.attr("id", "preview-image-"+data.response.imgId);
 
                        elem.attr("data-url", data.response.deleteUrl);
