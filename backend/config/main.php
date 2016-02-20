@@ -1,4 +1,6 @@
 <?php
+use kartik\datecontrol\Module;
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -40,6 +42,13 @@ return [
         'imagesUpload' => [
             'class' => 'backend\modules\imagesUpload\ImagesUploadModule',
         ],
+        'datecontrol' =>  [
+            'class' => '\kartik\datecontrol\Module',
+            'displaySettings' => [
+                Module::FORMAT_DATE => 'dd-MM-yyyy',
+                Module::FORMAT_DATETIME => 'dd-MM-yyyy HH:mm',
+            ],
+        ]
     ],
     'components' => [
         'config' => [
