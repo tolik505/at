@@ -6,6 +6,7 @@ use backend\components\BackendModel;
 use backend\components\ImperaviContent;
 use metalguardian\formBuilder\ActiveFormBuilder;
 use Yii;
+use kartik\datecontrol\DateControl;
 
 /**
  *
@@ -233,44 +234,53 @@ class Configuration extends \common\models\Configuration implements BackendModel
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_TEXT:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXTAREA,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_HTML:
                 return [
                     'type' => ActiveFormBuilder::INPUT_WIDGET,
                     'widgetClass' => ImperaviContent::className(),
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_INTEGER:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_DOUBLE:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_BOOLEAN:
                 return [
                     'type' => ActiveFormBuilder::INPUT_CHECKBOX,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_FILE:
                 return [
                     'type' => ActiveFormBuilder::INPUT_FILE,
                     //'hint' => $description . '<p>' . Html::a(FPM::originalSrc($this->value), FPM::originalSrc($this->value)) . '</p>',
                 ];
-                break;
+            case static::TYPE_DATE:
+                return [
+                    'type' => ActiveFormBuilder::INPUT_WIDGET,
+                    'widgetClass' => DateControl::className(),
+                    'options' => [
+                        'type'=>DateControl::FORMAT_DATE,
+                    ],
+                ];
+            case static::TYPE_DATE_TIME:
+                return [
+                    'type' => ActiveFormBuilder::INPUT_WIDGET,
+                    'widgetClass' => DateControl::className(),
+                    'options' => [
+                        'type'=>DateControl::FORMAT_DATETIME,
+                    ],
+                ];
         }
         return [
             'type' => ActiveFormBuilder::INPUT_TEXT,
@@ -283,24 +293,16 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function getTypeScenario()
     {
         switch ($this->type) {
-            case static::TYPE_STRING:
-            case static::TYPE_TEXT:
-            case static::TYPE_HTML:
-                return 'string';
-                break;
             case static::TYPE_INTEGER:
                 return 'integer';
-                break;
             case static::TYPE_DOUBLE:
                 return 'double';
-                break;
             case static::TYPE_BOOLEAN:
                 return 'boolean';
-                break;
             case static::TYPE_FILE:
                 return 'file';
-                break;
         }
+
         return 'string';
     }
 
@@ -310,20 +312,12 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function getTypeValueView()
     {
         switch ($this->type) {
-            case static::TYPE_STRING:
-            case static::TYPE_TEXT:
-            case static::TYPE_HTML:
-            case static::TYPE_INTEGER:
-            case static::TYPE_DOUBLE:
-                return 'value:text';
-                break;
             case static::TYPE_BOOLEAN:
                 return 'value:boolean';
-                break;
             case static::TYPE_FILE:
                 return 'value:file';
-                break;
         }
+
         return 'value:text';
     }
 
