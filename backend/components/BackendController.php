@@ -200,6 +200,25 @@ abstract class BackendController extends Controller
     }
 
     /**
+     * Clone records. Clone record with only main model property
+     */
+
+    public function actionClone($id)
+    {
+        $currentModel = $this->findModel($id);
+        $currentModel->id = null;
+        $currentModel->isNewRecord = true;
+
+        if($currentModel->save(false)) {
+            \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Record successfully duplicated!'));
+        }else{
+            \Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry something wrong! Please try to duplicate record later!'));
+        }
+
+        return $this->redirect(['index']);
+    }
+
+    /**
      * Finds the Menu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
