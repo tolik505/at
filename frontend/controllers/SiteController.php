@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\Robots;
 use frontend\components\FrontendController;
+use frontend\models\Sample;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -13,6 +14,8 @@ class SiteController extends FrontendController
 {
     public function actionIndex()
     {
+        Sample::register();
+
         return $this->render('index');
     }
 
