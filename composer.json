@@ -34,7 +34,8 @@
         "bower-asset/cropper": "v0.7.9",
         "yiisoft/yii2-jui": "~2.0.0",
         "kartik-v/yii2-nav-x": "*",
-        "dmstr/yii2-migrate-command": "*"
+        "dmstr/yii2-migrate-command": "*",
+        "rmrevin/yii2-postman": "~2.2"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
