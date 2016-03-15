@@ -79,7 +79,7 @@ $(function(){
         $(".img-container > img").cropper({
             aspectRatio: $('.actual-aspect-ratio').val(),
             preview: ".img-preview",
-            done: function(data) {
+            crop: function(data) {
                 $dataX.val(Math.round(data.x));
                 $dataY.val(Math.round(data.y));
                 $dataHeight.val(Math.round(data.height));
