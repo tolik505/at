@@ -26,6 +26,10 @@ return [
                 'label' => Yii::t('app', 'Config Form Sample'),
                 'url' => ['/configuration/sample/update'],
             ],
+            [
+                'label' => Yii::t('app', 'Page SEO'),
+                'url' => ['/seo/page-seo/index'],
+            ]
         ]
     ],
 ];

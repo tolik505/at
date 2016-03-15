@@ -35,6 +35,8 @@
         "yiisoft/yii2-jui": "~2.0.0",
         "kartik-v/yii2-nav-x": "*",
         "dmstr/yii2-migrate-command": "*",
+        "kartik-v/yii2-datecontrol": "@dev",
+        "kartik-v/yii2-widgets": "@dev"
         "rmrevin/yii2-postman": "~2.2"
     },
     "require-dev": {
