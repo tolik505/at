@@ -6,6 +6,7 @@ use common\components\UserIdentity;
 use common\models\User;
 use Yii;
 use yii\console\Controller;
+use yii\rbac\DbManager;
 use yii\rbac\ManagerInterface;
 use yii\rbac\Role;
 use yii\rbac\Rule;
@@ -19,7 +20,7 @@ class RbacController extends Controller
     /** @var ManagerInterface */
     private $auth;
 
-    public function __construct($id, $module, ManagerInterface $auth, array $config = [])
+    public function __construct($id, $module, DbManager $auth, array $config = [])
     {
         $this->auth = $auth;
 
