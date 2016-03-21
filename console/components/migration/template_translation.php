@@ -34,12 +34,12 @@ class <?= $className ?> extends Migration
         $this->createTable(
             $this->tableName,
             [
-                'model_id' => $this->integer()->notNull() . ' COMMENT "Related model id"',
-                'language' => $this->string(16)->notNull() . ' COMMENT "Язык"',
+                'model_id' => $this->integer()->notNull()->comment('Related model id'),
+                'language' => $this->string(16)->notNull()->comment('Language'),
 
                 // examples:
-                //'label' => $this->string() . ' COMMENT "Label"',
-                //'content' => $this->text() . ' COMMENT "Content"',
+                //'label' => $this->string()->comment('Label'),
+                //'content' => $this->text()->comment('Content'),
             ],
             $this->tableOptions
         );

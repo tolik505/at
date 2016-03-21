@@ -31,14 +31,14 @@ class <?= $className ?> extends Migration
             [
                 'id' => $this->primaryKey(),
 
-                'label' => $this->string()->notNull() . ' COMMENT "Label"',
-                'content' => $this->text()->defaultValue(null) . ' COMMENT "Content"',
+                'label' => $this->string()->notNull()->comment('Label'),
+                'content' => $this->text()->defaultValue(null)->comment('Content'),
 
-                'published' => $this->boolean()->notNull()->defaultValue(1) . ' COMMENT "Published"',
-                'position' => $this->integer()->notNull()->defaultValue(0) . ' COMMENT "Position"',
+                'published' => $this->boolean()->notNull()->defaultValue(1)->comment('Published'),
+                'position' => $this->integer()->notNull()->defaultValue(0)->comment('Position'),
 
-                'created_at' => $this->integer()->notNull() . ' COMMENT "Created at"',
-                'updated_at' => $this->integer()->notNull() . ' COMMENT "Updated at"',
+                'created_at' => $this->integer()->notNull()->comment('Created At'),
+                'updated_at' => $this->integer()->notNull()->comment('Updated At'),
             ],
             $this->tableOptions
         );
@@ -49,8 +49,6 @@ class <?= $className ?> extends Migration
      */
     public function safeDown()
     {
-        echo "<?= $className ?> cannot be reverted.\n";
-
-        return false;
+        $this->dropTable($this->tableName);
     }
 }
