@@ -19,16 +19,22 @@ class FrontendController extends Controller
     public function beforeAction($action)
     {
         if (parent::beforeAction($action)) {
-            $url = \Yii::$app->request->getAbsoluteUrl();
+            $baseUrl = \Yii::$app->request->getAbsoluteUrl();
 
-            preg_match("/(http|https):\/\/(www.)*/", $url, $match);
+            preg_match("/(http|https):\/\/(www.)*/", $baseUrl, $match);
 
             if (count($match)) {
                 if (ArrayHelper::getValue($match, 2) == 'www.') {
-                    $url = str_replace('www.', '', $url);
+                    $url = str_replace('www.', '', $baseUrl);
 
                     return $this->redirect($url, 301);
                 }
+            }
+
+            $pos = strpos($baseUrl, '/index.php');
+            
+            if ($pos) {
+                return $this->redirect(\Yii::$app->getHomeUrl());
             }
 
             $this->view->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
