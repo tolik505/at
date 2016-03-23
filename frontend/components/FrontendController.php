@@ -32,7 +32,7 @@ class FrontendController extends Controller
             }
 
             $pos = strpos($baseUrl, '/index.php');
-            
+
             if ($pos) {
                 return $this->redirect(\Yii::$app->getHomeUrl());
             }
