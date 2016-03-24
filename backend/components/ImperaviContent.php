@@ -2,10 +2,12 @@
 namespace backend\components;
 
 
+use backend\assets\AdvRedactorAsset;
 use vova07\imperavi\Widget;
 use yii\helpers\Url;
 
-class ImperaviContent extends Widget {
+class ImperaviContent extends Widget
+{
 
     /**
      * @inheritdoc
@@ -18,14 +20,30 @@ class ImperaviContent extends Widget {
         $settings = array_merge($this->getDefaultSettings(), $customSettings);
 
         $this->settings = $settings;
+
+        $this->plugins = [
+            'advLink' => AdvRedactorAsset::className(),
+        ];
     }
 
     public function getDefaultSettings()
     {
         return [
             //'lang' => 'ru',
-            'buttons' => ['html', 'formatting', 'bold', 'italic', 'underline', 'unorderedlist',
-                'orderedlist', 'image', 'file', 'link', 'alignment', 'horizontalrule'],
+            'buttons' => [
+                'html',
+                'formatting',
+                'bold',
+                'italic',
+                'underline',
+                'unorderedlist',
+                'orderedlist',
+                'image',
+                'file',
+                'link',
+                'alignment',
+                'horizontalrule'
+            ],
             'pastePlainText' => true,
             'buttonSource' => true,
             'replaceDivs' => false,
