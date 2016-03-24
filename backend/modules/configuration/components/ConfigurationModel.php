@@ -68,7 +68,7 @@ abstract class ConfigurationModel extends Model
 
         $seo = $this->getBehavior('seo');
         if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
-            $modelName = (new \ReflectionClass($this))->getShortName();
+            $modelName = $this->formName();
 
             $data = \Yii::$app->request->post($modelName);
 
