@@ -36,7 +36,8 @@
         "kartik-v/yii2-nav-x": "*",
         "dmstr/yii2-migrate-command": "*",
         "kartik-v/yii2-datecontrol": "@dev",
-        "kartik-v/yii2-widgets": "@dev"
+        "kartik-v/yii2-widgets": "@dev",
+        "rmrevin/yii2-postman": "~2.2"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

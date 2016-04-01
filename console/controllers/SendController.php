@@ -14,7 +14,7 @@ use yii\console\Controller;
  */
 class SendController extends Controller
 {
-    public function actionIndex()
+    public function actionEmail()
     {
         LetterModel::cron(10);
     }
