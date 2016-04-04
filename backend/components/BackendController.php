@@ -6,11 +6,12 @@
 
 namespace backend\components;
 
+use common\components\model\ActiveRecord;
+use common\components\model\Translateable;
 use common\helpers\LanguageHelper;
 use vova07\imperavi\actions\GetAction;
 use vova07\imperavi\actions\UploadAction;
 use Yii;
-use yii\base\Model;
 use yii\base\NotSupportedException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -23,6 +24,8 @@ use yii\web\NotFoundHttpException;
  */
 abstract class BackendController extends Controller
 {
+    use RelatedFormTrait;
+
     /**
      * @inheritdoc
      */
@@ -121,9 +124,13 @@ abstract class BackendController extends Controller
     public function actionCreate()
     {
         $class = $this->getModelClass();
-        /** @var \yii\db\ActiveRecord $model */
+        /** @var ActiveRecord $model */
         $model = new $class();
         $model->loadDefaultValues();
+        $config = $this->getRelatedFormActionConfig($model);
+        if (!empty($config)) {
+            return $this->relatedFormAction($model, $config);
+        }
 
         if ($this->loadModels($model) && $model->save()) {
             \Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Record successfully created!'));
@@ -143,7 +150,20 @@ abstract class BackendController extends Controller
     public function loadModels($model)
     {
         $loaded = true;
-        if ($model instanceof \common\components\model\Translateable) {
+        $this->loadLangModels($model, $loaded);
+
+        $loaded = $model->load(Yii::$app->request->post()) && $loaded;
+
+        return $loaded;
+    }
+
+    /**
+     * @param $model \yii\db\ActiveRecord
+     * @param $loaded bool
+     */
+    private function loadLangModels($model, &$loaded)
+    {
+        if ($model instanceof Translateable) {
             $languages = LanguageHelper::getLanguageModels();
 
             $models = [];
@@ -158,8 +178,21 @@ abstract class BackendController extends Controller
                 $loaded &= Model::loadMultiple($models, Yii::$app->request->post());
             }
         }
+    }
 
-        $loaded = $model->load(Yii::$app->request->post()) && $loaded;
+    /**
+     * @param \yii\db\ActiveRecord[] $models
+     *
+     * @return bool
+     */
+    public function loadMultipleModels($models)
+    {
+        $loaded = true;
+        foreach ($models as $index => $model) {
+            $this->loadLangModels($model, $loaded);
+
+            $loaded = $model->load(Yii::$app->request->post($model->formName())[$index], '') && $loaded;
+        }
 
         return $loaded;
     }
@@ -172,7 +205,13 @@ abstract class BackendController extends Controller
      */
     public function actionUpdate($id)
     {
+        /** @var ActiveRecord $model */
         $model = $this->findModel($id);
+
+        $config = $this->getRelatedFormActionConfig($model);
+        if (!empty($config)) {
+            return $this->relatedFormAction($model, $config);
+        }
 
         if ($this->loadModels($model) && $model->save()) {
             \Yii::$app->getSession()->setFlash('info', Yii::t('app', 'Record successfully updated!'));

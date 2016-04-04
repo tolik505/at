@@ -217,7 +217,7 @@ $(document).ready(function() {
 	 *  FORM FILLED CONTROL
 	 */
 
-	var formGroup   = $('.form-group');
+	var formGroup   = $(document);
 
 
 
@@ -278,14 +278,10 @@ $(document).ready(function() {
 
 
 	});
-	$('input[type="checkbox"]').each(function(){
-		var that = $(this);
-		if (!that.parents('.checkbox').length) {
-			that.parent('label').wrap('<div class="checkbox"></div>')
-		}
-	});
 
-	$('.checkbox input[type="checkbox"]').on('change', function(){
+	initCheckbox();
+
+	$(document).on('change', '.checkbox input[type="checkbox"]', function(){
 		if($(this).prop('checked')){
 			$(this).closest('label').addClass('active');
 		} else{
@@ -303,3 +299,12 @@ $(document).ready(function() {
 
 
 });
+
+function initCheckbox() {
+	$('input[type="checkbox"]').each(function(){
+		var that = $(this);
+		if (!that.parents('.checkbox').length) {
+			that.parent('label').wrap('<div class="checkbox"></div>')
+		}
+	});
+}
