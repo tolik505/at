@@ -46,11 +46,45 @@ $values = $model->getModels();
         }
     }
 
-    echo $content;
+    if (!is_null($content)) {
+        $items[] = [
+            'label' => 'Content',
+            'content' => $content,
+            'active' => true,
+            'options' => [
+                'class' => 'tab_content_content',
+            ],
+            'linkOptions' => [
+                'class' => 'tab_content',
+            ],
+        ];
+    }
+
+    $seo = $model->getBehavior('seo');
+    if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+        $seo = \notgosu\yii2\modules\metaTag\widgets\metaTagForm\Widget::widget(['model' => $model,]);
+        $items[] = [
+            'label' => 'SEO',
+            'content' => $seo,
+            'active' => (is_null($content)) ? true : false,
+            'options' => [
+                'class' => 'tab_seo_content',
+            ],
+            'linkOptions' => [
+                'class' => 'tab_seo',
+            ],
+        ];
+    }
     ?>
 
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+    <?= \yii\bootstrap\Tabs::widget(['items' => $items]) ?>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group">
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']); ?>
+            </div>
+        </div>
     </div>
 
     <?php \backend\modules\configuration\components\ConfigurationFormBuilder::end(); ?>

@@ -100,3 +100,7 @@
 .img-preview {
     margin: 0 0 0 30px;
 }
+
+.wrap > .navbar {
+    position: relative;
+}

@@ -743,7 +743,7 @@ body {
   }
 }
 .navbar .navbar-header {
-  background: url(../img/logo.png) no-repeat 1% 31%;
+  /*background: url(../img/logo.png) no-repeat 1% 31%;*/
   padding-left: 165px;
 }
 @media only screen and (min-width: 1250px) and (max-width: 1400px) {
@@ -760,7 +760,7 @@ body {
 @media only screen and (max-width: 767px) {
   .navbar .navbar-header {
     padding-left: 10px;
-    background: url(../img/logo.png) no-repeat 50% 30%;
+    /*background: url(../img/logo.png) no-repeat 50% 30%;*/
   }
 }
 .navbar .navbar-header .navbar-brand {
