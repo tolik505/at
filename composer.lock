@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "88bbaf54bd98230a165fcd4b606d418b",
-    "content-hash": "3febc3a3cebe00925a15479195ac13e0",
+    "hash": "991e3ef38445ec7fc780baf63411d231",
+    "content-hash": "5303b3d4ffb5e545fd9bc5ca3d3a8c63",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -653,6 +653,80 @@
                 "yii2"
             ],
             "time": "2016-01-19 17:31:24"
+        },
+        {
+            "name": "dvixi/phpbu",
+            "version": "3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/athl64/phpbu-separated.git",
+                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/athl64/phpbu-separated/zipball/02790fd01b4bee0eecca1b2821d588a296e2792d",
+                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-spl": "*",
+                "phpunit/php-timer": "~1.0.2",
+                "sebastian/environment": "~1.1",
+                "sebastian/version": "~1.0",
+                "swiftmailer/swiftmailer": "~5.3",
+                "symfony/event-dispatcher": "~2.6"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "~3.10",
+                "dropbox/dropbox-sdk": "~1.1",
+                "phpseclib/phpseclib": "~2.0",
+                "softlayer/objectstorage": "dev-master"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Require '~3.10' to sync to Amazon S3",
+                "dropbox/dropbox-sdk": "Require '~1.1' to sync to Dropbox",
+                "phpseclib/phpseclib": "Require '~2.0' to use SFTP sync",
+                "softlayer/objectstorage": "Require 'dev-master' to sync to Softlayer"
+            },
+            "bin": [
+                "phpbu"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpbu\\App\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Feldmann",
+                    "email": "sebastian@phpbu.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP Backup utility.",
+            "homepage": "http://phpbu.de/",
+            "keywords": [
+                "backup",
+                "cloud",
+                "mongodb",
+                "mysql",
+                "rsync",
+                "sftp",
+                "tar"
+            ],
+            "time": "2016-04-17 11:48:10"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -2379,6 +2453,47 @@
             "time": "2013-04-11 16:45:39"
         },
         {
+            "name": "phpunit/php-timer",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
+                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Utility class for timing",
+            "homepage": "https://github.com/sebastianbergmann/php-timer/",
+            "keywords": [
+                "timer"
+            ],
+            "time": "2015-06-21 08:01:12"
+        },
+        {
             "name": "rmrevin/yii2-postman",
             "version": "2.2.4",
             "source": {
@@ -2424,6 +2539,91 @@
                 "yii2"
             ],
             "time": "2015-05-21 09:00:47"
+        },
+        {
+            "name": "sebastian/environment",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/environment.git",
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                }
+            ],
+            "description": "Provides functionality to handle HHVM/PHP environments",
+            "homepage": "http://www.github.com/sebastianbergmann/environment",
+            "keywords": [
+                "Xdebug",
+                "environment",
+                "hhvm"
+            ],
+            "time": "2016-02-26 18:40:46"
+        },
+        {
+            "name": "sebastian/version",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/version.git",
+                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library that helps with managing the version number of Git-hosted PHP projects",
+            "homepage": "https://github.com/sebastianbergmann/version",
+            "time": "2015-06-21 13:59:46"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2477,6 +2677,66 @@
                 "mailer"
             ],
             "time": "2016-01-03 15:42:47"
+        },
+        {
+            "name": "symfony/event-dispatcher",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
+                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+                "symfony/dependency-injection": "~2.6|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/stopwatch": "~2.3|~3.0.0"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-04-05 16:36:54"
         },
         {
             "name": "vadymsemeniuk/yii2-file-processor-module",
@@ -2598,7 +2858,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8d668e3aa672b6d71c79b4e12a7b7f022a0a6d7b",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/894b34876faccc0fbe4d58452bb56fec30002159",
                 "reference": "61c3fdb188ac2bd433e8f7ae5c0aaf2b058f3922",
                 "shasum": ""
             },
@@ -3234,7 +3494,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/c4f52ed25c0e8656c8198f59e2a880f9b4a60a19",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/70edab5a7938b5bf4b5dc3ad1e1c3ce673552f48",
                 "reference": "06d71ba20ccb6a6dbcf568020e93047f0bdc80bd",
                 "shasum": ""
             },
