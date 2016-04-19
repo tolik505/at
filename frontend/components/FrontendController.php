@@ -7,7 +7,6 @@ namespace frontend\components;
 
 
 use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
 use yii\web\Controller;
 
 class FrontendController extends Controller
@@ -36,12 +35,11 @@ class FrontendController extends Controller
             if ($pos) {
                 return $this->redirect(\Yii::$app->getHomeUrl());
             }
-
-            $this->view->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]);
+            
             return true;
         } else {
             return false;
         }
     }
 
-} 
+}
