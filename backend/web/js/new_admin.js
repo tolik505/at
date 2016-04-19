@@ -207,9 +207,9 @@ $(document).ready(function() {
 	});
 
 	var closeMenu = function() {
-		$('.dropdown-menu, .navbar-collapse.collapsed .navbar-left').fadeOut();
-		$('.navbar-toggle, .navbar-collapse, .navbar-left .dropdown.open').removeClass('collapsed open');
-		$('.navbar-left').removeClass('level-two level-three');
+		$('nav .dropdown-menu, nav .navbar-collapse.collapsed .navbar-left').fadeOut();
+		$('nav .navbar-toggle, .navbar-collapse, nav .navbar-left .dropdown.open').removeClass('collapsed open');
+		$('nav .navbar-left').removeClass('level-two level-three');
 	};
 
 

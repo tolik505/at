@@ -5,6 +5,8 @@
 
 namespace frontend\components;
 
+
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class FrontendController extends Controller
@@ -16,6 +18,24 @@ class FrontendController extends Controller
     public function beforeAction($action)
     {
         if (parent::beforeAction($action)) {
+            $baseUrl = \Yii::$app->request->getAbsoluteUrl();
+
+            preg_match("/(http|https):\/\/(www.)*/", $baseUrl, $match);
+
+            if (count($match)) {
+                if (ArrayHelper::getValue($match, 2) == 'www.') {
+                    $url = str_replace('www.', '', $baseUrl);
+
+                    return $this->redirect($url, 301);
+                }
+            }
+
+            $pos = strpos($baseUrl, '/index.php');
+
+            if ($pos) {
+                return $this->redirect(\Yii::$app->getHomeUrl());
+            }
+            
             return true;
         } else {
             return false;

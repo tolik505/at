@@ -3,12 +3,10 @@
 namespace backend\modules\configuration\models;
 
 use backend\components\BackendModel;
-use backend\components\Imperavi;
 use backend\components\ImperaviContent;
-use metalguardian\fileProcessor\helpers\FPM;
 use metalguardian\formBuilder\ActiveFormBuilder;
 use Yii;
-use yii\helpers\Html;
+use kartik\datecontrol\DateControl;
 
 /**
  *
@@ -22,10 +20,23 @@ class Configuration extends \common\models\Configuration implements BackendModel
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
             'file' => [
-                'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
+                'class' => \metalguardian\fileProcessor\behaviors\UploadDeleteBehavior::className(),
                 'attribute' => 'value',
                 'validator' => [
-                    'extensions' => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt', 'png', 'gif', 'jpg', 'jpeg', 'ico', 'svg'],
+                    'extensions' => [
+                        'pdf',
+                        'doc',
+                        'docx',
+                        'xls',
+                        'xlsx',
+                        'txt',
+                        'png',
+                        'gif',
+                        'jpg',
+                        'jpeg',
+                        'ico',
+                        'svg'
+                    ],
                     'on' => ['file', 'image'],
                 ],
                 'required' => true,
@@ -44,7 +55,7 @@ class Configuration extends \common\models\Configuration implements BackendModel
             [['id'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 255],
 
-            [['value'], 'required', 'except' => ['file', 'image']],
+            [['value'], 'required', 'except' => ['file', 'image', 'boolean']],
 
             [['value'], 'integer', 'on' => 'integer'],
 
@@ -196,7 +207,14 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function beforeValidate()
     {
         if (parent::beforeValidate()) {
-            $this->setScenario($this->getTypeScenario());
+            $scenario = $this->getTypeScenario();
+
+            $this->setScenario($scenario);
+
+            //Detach UploadBehavior if field type not file/image
+            if (!in_array($scenario, ['file', 'image'])) {
+                $this->detachBehavior('file');
+            }
 
             return true;
         }
@@ -216,44 +234,53 @@ class Configuration extends \common\models\Configuration implements BackendModel
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_TEXT:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXTAREA,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_HTML:
                 return [
                     'type' => ActiveFormBuilder::INPUT_WIDGET,
                     'widgetClass' => ImperaviContent::className(),
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_INTEGER:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_DOUBLE:
                 return [
                     'type' => ActiveFormBuilder::INPUT_TEXT,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_BOOLEAN:
                 return [
                     'type' => ActiveFormBuilder::INPUT_CHECKBOX,
                     'hint' => $description,
                 ];
-                break;
             case static::TYPE_FILE:
                 return [
                     'type' => ActiveFormBuilder::INPUT_FILE,
                     //'hint' => $description . '<p>' . Html::a(FPM::originalSrc($this->value), FPM::originalSrc($this->value)) . '</p>',
                 ];
-                break;
+            case static::TYPE_DATE:
+                return [
+                    'type' => ActiveFormBuilder::INPUT_WIDGET,
+                    'widgetClass' => DateControl::className(),
+                    'options' => [
+                        'type'=>DateControl::FORMAT_DATE,
+                    ],
+                ];
+            case static::TYPE_DATE_TIME:
+                return [
+                    'type' => ActiveFormBuilder::INPUT_WIDGET,
+                    'widgetClass' => DateControl::className(),
+                    'options' => [
+                        'type'=>DateControl::FORMAT_DATETIME,
+                    ],
+                ];
         }
         return [
             'type' => ActiveFormBuilder::INPUT_TEXT,
@@ -266,24 +293,16 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function getTypeScenario()
     {
         switch ($this->type) {
-            case static::TYPE_STRING:
-            case static::TYPE_TEXT:
-            case static::TYPE_HTML:
-                return 'string';
-                break;
             case static::TYPE_INTEGER:
                 return 'integer';
-                break;
             case static::TYPE_DOUBLE:
                 return 'double';
-                break;
             case static::TYPE_BOOLEAN:
                 return 'boolean';
-                break;
             case static::TYPE_FILE:
                 return 'file';
-                break;
         }
+
         return 'string';
     }
 
@@ -293,25 +312,18 @@ class Configuration extends \common\models\Configuration implements BackendModel
     public function getTypeValueView()
     {
         switch ($this->type) {
-            case static::TYPE_STRING:
-            case static::TYPE_TEXT:
-            case static::TYPE_HTML:
-            case static::TYPE_INTEGER:
-            case static::TYPE_DOUBLE:
-                return 'value:text';
-                break;
             case static::TYPE_BOOLEAN:
                 return 'value:boolean';
-                break;
             case static::TYPE_FILE:
                 return 'value:file';
-                break;
         }
+
         return 'value:text';
     }
 
     /**
      * @param array $params
+     *
      * @return array
      */
     public function getUpdateUrl($params = [])

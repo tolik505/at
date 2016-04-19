@@ -90,13 +90,9 @@ class DefaultController extends BackendController
             $imageEntity = EntityToFile::find()->where('id = :id', [':id' => (int)$id])->one();
 
             if ($imageEntity) {
-                $fileId = $imageEntity->file_id;
-                if ($imageEntity->delete()) {
-                    FPM::deleteFile($fileId);
-                } else {
+                if (!$imageEntity->delete()) {
                     $returnData[] = ['error' => 'Не удалось удалить файл'];
                 }
-
             } else {
                 $returnData[] = ['error' => 'Информация о изображении не найдена'];
             }

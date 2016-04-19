@@ -7,11 +7,14 @@
 namespace backend\modules\configuration\components;
 
 use backend\modules\configuration\models\Configuration;
-use yii\base\InvalidConfigException;
+use metalguardian\fileProcessor\helpers\FPM;
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
  * Class ConfigurationModel
+ *
  * @package backend\modules\configuration\models
  */
 abstract class ConfigurationModel extends Model
@@ -24,6 +27,16 @@ abstract class ConfigurationModel extends Model
      * @return array
      */
     abstract public function getKeys();
+
+    public function init()
+    {
+        parent::init();
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $this->attachValidator();
+        }
+    }
 
     /**
      * Save configuration models
@@ -39,6 +52,10 @@ abstract class ConfigurationModel extends Model
         $models = $this->getModels();
 
         foreach ($models as $item) {
+            if ($item->type == Configuration::TYPE_FILE) {
+                $this->uploadFile($item);
+            }
+
             $saved &= $item->save();
         }
 
@@ -48,6 +65,18 @@ abstract class ConfigurationModel extends Model
         }
 
         $transaction->commit();
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $modelName = $this->formName();
+
+            $data = \Yii::$app->request->post($modelName);
+
+            $this->metaTags = ArrayHelper::getValue($data, 'metaTags');
+
+            $this->saveMetaTags();
+        }
+
         return true;
     }
 
@@ -63,6 +92,8 @@ abstract class ConfigurationModel extends Model
      */
     public function getModels()
     {
+        $types = $this->getFormTypes();
+
         if (null === $this->models) {
             $models = [];
             foreach ($this->getKeys() as $key) {
@@ -71,13 +102,21 @@ abstract class ConfigurationModel extends Model
                     // create model if it is not created yet
                     $model = new Configuration();
                     $model->id = $key;
-                    $model->type = Configuration::TYPE_STRING;
                     $model->preload = 0;
                     $model->published = 1;
                 }
+
+                $model->type = ArrayHelper::getValue($types, $key, Configuration::TYPE_STRING);
+
                 $models[$key] = $model;
             }
+
             $this->models = $models;
+        }
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $this->loadMetaTags();
         }
 
         return $this->models;
@@ -135,5 +174,45 @@ abstract class ConfigurationModel extends Model
     /**
      * @return array
      */
-    abstract public static function getUpdateUrl();
+    public function getFormTypes()
+    {
+        return [];
+    }
+
+    /**
+     * @return array
+     */
+    abstract public function getUpdateUrl();
+
+    /**
+     * @param Configuration $item
+     */
+    protected function uploadFile(Configuration &$item)
+    {
+        $files = UploadedFile::getInstances($item, $item->id);
+        $file = ArrayHelper::getValue($files, 0);
+
+        if ($file) {
+            $item->value = FPM::transfer()->saveUploadedFile($file);
+        }
+
+        foreach ($item->getTranslationModels() as $languageModel) {
+            $files = UploadedFile::getInstances($languageModel, $languageModel->language . '[' . $item->id . ']');
+            $file = ArrayHelper::getValue($files, 0);
+
+            if ($file) {
+                $languageModel->value = (string)FPM::transfer()->saveUploadedFile($file);
+            }
+        }
+    }
+
+    public function getId()
+    {
+        return 1;
+    }
+
+    public function getIsNewRecord()
+    {
+        return false;
+    }
 }

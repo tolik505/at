@@ -151,6 +151,10 @@ div.required label:after {
 .file-upload-indicator .kv-file-remove {
     display: none;
 }
+
+.file-footer-buttons .kv-file-remove {
+    display: inline-block!important;
+}
 /** upload widget  **/
 
 .table-bordered > tbody > tr > td {
@@ -175,7 +179,7 @@ div.required label:after {
 }
 .site-index .navbar-nav {
     display:inline-block;
-    float: none;
+    float: none!important;
 }
 .site-index .nav .open > a {
     background-color: white;

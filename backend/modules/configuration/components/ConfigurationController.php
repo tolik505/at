@@ -2,8 +2,6 @@
 
 namespace backend\modules\configuration\components;
 
-use backend\modules\configuration\components\ConfigurationModel;
-use backend\modules\configuration\models\Testing;
 use common\helpers\LanguageHelper;
 use Yii;
 use yii\web\Controller;
@@ -29,8 +27,12 @@ abstract class ConfigurationController extends Controller
         /** @var ConfigurationModel $model */
         $model = new $class();
 
-        if ($this->loadModels($model) && $model->save()) {
-            return $this->redirect(['view']);
+        if (Yii::$app->request->isPost) {
+            $this->loadModels($model);
+
+            if ($model->save()) {
+                return $this->redirect(['view']);
+            }
         }
 
         return $this->render('/configuration/templates/update', [

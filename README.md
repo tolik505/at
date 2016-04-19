@@ -1,10 +1,15 @@
-Melon Yii 2 Advanced Application Template
+Melon.ng Yii 2 Advanced Application Template
 ===================================
 
-превоначальная настройка
-------------------------
+1. [Установка](#markdown-header-install)
+2. [Кастомный CRUD](#markdown-header-crud)
+3. [Полезности](#markdown-header-useful)
+4. [SEO](#markdown-header-seo)
+5. [Html-элементы новой верстки](#markdown-header-markup)
 
-склонить, удалить origin, добавить origin нового репозитория, залить ветку в мастер нового ориджина, сменить ветку на мастер
+### Install
+
+1.Клонируем, устанавливаем новую ветку на репозиторий вашего проекта
 
 ```
 git clone git@bitbucket.org:vintageua/melon.ng.git project-name
@@ -12,333 +17,126 @@ cd project-name
 git remote remove origin
 git remote add origin git@bitbucket.org:vintageua/NEW_PROJECT.git
 git push origin master
+//для получения обновлений движка
+git remote add upstream git@bitbucket.org:vintageua/melon.ng.git
 ```
+
+2.Инициализация приложения и установка всех зависимостей
 
 ```
 ./init
 composer install
-
-конфигурируем подключение к БД в common/config/main-local.php
 ```
 
-первыми миграциями выполнить:
-
-```
-./yii migrate --migrationPath=vendor/notgosu/yii2-meta-tag-module/src/migrations
-./yii migrate --migrationPath=vendor/metalguardian/yii2-file-processor-module/src/migrations
-./yii migrate --migrationPath=vendor/yiisoft/yii2/rbac/migrations
-```
-
-фронт
------
-
-фронт используется как есть, все нужно делать вручную
-Контроллеры наследуeм от `frontend/components/FrontendController`
-
-бекенд
-------
-
-на беке есть готовый круд, который генерируется в специльно созданых gii темплейтах
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANZ2h2d054LXZ0SUU/view?usp=drivesdk
-
-миграции
---------
-
-для начала нужно создать миграцию
-
-```
-./yii migrate/create
-or
-./yii migrate/create table_name # prefer
-or
-./yii migrate/create table_name --lang # for language models
-```
-
-лучше создавать миграции сразу указывая имя таблицы
-
-миграции создаются с преустановленым кодом, который нужно немного модифицировать
-
-все миграции собираются в `console/migrations`
-
-внести все необходимые поля в миграции и выполнить ее
+3.Конфигурируем подключение к БД, в common/config/main-local.php и поднимаем миграции
 
 ```
 ./yii migrate
 ```
 
-Если в таблице одновременно присутствуют поля label и alias, то в генерируемой моделе в бэке будет работать автозаполнение поля alias
-транслитом по значению из label.
+Для добавления новых директорий миграций нужно в `console/config/params.php`
 
-генерация модели
-----------------
-
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANSU8zNDctclFCbFU/view?usp=drivesdk
-выбираем имя таблицы, выбираем имя модели. модели создадутся в common/models и common/models/base
-(не забываем про мультиязыковую таблицу, если она есть - ее нужно отдельно создать)
-модель в common/models/base можно менять как угодно, и она дальше не будет перегенериваться в gii
-модель в common/models будет перегенериваться - там хранится общая информация, которая не зависит от бизнес логики, ее трогать не нужно
-
-код для мультиязыка будет добавлен автоматически (на основании названий таблиц, поэтому название таблицы переводов не нужно менять)
-
-так же будут автоматически добавлены мультиязычные поля
-
-Если нужно подключить SeoBehavior, то достаточно поставить галочку в чекбоксе Is Seo.
-
-модуль
-------
-
-дальше мы создаем модуль
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANLXl4YnpnZFo4THc/view?usp=drivesdk
-тут ничего необычного, просто структура генерируемых файлов немного изменена
-
-добавляем модуль в конфигурацию бекенда и делаем круд в gii
-
-круд
-----
-
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANTjlMcHZUMDZ0cVE/view?usp=drivesdk
-вписываем путь к моделе, которая лежив в common/models
-вписываем название модели, которая должна создаться на бекенде (модель для поиска создастся автоматически)
-списываем название контроллера в бекенде
-
-Если нужно подключить виджет для загрузки картинок (ImageUpload), то достаточно поставить галочку на чекбоксе Is Image.
-При этом в моделе сгенерируется небходимый код для фунционирования виджета, останется только прописать константу в EntityToFile
-Если таких виджетов нужно больше одного, то достаточно в моделе создать дополнительные публичные переменные для каждого нового виджета,
-в attributeLabels() прописать их названия, добавить виджеты в getFormConfig() и не забыть создать для них константы в EntityToFile.
-Например, в back-моделе нужно прописать EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES
- 'galleryImages' => [
-                'type' => ActiveFormBuilder::INPUT_RAW,
-                'value' => ImageUpload::widget([
-                    'model' => $this,
-                    'attribute' => 'galleryImages',
-                    'saveAttribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
-                    'multiple' => true,
-                    'aspectRatio' => 300/200,
-                    'uploadUrl' => ImagesUploadModel::uploadUrl([
-                        'model_name' => static::className(),
-                        'attribute' => 'galleryImages',
-                        'entity_attribute' => EntityToFile::TYPE_ARTICLE_GALLERY_IMAGES,<-------
-                    ]),
-                ])
-            ],
-а в базовой моделе EntityToFile определить эту константу, например
-abstract class EntityToFile extends \common\components\model\ActiveRecord
-{
-    const TYPE_ARTICLE_GALLERY_IMAGES = 'article_gallery_images';
-    const TYPE_ARTICLE_TITLE_IMAGE = 'article_title_image';<-------
-
-Это нужно для идентификации типа картинок в таблице entity_to_file, если для одной модели есть несколько типов изображений,
-например, titleImage и galleryImage.
-
-
-теперь круд для таблицы готов
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANX1otTVhKSzJldnM/view?usp=drivesdk
-можно создать запись и посмотреть ее
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANNDIwU1ZOVnF2aWs/view?usp=drivesdk
-https://drive.google.com/a/vintage.com.ua/file/d/0B66RPwG-7oANVmRacm1Vb3BtSU0/view?usp=drivesdk
-
-конфигурация отображения index, view и формы хранится в моделе в бекенде, в соответствующих методах
-
-
-загрузка файлов
----------------
-
-поле в табице
-
-```
-'file_id' => Schema::TYPE_INTEGER . ' NULL DEFAULT NULL COMMENT "File"'
+```php
+"yii.migrations"=> [
+	// Добавить сюда новую директорию
+]
 ```
 
-поле в форме:
+### CRUD
 
-```
-'file_id' => [
-    'type' => ActiveFormBuilder::INPUT_FILE,
-],
-```
+1. [Backend](docs/Backend_crud.md)
 
-бехевиор в моделе в common/models/base
+2. Frontend
+Особых наработок нету, все нужно делать вручную.
+Все фронтенд-контроллеры наследуeм от `frontend/components/FrontendController`, пока в нем генерация 
+canonical url для страниц, но в будущем будут еще общие штуки добавляться.
 
-```
-'file' => [
-    'class' => \metalguardian\fileProcessor\behaviors\UploadBehavior::className(),
-    'attribute' => 'file_id',
-    //'required' => false,
-],
-```
 
-поле file_id необходимо убрать из рулов модели (для полей с именем image_id, file_id - gii делает это автоматически)
 
-ручная загрузка
----------------
+### Useful
 
-если необходимо какие то сложные операции с файлами, или необходима мультизагрузка (имя поля должно быть 'file[]'), можно загружать так:
+1.[Загрузка и отображение файлов/изображений](docs/File_upload.md)
 
-для примера мультизагрузка:
 
-```
-$this->images = UploadedFile::getInstances($this, 'images');
+2.[Работа с данными при ajax-запросах](docs/Ajax_features.md)
 
-foreach ($this->images as $image) {
-    $model = new ImageModel();
-    $model->image_id = FPM::transfer()->saveUploadedFile($image);
-    $model->save();
-}
-```
+3.Работа с переводами:
 
-отображение на фронте
----------------------
-
-в common конфиге в модуле fileProcessor добавляются размеры изображений для ресайза
-
-```
-'modules' => [
-    'fileProcessor' => [
-        'class' => '\metalguardian\fileProcessor\Module',
-        'imageSections' => [
-
-            'profile' => [
-                'view' => [
-                    'action' => \metalguardian\fileProcessor\helpers\FPM::ACTION_ADAPTIVE_THUMBNAIL,
-                    'width' => 120,
-                    'height' => 120,
-                ],
-            ],
+Для добавления нового языка, вам нужно добавить его в админке Translations->Language и в common/main.php добавить его:
+```php
+'i18n' => [
+            'class' => 'Zelenin\yii\modules\I18n\components\I18N',
+            'languages' => [
+                //тут добавляем code нужного языка
+                'ru',
+                'en'
+            ]
         ],
-    ],
-],
+```
+для того что бы перевод для данного языка появился в Translations.
+
+При использовании `Yii::t('app', 'your_key')`, ключ перевода будет автоматически добавлен в БД в таблицу для переводов.
+Заполнить нужные переводы для ключа можна в админке, раздел Translations.
+
+4.Хранение полей в Configuration.
+
+В админке, раздел Configuration можна хранить данные вида key => value. Это часто удобно для таких вещей, как
+
+* номер телефона на сайте
+
+* email для рассылок
+
+* изобрежение-подложка на главной и т.д.
+
+value может быть следующих типов:
+
+* String
+
+* Integer
+
+* Text
+
+* Html text
+
+* Boolean
+
+* Double
+
+* File
+
+* Date (реализовано на основе kartik-v/yii2-datecontrol)
+
+* DateTime (реализовано на основе kartik-v/yii2-datecontrol)
+
+Для получения значения, сохраненного в конфигурации, во frontend запрашиваем следующим образом:
+
+```php
+echo \Yii::$app->config->get('key');
 ```
 
-во вьюхах вызывать так:
+Для работы вышеприведенного кода, в frontend/main.php добавлен компонент, проверьте что он присутствует:
 
-```
-<?= \metalguardian\fileProcessor\helpers\FPM::image($model->image_id, 'profile', 'view') ?>
-```
-
-Работа с данными при ajax-запросах
----------------------
-
-Часто, при клике по кнопке, ссылке нужно получить с сервера данные(форму, попап, заменить блок на странице) bkb без
-перезагрузки страницы. Для этого используем ajax-обработчики, а в success событии ajax-запроса вызываем указанную ниже
-функцию.
-
-```
-function parseResponse(response) {
-	if (response.replaces instanceof Array) {
-		for (var i = 0, ilen = response.replaces.length; i < ilen; i++) {
-			$(response.replaces[i].what).replaceWith(response.replaces[i].data);
-		}
-	}
-	if (response.append instanceof Array) {
-		for (i = 0, ilen = response.append.length; i < ilen; i++) {
-			$(response.append[i].what).append(response.append[i].data);
-		}
-	}
-	if (response.content instanceof Array) {
-		for (i = 0, ilen = response.content.length; i < ilen; i++) {
-			$(response.content[i].what).html(response.content[i].data);
-		}
-	}
-	if (response.js) {
-		$("body").append(response.js);
-	}
-	if (response.refresh) {
-		window.location.reload(true);
-	}
-	if (response.redirect) {
-		window.location.href = response.redirect;
-	}
-}
+```php
+'config' => [
+            'class' => '\common\components\ConfigurationComponent',
+        ],
 ```
 
-Возможности:
 
-- replaces, заменить 1 и/или более блоков на странице. На сервере формируем в таком виде:
+5.[Configuration form builder](docs/Configuration.md)
 
-```
-$data = [
-                'replaces' => [
-                    [
-                        'data' => $this->renderPartial('_cart_positions'),
-                        'what' => '.buscket-w .purchase'
-                    ],
-                    [
-                        'data' => StoreProductCartPosition::getShowCartButton(),
-                        'what' => 'a.btn-top-buscket.btn-round.btn-round__yell'
-                    ]
 
-                ],
-            ];
-        return Json::encode($data);
-```
 
-- append, добавить к элементу 1 и/или более блоков. На сервере формируем в таком виде:
+### SEO
 
-```
-$data = [
-                'append' => [
-                    [
-                        'data' => $this->renderPartial('_cart_positions'),
-                        'what' => '.buscket-w'
-                    ],
-                    [
-                        'data' => StoreProductCartPosition::getShowCartButton(),
-                        'what' => '.buscket-w'
-                    ]
-
-                ],
-            ];
-        return Json::encode($data);
-```
-
-- content, вставить контент в блок с указанным селектором. На сервере формируем в таком виде:
-
-```
-$data = [
-                'content' => [
-                    [
-                        'data' => $this->renderPartial('_cart_positions'),
-                        'what' => '.buscket-w'
-                    ],
-                    [
-                        'data' => StoreProductCartPosition::getShowCartButton(),
-                        'what' => '.buscket-w .button'
-                    ]
-
-                ],
-            ];
-        return Json::encode($data);
-```
-
-- js, добавить на страницу, и соответственно выполнить js-код. На сервере:
-
-```
-$data = [
-                'js' => Html::script('showPopup(); $(".cart-form").remove();')
-            ];
-        return Json::encode($data);
-```
-
-- refresh, перезагрузить страницу. На сервере:
-
-```
-$data = [
-                'refresh' => true
-            ];
-        return Json::encode($data);
-```
-
-- redirect, перенаправить на указанную страницу. На сервере:
-
-```
-$data = [
-                'redirect' => News::getViewLink(['alias' => $model->alias])
-            ];
-        return Json::encode($data);
-```
-
-Все вышеуказанные параметры можна комбинировать на сервере в любом разумном кол-ве.
-
-SEO
----------------
 [SEO](docs/SEO.md)
+
+###  Markup
+#### Верстка новой корпоративной админки, примеры готовых элементов
+* http://vintage-admin.com.dev.vintagedev.com.ua/index.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/blog_page.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/main_table_list.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/one_order.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/order_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/products_grid_view.html
+* http://vintage-admin.com.dev.vintagedev.com.ua/sortable_categories.html

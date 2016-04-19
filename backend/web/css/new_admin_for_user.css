@@ -96,3 +96,11 @@
 .btn.btn-success:first-child, .btn.btn-primary:first-child {
     margin-left: 0;
 }
+
+.img-preview {
+    margin: 0 0 0 30px;
+}
+
+.wrap > .navbar {
+    position: relative;
+}

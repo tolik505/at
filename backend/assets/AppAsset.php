@@ -21,10 +21,10 @@ class AppAsset extends AssetBundle
         'css/select2_v3.4.3.css',
         'css/jquery.mCustomScrollbar.min_v2.8.1.css',
         'css/new_admin.css',
-        'css/new_admin_for_user.css',
         'http://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,cyrillic',
         'http://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,cyrillic',
-        'css/site.css'
+        'css/site.css',
+        'css/new_admin_for_user.css',
     ];
     public $js = [
         'js/jquery.li-translit.js',

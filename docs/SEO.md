@@ -1,6 +1,13 @@
 SEO
 ===================================
 
+настройка SEO страниц-списков
+-----------------------------
+
+В разделе Page SEO создать записи для необходимых страниц (изначально создана запись для страницы Home).
+В common\models\PageSeo создать соответствующие константы, значение которых равно id записей.
+В контроллере на фронте вызывать метод ```PageSeo::registerSeo(PageSeo::ID_HOME);```
+
 компонент редиректов
 --------------------
 
@@ -34,3 +41,15 @@ ajax и внешние ссылки
 
 Для создания ссылки на внешний ресурс ```/frontend/helpers/ExtendedHtml``` сущестувует метод ```externalLink($text, $url = null, $options = [])```.
 Он создает ссылку добавляя к ней rel ```noindex/nofollow```.
+
+meta tags для шеров:
+---------------------
+
+```php
+<?= \frontend\widgets\openGraphMetaTags\Widget::widget([
+            'title' => 'Test title',
+            'url' => Url::to(Url::current(['_pjax' => null]), true),
+            'description' => 'Some test description',
+            'image' => 'http://pbs.twimg.com/media/CaNtqoYUMAAENl3.jpg',
+        ]); ?>
+```
