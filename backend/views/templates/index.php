@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="panel-body">
-        <?php echo $searchModel->hasSearch() ? $this->render('//templates/_search', ['model' => $searchModel]) : null; ?>
 
         <p>
             <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'create btn btn-success']) ?>
