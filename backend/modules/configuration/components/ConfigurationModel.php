@@ -28,6 +28,16 @@ abstract class ConfigurationModel extends Model
      */
     abstract public function getKeys();
 
+    public function init()
+    {
+        parent::init();
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $this->attachValidator();
+        }
+    }
+
     /**
      * Save configuration models
      *
@@ -55,6 +65,18 @@ abstract class ConfigurationModel extends Model
         }
 
         $transaction->commit();
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $modelName = $this->formName();
+
+            $data = \Yii::$app->request->post($modelName);
+
+            $this->metaTags = ArrayHelper::getValue($data, 'metaTags');
+
+            $this->saveMetaTags();
+        }
+
         return true;
     }
 
@@ -90,6 +112,11 @@ abstract class ConfigurationModel extends Model
             }
 
             $this->models = $models;
+        }
+
+        $seo = $this->getBehavior('seo');
+        if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {
+            $this->loadMetaTags();
         }
 
         return $this->models;
@@ -177,5 +204,15 @@ abstract class ConfigurationModel extends Model
                 $languageModel->value = (string)FPM::transfer()->saveUploadedFile($file);
             }
         }
+    }
+
+    public function getId()
+    {
+        return 1;
+    }
+
+    public function getIsNewRecord()
+    {
+        return false;
     }
 }

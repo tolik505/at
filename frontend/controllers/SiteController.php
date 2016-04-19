@@ -3,6 +3,8 @@ namespace frontend\controllers;
 
 use common\models\Robots;
 use frontend\components\FrontendController;
+use frontend\models\Sample;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -13,6 +15,8 @@ class SiteController extends FrontendController
 {
     public function actionIndex()
     {
+        Sample::register();
+
         return $this->render('index');
     }
 
@@ -30,6 +34,10 @@ class SiteController extends FrontendController
         $headers = \Yii::$app->response->headers;
         $headers->add('Content-Type', 'text/plain');
 
-        return $this->renderContent($robots->text);
+        $text = $robots->text;
+
+        $text .= "\nSitemap: " . Url::to(['/sitemap/default/index'], true);
+
+        return $this->renderContent($text);
     }
 }

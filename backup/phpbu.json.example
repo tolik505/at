@@ -1,0 +1,44 @@
+{
+  "verbose": true,
+  "logging": [
+    {
+      "type": "json",
+      "target": "logs/json.log"
+    }
+  ],
+  "backups": [
+    {
+      "source": {
+        "type": "mysqldump",
+        "options": {
+          "databases": "dbName",
+          "user": "XXX",
+          "password": "XXX"
+        }
+      },
+      "target": {
+        "dirname": "backups",
+        "filename": "mysql-%Y%m%d-%H%i.sql",
+        "compress": "bzip2"
+      },
+      "syncs": [
+        {
+          "type": "ftp",
+          "options": {
+            "host": "host.com", // host or IP
+            "user": "XXX",
+            "password": "XXX",
+            "path": "path/to/dir",
+            "passiveMode": "true" // true or false, remember to remove any comments from this file
+          }
+        }
+      ],
+      "cleanup": {
+        "type": "quantity",
+        "options": {
+          "amount": "30"
+        }
+      }
+    }
+  ]
+}
