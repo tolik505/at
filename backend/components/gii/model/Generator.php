@@ -31,15 +31,13 @@ class Generator extends \yii\gii\generators\model\Generator
     public $generateLabelsFromComments = true;
     public $useTablePrefix = true;
     public $enableI18N = true;
-    public $createBaseModel = true;
-    public $hideExistingBaseModel = true;
 
     /**
      * @inheritdoc
      */
     public function getName()
     {
-        return 'Advanced Model Generator';
+        return 'Common Model Generator';
     }
 
     /**
@@ -47,8 +45,7 @@ class Generator extends \yii\gii\generators\model\Generator
      */
     public function getDescription()
     {
-        return 'This generator generates an ActiveRecord class for the specified database table.
-            Added generation multi language model, language model, other improvements';
+        return 'This generator generates an common app ActiveRecord class for the specified database table.';
     }
 
     /**
@@ -65,7 +62,7 @@ class Generator extends \yii\gii\generators\model\Generator
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['createBaseModel', 'hideExistingBaseModel', 'isSeo'], 'boolean'],
+           // [['createBaseModel', 'hideExistingBaseModel', 'isSeo'], 'boolean'],
         ]);
     }
 
@@ -75,8 +72,8 @@ class Generator extends \yii\gii\generators\model\Generator
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'createBaseModel' => 'Create base model',
-            'hideExistingBaseModel' => 'Hide existing base models',
+            //'createBaseModel' => 'Create base model',
+            //'hideExistingBaseModel' => 'Hide existing base models',
         ]);
     }
 
@@ -86,18 +83,18 @@ class Generator extends \yii\gii\generators\model\Generator
     public function hints()
     {
         return array_merge(parent::hints(), [
-            'createBaseModel' => 'Create base model in related <code>base\</code> path with your code, with you can edit',
-            'hideExistingBaseModel' => 'Do not propose to generate existing base models files',
+            //'createBaseModel' => 'Create base model in related <code>base\</code> path with your code, with you can edit',
+            //'hideExistingBaseModel' => 'Do not propose to generate existing base models files',
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function stickyAttributes()
-    {
-        return array_merge(parent::stickyAttributes(), ['createBaseModel']);
-    }
+//    /**
+//     * @inheritdoc
+//     */
+//    public function stickyAttributes()
+//    {
+//        return array_merge(parent::stickyAttributes(), ['createBaseModel']);
+//    }
 
     /**
      * @inheritdoc
@@ -123,25 +120,25 @@ class Generator extends \yii\gii\generators\model\Generator
                 'translationAttributes' => $this->isMultiLanguageTable($tableSchema) ? $this->getTranslationAttributes($tableSchema, $translationTableSchema) : [],
             ];
 
-            if ($this->createBaseModel) {
-                $baseModelPath = Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/base/' . $className . '.php';
-                if (!$this->hideExistingBaseModel || !file_exists($baseModelPath)) {
-                    $files[] = new CodeFile(
-                        $baseModelPath,
-                        $this->render('base.php', $params)
-                    );
-                }
-
-                $files[] = new CodeFile(
-                    Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $className . '.php',
-                    $this->render('model.php', $params)
-                );
-            } else {
+//            if ($this->createBaseModel) {
+//                $baseModelPath = Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/base/' . $className . '.php';
+//                if (!$this->hideExistingBaseModel || !file_exists($baseModelPath)) {
+//                    $files[] = new CodeFile(
+//                        $baseModelPath,
+//                        $this->render('base.php', $params)
+//                    );
+//                }
+//
+//                $files[] = new CodeFile(
+//                    Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $className . '.php',
+//                    $this->render('model.php', $params)
+//                );
+//            } else {
                 $files[] = new CodeFile(
                     Yii::getAlias('@' . str_replace('\\', '/', $this->ns)) . '/' . $className . '.php',
                     $this->render('full.php', $params)
                 );
-            }
+//            }
         }
 
         return $files;

@@ -22,13 +22,6 @@ interface BackendModel
     public function getTitle();
 
     /**
-     * Has search form on index template page
-     *
-     * @return bool
-     */
-    public function hasSearch();
-
-    /**
      * Get attribute columns for index and view page
      *
      * @param $page

@@ -17,7 +17,7 @@ $searchClass = $modelClass . 'Search';
 echo "<?php\n";
 ?>
 
-namespace <?= StringHelper::dirname(ltrim($generator->modelClass, '\\')) ?>;
+namespace <?= $generator->ns ?>;
 
 use Yii;
 use yii\base\Model;
@@ -46,6 +46,14 @@ class <?= $searchClass ?> extends <?= isset($modelAlias) ? $modelAlias : $modelC
     {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
+    }
+
+    /**
+    * @inheritdoc
+    */
+    public function behaviors()
+    {
+        return [];
     }
 
     /**

@@ -18,7 +18,7 @@ echo "<?php\n";
 namespace <?= StringHelper::dirname(ltrim($generator->controllerClass, '\\')) ?>;
 
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
-use <?= ltrim($generator->modelClass, '\\') ?>;
+use <?= $generator->ns . '\\' . ltrim($generator->modelClass, '\\') ?>;
 
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.

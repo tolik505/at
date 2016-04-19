@@ -11,6 +11,10 @@
 /* @var $labels string[] list of attribute labels (name => label) */
 /* @var $rules string[] list of validation rules */
 /* @var $relations array list of relations (name => relation declaration) */
+/* @var $multiLanguageModel */
+/* @var $translationModel boolean */
+/* @var $behaviors string[] list of behaviors */
+/* @var $translationAttributes string[] list of translated attributes */
 
 echo "<?php\n";
 ?>
@@ -20,41 +24,25 @@ namespace <?= $generator->ns ?>;
 use Yii;
 
 /**
- * This is the model class for table "<?= $generator->generateTableName($tableName) ?>".
- *
+* This is the model class for table "<?= $generator->generateTableName($tableName) ?>".
+*
 <?php foreach ($tableSchema->columns as $column): ?>
- * @property <?= "{$column->phpType} \${$column->name}\n" ?>
+* @property <?= "{$column->phpType} \${$column->name}\n" ?>
 <?php endforeach; ?>
-<?php if (!empty($relations)): ?>
- *
-<?php foreach ($relations as $name => $relation): ?>
- * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
-<?php endforeach; ?>
-<?php endif; ?>
- */
-class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') ?><?= "\n" ?>
+*/
+class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\'); ?><?= "\n" ?>
 {
     /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public static function tableName()
     {
         return '<?= $generator->generateTableName($tableName) ?>';
     }
-<?php if ($generator->db !== 'db'): ?>
 
     /**
-     * @return \yii\db\Connection the database connection used by this AR class.
-     */
-    public static function getDb()
-    {
-        return Yii::$app->get('<?= $generator->db ?>');
-    }
-<?php endif; ?>
-
-    /**
-     * @inheritdoc
-     */
+    * @inheritdoc
+    */
     public function attributeLabels()
     {
         return [
@@ -63,14 +51,12 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') ?>
 <?php endforeach; ?>
         ];
     }
-<?php foreach ($relations as $name => $relation): ?>
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function get<?= $name ?>()
+    * @inheritdoc
+    */
+    public function rules()
     {
-        <?= $relation[0] . "\n" ?>
+        return [<?= "\n            " . implode(",\n            ", $rules) . ",\n        " ?> ];
     }
-<?php endforeach; ?>
 }
