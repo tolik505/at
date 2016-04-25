@@ -223,10 +223,7 @@ class Generator extends \yii\gii\generators\model\Generator
         $other = [];
         $foreignKeys = $this->getForeignKeys($table);
         foreach ($table->columns as $column) {
-            if ($column->autoIncrement) {
-                continue;
-            }
-            if ($this->checkNoRuleAttribute($table, $column->name)) {
+            if ($column->autoIncrement || $this->checkNoRuleAttribute($table, $column->name)) {
                 continue;
             }
             if (!$column->allowNull && $column->defaultValue === null) {
