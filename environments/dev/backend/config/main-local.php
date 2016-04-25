@@ -22,6 +22,12 @@ if (!YII_ENV_TEST) {
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['*'],
         'generators' => [
+            'advanced-module' => [
+                'class' => 'backend\components\gii\module\Generator',
+                'templates' => [
+                    'default' => '@backend/components/gii/module/default',
+                ]
+            ],
             'advanced-model' => [
                 'class' => 'backend\components\gii\model\Generator',
                 'templates' => [
@@ -32,12 +38,6 @@ if (!YII_ENV_TEST) {
                 'class' => 'backend\components\gii\crud\Generator',
                 'templates' => [
                     'default' => '@backend/components/gii/crud/default',
-                ]
-            ],
-            'advanced-module' => [
-                'class' => 'backend\components\gii\module\Generator',
-                'templates' => [
-                    'default' => '@backend/components/gii/module/default',
                 ]
             ],
         ],

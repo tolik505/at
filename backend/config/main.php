@@ -48,7 +48,10 @@ return [
                 Module::FORMAT_DATE => 'dd-MM-yyyy',
                 Module::FORMAT_DATETIME => 'dd-MM-yyyy HH:mm',
             ],
-        ]
+        ],
+        'first' => [
+            'class' => 'backend\modules\first\Module',
+        ],
     ],
     'components' => [
         'config' => [
