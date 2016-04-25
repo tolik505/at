@@ -69,7 +69,7 @@ class MigrateController extends \dmstr\console\controllers\MigrateController
 
         $file = $this->migrationPath . DIRECTORY_SEPARATOR . $name . '.php';
 
-        if ($this->confirm("Create new migration '{$file}' with used table name '{$tableName}'?")) {
+        if ($this->confirm("Create new migration '{$file}' with used table name '{$tableName}'?", true)) {
             $content = $this->renderFile(
                 Yii::getAlias($this->templateFile),
                 ['className' => $name, 'tableName' => $tableName]
