@@ -455,7 +455,9 @@ class Generator extends \yii\gii\generators\model\Generator
     public function endsWith($haystack, $needle) {
         $haystackLen = strlen($haystack);
         $needleLen = strlen($needle);
-        if ($needleLen > $haystackLen) return false;
+        if ($needleLen > $haystackLen) {
+            return false;
+        }
         return substr_compare($haystack, $needle, $haystackLen - $needleLen, $needleLen) === 0;
     }
 
@@ -482,12 +484,10 @@ class Generator extends \yii\gii\generators\model\Generator
      */
     public function getTableSchema()
     {
-        if (!$this->tableSchema) {
-            if (isset($this->getTableNames()[0])) {
-                $db = $this->getDbConnection();
-                $tableName = $this->getTableNames()[0];
-                $this->tableSchema = $db->getTableSchema($tableName, true);
-            }
+        if (!$this->tableSchema && isset($this->getTableNames()[0])) {
+            $db = $this->getDbConnection();
+            $tableName = $this->getTableNames()[0];
+            $this->tableSchema = $db->getTableSchema($tableName, true);
         }
 
         return $this->tableSchema;
@@ -527,27 +527,32 @@ class Generator extends \yii\gii\generators\model\Generator
      */
     public function generateColumnFormat($column)
     {
-        if (stripos($column->name, 'published') !== false) {
-            return 'boolean';
-        } elseif (stripos($column->name, 'file') !== false) {
-            return 'file';
-        } elseif ($column->phpType === 'boolean' || ($column->type === Schema::TYPE_SMALLINT && $column->size === 1)) {
-            return 'boolean';
-        } elseif (stripos($column->name, 'link') !== false) {
-            return 'url';
-        }elseif ($column->phpType === 'boolean') {
-            return 'boolean';
-        } elseif ($column->type === 'text') {
-            return 'ntext';
-        } elseif (stripos($column->name, 'time') !== false && $column->phpType === 'integer') {
-            return 'datetime';
-        } elseif (stripos($column->name, 'email') !== false) {
-            return 'email';
-        } elseif (stripos($column->name, 'url') !== false) {
-            return 'url';
-        } else {
-            return 'text';
+        $format = 'text';
+
+        switch (true) {
+            case stripos($column->name, 'published') !== false:
+            case $column->phpType === 'boolean' || ($column->type === Schema::TYPE_SMALLINT && $column->size === 1):
+                $format = 'boolean';
+                break;
+            case stripos($column->name, 'file') !== false:
+                $format = 'file';
+                break;
+            case stripos($column->name, 'link') !== false:
+            case stripos($column->name, 'url') !== false:
+                $format = 'url';
+                break;
+            case $column->type === 'text':
+                $format = 'ntext';
+                break;
+            case stripos($column->name, 'time') !== false && $column->phpType === 'integer':
+                $format = 'datetime';
+                break;
+            case stripos($column->name, 'email') !== false:
+                $format = 'email';
+                break;
         }
+
+        return $format;
     }
 
     /**
@@ -756,11 +761,12 @@ class Generator extends \yii\gii\generators\model\Generator
                     continue;
                 }
                 $format = $this->generateColumnFormat($column);
-                if ($count < 6 && $format !== 'ntext' && $column->name != 'id' || in_array($column->name, ['published', 'position'])) {
-                    $columns[] = "'" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                $formatedColumn = $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                if (($count < 6 && $format !== 'ntext' && $column->name != 'id') || in_array($column->name, ['published', 'position'])) {
+                    $columns[] = "'" . $formatedColumn;
                     $count++;
                 } else {
-                    $columns[] = "// '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "'";
+                    $columns[] = "// '" . $formatedColumn;
                 }
             }
         }
