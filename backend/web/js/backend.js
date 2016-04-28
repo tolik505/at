@@ -67,11 +67,11 @@ $(function(){
         hideModal('.modal');
     });
 
-    $('.modal').on('hidden.bs.modal', function (e) {
+	$(document).on('hidden.bs.modal', '.modal', function (e) {
         $(this).removeData('bs.modal');
     });
 
-    $('.modal').on('shown.bs.modal', function (e) {
+	$(document).on('shown.bs.modal', '.modal', function (e) {
         var $dataX = $("#dataX"),
             $dataY = $("#dataY"),
             $dataHeight = $("#dataHeight"),

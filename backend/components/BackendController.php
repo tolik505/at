@@ -161,7 +161,7 @@ abstract class BackendController extends Controller
      * @param $model \yii\db\ActiveRecord
      * @param $loaded bool
      */
-    private function loadLangModels($model, &$loaded)
+    private function loadLangModels($model, &$loaded, $index = null)
     {
         if ($model instanceof Translateable) {
             $languages = LanguageHelper::getLanguageModels();
@@ -175,7 +175,7 @@ abstract class BackendController extends Controller
             }
 
             if (!empty($models)) {
-                $loaded &= Model::loadMultiple($models, Yii::$app->request->post());
+                $loaded &= Model::loadMultiple($models, Yii::$app->request->post(), null, $index);
             }
         }
     }
@@ -189,7 +189,7 @@ abstract class BackendController extends Controller
     {
         $loaded = true;
         foreach ($models as $index => $model) {
-            $this->loadLangModels($model, $loaded);
+            $this->loadLangModels($model, $loaded, $index);
 
             $loaded = $model->load(Yii::$app->request->post($model->formName())[$index], '') && $loaded;
         }

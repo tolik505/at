@@ -70,23 +70,23 @@ class Model extends \yii\base\Model
             $formName = $first->formName();
         }
         $success = false;
+        /* @var $models Model[] */
         foreach ($models as $i => $model) {
-            if (is_null($index)) {
-                $dataIfNoFormName = $data[$index][$i];
-                $dataIfIsFormName = $data[$formName][$index][$i];
-            } else {
-                $dataIfNoFormName = $data[$i];
-                $dataIfIsFormName = $data[$formName][$i];
-            }
-            /* @var $model Model */
             if ($formName == '') {
-                if (!empty($dataIfNoFormName)) {
-                    $model->load($dataIfNoFormName, '');
-                    $success = true;
+                if (is_null($index)) {
+                    $loadData = !empty($data[$i]) ? $data[$i] : [];
+                } else {
+                    $loadData = !empty($data[$index][$i]) ? $data[$index][$i] : [];
                 }
-            } elseif (!empty($dataIfIsFormName)) {
-
-                $model->load($dataIfIsFormName, '');
+            } else {
+                if (is_null($index)) {
+                    $loadData = !empty($data[$formName][$i]) ? $data[$formName][$i] : [];
+                } else {
+                    $loadData = !empty($data[$formName][$index][$i]) ? $data[$formName][$index][$i] : [];
+                }
+            }
+            if (!empty($loadData)) {
+                $model->load($loadData, '');
                 $success = true;
             }
         }
