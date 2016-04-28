@@ -42,7 +42,7 @@ return [
         'i18n' => [
             'class' => 'Zelenin\yii\modules\I18n\components\I18N',
             'languages' => [
-                'ru'
+                'en'
             ]
         ],
         'urlManager' => [

@@ -15,6 +15,12 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log', 'config', 'fileProcessor'],
     'modules' => [
+        'request' => [
+            'class' => 'backend\modules\request\Module',
+        ],
+        'department-on-map' => [
+            'class' => 'backend\modules\departmentOnMap\Module',
+        ],
         'admin' => [
             'class' => '\backend\modules\admin\Module',
         ],

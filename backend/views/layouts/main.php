@@ -1,5 +1,8 @@
 <?php
 use backend\assets\AppAsset;
+use backend\assets\GoogleMapForDepartmentsAsset;
+use backend\assets\GoogleMapForPreviewAsset;
+use backend\assets\GoogleMapForRegionsAsset;
 use yii\helpers\Html;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -8,6 +11,15 @@ use yii\widgets\Breadcrumbs;
 /* @var $content string */
 
 AppAsset::register($this);
+if(\Yii::$app->controller->id == 'department-on-map'){
+    if(\Yii::$app->controller->action->id == 'index') {
+        GoogleMapForPreviewAsset::register($this);
+    }else{
+        GoogleMapForDepartmentsAsset::register($this);
+    }
+}elseif(\Yii::$app->controller->id == 'regions-map-scale'){
+    GoogleMapForRegionsAsset::register($this);
+}
 
 ?>
 <?php $this->beginPage() ?>
@@ -37,7 +49,7 @@ AppAsset::register($this);
             NavBar::end();
         ?>
 
-        <div class="container-fluid">
+        <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

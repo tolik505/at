@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'http://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,cyrillic',
         'css/site.css',
         'css/new_admin_for_user.css',
+        'css/retal_backend.css',
     ];
     public $js = [
         'js/jquery.li-translit.js',

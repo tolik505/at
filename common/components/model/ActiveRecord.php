@@ -10,6 +10,10 @@ class ActiveRecord extends \yii\db\ActiveRecord
 {
     use Helper;
 
+    public $showCreateButton = true;
+    public $showUpdateButton = true;
+    public $showDeleteButton = true;
+
     /**
      * @inheritdoc
      * @return DefaultQuery
