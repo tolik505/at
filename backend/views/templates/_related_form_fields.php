@@ -7,10 +7,12 @@ use common\components\model\ActiveRecord;
 use common\components\model\Translateable;
 use yii\helpers\Html;
 
+$isAjax = false;
 if (!isset($form)) {
     $form = FormBuilder::begin([
         'id' => 'dummy-form'
     ]);
+    $isAjax = true;
 }
 foreach ($relModels as $index => $elModel) { ?>
     <div class="form-group content-append filled item-<?= $index ?>"><!-- widgetBody -->
@@ -39,3 +41,6 @@ foreach ($relModels as $index => $elModel) { ?>
         } ?>
     </div>
 <?php }
+if ($isAjax) {
+    FormBuilder::end();
+}
