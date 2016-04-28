@@ -140,3 +140,14 @@ echo \Yii::$app->config->get('key');
 * http://vintage-admin.com.dev.vintagedev.com.ua/order_grid_view.html
 * http://vintage-admin.com.dev.vintagedev.com.ua/products_grid_view.html
 * http://vintage-admin.com.dev.vintagedev.com.ua/sortable_categories.html
+
+
+### Backup
+#### Позволяет делать резервные копии БД локально либо на удаленном хранилище
+[phpbu](https://github.com/athl64/phpbu-separated) - клон версии [3.1.2](http://phpbu.de/manual/current/en/index.html),
+добавлена опция FTP passive mode.
+
+Конфигурационный файл находится в /backup/phpbu.json (как пример здесь же лежит phpbu.json.example).
+
+#### Использование:
+    ~ $ php yii backup
