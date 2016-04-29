@@ -15,7 +15,7 @@ if (!isset($form)) {
     $isAjax = true;
 }
 foreach ($relModels as $index => $elModel) { ?>
-    <div class="form-group content-append filled item-<?= $index ?>"><!-- widgetBody -->
+    <div class="form-group content-append filled item-<?= $index ?>" data-index="<?= $index ?>"><!-- widgetBody -->
         <button type="button" class="btn btn-info btn-template-mover ui-sortable-handle"><i class="glyphicon glyphicon-move"></i></button>
         <button type="button" class="btn btn-danger btn-template-delete"><i class="glyphicon glyphicon-trash"></i></button>
         <?php

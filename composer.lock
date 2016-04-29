@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "96316a9b54fb43b7823a319c14b6c1eb",
-    "content-hash": "e05b5dfe3200448bce21f6a9b244475a",
+    "hash": "3d108348cc8c0ddaff0da5d2e42e0c85",
+    "content-hash": "676a6fa01a00709da9a95f50ad74e125",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
-            "version": "v3.3.5",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "16b48259a62f576e52c903c476bd42b90ab22482"
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/16b48259a62f576e52c903c476bd42b90ab22482",
-                "reference": "16b48259a62f576e52c903c476bd42b90ab22482",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/81df608a40bf0629a1dc08e584849bb1e43e0b7a",
+                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/jquery": ">=1.9.1"
+                "bower-asset/jquery": ">=1.9.1,<=2"
             },
             "type": "bower-asset-library",
             "extra": {
@@ -62,12 +62,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fengyuanchen/cropper.git",
-                "reference": "cff5371fef188b2f1b2dac926fe1f95c7b77d50b"
+                "reference": "fc36b5176d40bb3f29c5d0730085a9679e026759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fengyuanchen/cropper/zipball/cff5371fef188b2f1b2dac926fe1f95c7b77d50b",
-                "reference": "cff5371fef188b2f1b2dac926fe1f95c7b77d50b",
+                "url": "https://api.github.com/repos/fengyuanchen/cropper/zipball/fc36b5176d40bb3f29c5d0730085a9679e026759",
+                "reference": "fc36b5176d40bb3f29c5d0730085a9679e026759",
                 "shasum": ""
             },
             "require": {
@@ -123,42 +123,7 @@
                 "web",
                 "zoom"
             ],
-            "time": "2016-03-09 04:58:32"
-        },
-        {
-            "name": "bower-asset/date-functions",
-            "version": "v0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/malko/date-functions.git",
-                "reference": "a6eb77d13f0a3c9bc06c84d044c647f443f6e954"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/malko/date-functions/zipball/a6eb77d13f0a3c9bc06c84d044c647f443f6e954",
-                "reference": "a6eb77d13f0a3c9bc06c84d044c647f443f6e954",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "date-functions.js",
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "node_modules",
-                    "bower_components",
-                    "test",
-                    "tests"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Baron Schwartz date-function.js reworked",
-            "keywords": [
-                "calendar",
-                "date",
-                "utils"
-            ]
+            "time": "2016-04-28 12:47:48"
         },
         {
             "name": "bower-asset/datetimepicker",
@@ -166,23 +131,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/xdan/datetimepicker.git",
-                "reference": "cf3c526c8509faf2db5b3efca56a5b22dfcde970"
+                "reference": "5da3d3df15efafc679890d9254452926cde462c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/xdan/datetimepicker/zipball/cf3c526c8509faf2db5b3efca56a5b22dfcde970",
-                "reference": "cf3c526c8509faf2db5b3efca56a5b22dfcde970",
+                "url": "https://api.github.com/repos/xdan/datetimepicker/zipball/5da3d3df15efafc679890d9254452926cde462c0",
+                "reference": "5da3d3df15efafc679890d9254452926cde462c0",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/date-functions": "~0.0.1",
                 "bower-asset/jquery": ">=1.7.2",
-                "bower-asset/jquery-mousewheel": ">=3.1.13"
+                "bower-asset/jquery-mousewheel": ">=3.1.13",
+                "bower-asset/php-date-formatter": ">=1.3.3"
             },
             "type": "bower-asset-library",
             "extra": {
                 "bower-asset-main": [
-                    "jquery.datetimepicker.js",
+                    "build/jquery.datetimepicker.full.min.js",
                     "jquery.datetimepicker.css"
                 ],
                 "bower-asset-ignore": [
@@ -198,7 +163,7 @@
                     "node_modules"
                 ],
                 "branch-alias": {
-                    "dev-master": "2.4.5-dev"
+                    "dev-master": "2.5.3-dev"
                 }
             },
             "license": [
@@ -222,26 +187,40 @@
                 "ui",
                 "validation"
             ],
-            "time": "2015-12-17 09:16:23"
+            "time": "2016-04-26 17:00:49"
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.2.3",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198"
+                "reference": "1472290917f17af05e98007136096784f9051fab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/af22a351b2ea5801ffb1695abb3bb34d5bed9198",
-                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/1472290917f17af05e98007136096784f9051fab",
+                "reference": "1472290917f17af05e98007136096784f9051fab",
                 "shasum": ""
+            },
+            "require-dev": {
+                "bower-asset/qunit": "1.14.0",
+                "bower-asset/requirejs": "2.1.10",
+                "bower-asset/sinon": "1.8.1",
+                "bower-asset/sizzle": "2.1.1-patch2"
             },
             "type": "bower-asset-library",
             "extra": {
                 "bower-asset-main": "dist/jquery.js",
                 "bower-asset-ignore": [
+                    "**/.*",
+                    "build",
+                    "dist/cdn",
+                    "speed",
+                    "test",
+                    "*.md",
+                    "AUTHORS.txt",
+                    "Gruntfile.js",
                     "package.json"
                 ]
             },
@@ -249,7 +228,6 @@
                 "MIT"
             ],
             "keywords": [
-                "browser",
                 "javascript",
                 "jquery",
                 "library"
@@ -261,12 +239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-mousewheel.git",
-                "reference": "b1c062e93b44f473022297c386d57fa7e58b6aae"
+                "reference": "18e3cc17657237220c4dbd68a3fe4f6abdbf7ef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-mousewheel/zipball/b1c062e93b44f473022297c386d57fa7e58b6aae",
-                "reference": "b1c062e93b44f473022297c386d57fa7e58b6aae",
+                "url": "https://api.github.com/repos/jquery/jquery-mousewheel/zipball/18e3cc17657237220c4dbd68a3fe4f6abdbf7ef8",
+                "reference": "18e3cc17657237220c4dbd68a3fe4f6abdbf7ef8",
                 "shasum": ""
             },
             "require": {
@@ -285,7 +263,7 @@
                     "test"
                 ]
             },
-            "time": "2015-07-15 18:21:33"
+            "time": "2016-04-04 21:47:05"
         },
         {
             "name": "bower-asset/jquery-ui",
@@ -359,6 +337,54 @@
             ]
         },
         {
+            "name": "bower-asset/php-date-formatter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/php-date-formatter.git",
+                "reference": "7e5fa6842446b7ba2611c205fcec9679dfe726e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/php-date-formatter/zipball/7e5fa6842446b7ba2611c205fcec9679dfe726e3",
+                "reference": "7e5fa6842446b7ba2611c205fcec9679dfe726e3",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "js/php-date-formatter.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "composer.json",
+                    "examples",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ],
+                "branch-alias": {
+                    "dev-master": "1.3.4-dev"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A Javascript datetime formatting and manipulation library using PHP date-time formats.",
+            "keywords": [
+                "date",
+                "datetime",
+                "formatter",
+                "javascript",
+                "jquery",
+                "php",
+                "php-date-formatter.js",
+                "time"
+            ],
+            "time": "2016-03-17 13:03:46"
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -388,16 +414,16 @@
         },
         {
             "name": "bower-asset/yii2-pjax",
-            "version": "dev-master",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "9c8ed9fa38442d619818185ccffb04f2988d0022"
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/9c8ed9fa38442d619818185ccffb04f2988d0022",
-                "reference": "9c8ed9fa38442d619818185ccffb04f2988d0022",
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/60728da6ade5879e807a49ce59ef9a72039b8978",
+                "reference": "60728da6ade5879e807a49ce59ef9a72039b8978",
                 "shasum": ""
             },
             "require": {
@@ -414,15 +440,11 @@
                     "vendor/",
                     "script/",
                     "test/"
-                ],
-                "branch-alias": {
-                    "dev-master": "2.0.3-dev"
-                }
+                ]
             },
             "license": [
                 "MIT"
-            ],
-            "time": "2015-12-05 12:06:24"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -654,6 +676,80 @@
                 "yii2"
             ],
             "time": "2016-01-19 17:31:24"
+        },
+        {
+            "name": "dvixi/phpbu",
+            "version": "3.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/athl64/phpbu-separated.git",
+                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/athl64/phpbu-separated/zipball/02790fd01b4bee0eecca1b2821d588a296e2792d",
+                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-spl": "*",
+                "phpunit/php-timer": "~1.0.2",
+                "sebastian/environment": "~1.1",
+                "sebastian/version": "~1.0",
+                "swiftmailer/swiftmailer": "~5.3",
+                "symfony/event-dispatcher": "~2.6"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "~3.10",
+                "dropbox/dropbox-sdk": "~1.1",
+                "phpseclib/phpseclib": "~2.0",
+                "softlayer/objectstorage": "dev-master"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Require '~3.10' to sync to Amazon S3",
+                "dropbox/dropbox-sdk": "Require '~1.1' to sync to Dropbox",
+                "phpseclib/phpseclib": "Require '~2.0' to use SFTP sync",
+                "softlayer/objectstorage": "Require 'dev-master' to sync to Softlayer"
+            },
+            "bin": [
+                "phpbu"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpbu\\App\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Feldmann",
+                    "email": "sebastian@phpbu.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP Backup utility.",
+            "homepage": "http://phpbu.de/",
+            "keywords": [
+                "backup",
+                "cloud",
+                "mongodb",
+                "mysql",
+                "rsync",
+                "sftp",
+                "tar"
+            ],
+            "time": "2016-04-17 11:48:10"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -2398,6 +2494,47 @@
             "time": "2015-11-01 10:15:28"
         },
         {
+            "name": "phpunit/php-timer",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
+                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Utility class for timing",
+            "homepage": "https://github.com/sebastianbergmann/php-timer/",
+            "keywords": [
+                "timer"
+            ],
+            "time": "2015-06-21 08:01:12"
+        },
+        {
             "name": "rmrevin/yii2-postman",
             "version": "2.3.0",
             "source": {
@@ -2446,6 +2583,91 @@
                 "yii2"
             ],
             "time": "2016-03-25 10:13:01"
+        },
+        {
+            "name": "sebastian/environment",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/environment.git",
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de"
+                }
+            ],
+            "description": "Provides functionality to handle HHVM/PHP environments",
+            "homepage": "http://www.github.com/sebastianbergmann/environment",
+            "keywords": [
+                "Xdebug",
+                "environment",
+                "hhvm"
+            ],
+            "time": "2016-02-26 18:40:46"
+        },
+        {
+            "name": "sebastian/version",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/version.git",
+                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Library that helps with managing the version number of Git-hosted PHP projects",
+            "homepage": "https://github.com/sebastianbergmann/version",
+            "time": "2015-06-21 13:59:46"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2609,17 +2831,77 @@
             "time": "2015-07-09 16:02:48"
         },
         {
+            "name": "symfony/event-dispatcher",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
+                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+                "symfony/dependency-injection": "~2.6|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/stopwatch": "~2.3|~3.0.0"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-04-05 16:36:54"
+        },
+        {
             "name": "tolik505/yii2-related-form",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tolik505/yii2-related-form.git",
-                "reference": "b43606d890f755705446cda04eeeaf8e92238112"
+                "reference": "118130b9e55f817f31e938c44e79fc89ae0f9246"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tolik505/yii2-related-form/zipball/b43606d890f755705446cda04eeeaf8e92238112",
-                "reference": "b43606d890f755705446cda04eeeaf8e92238112",
+                "url": "https://api.github.com/repos/tolik505/yii2-related-form/zipball/118130b9e55f817f31e938c44e79fc89ae0f9246",
+                "reference": "118130b9e55f817f31e938c44e79fc89ae0f9246",
                 "shasum": ""
             },
             "require": {
@@ -2768,12 +3050,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "a1bd20682516fa5a6f2f0518f15197cf6437998a"
+                "reference": "0d3c7aa71311f779c658972cd74ded95a59b42d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a1bd20682516fa5a6f2f0518f15197cf6437998a",
-                "reference": "a1bd20682516fa5a6f2f0518f15197cf6437998a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/0d3c7aa71311f779c658972cd74ded95a59b42d7",
+                "reference": "0d3c7aa71311f779c658972cd74ded95a59b42d7",
                 "shasum": ""
             },
             "require": {
@@ -2854,7 +3136,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-04-28 01:02:17"
+            "time": "2016-04-28 21:02:23"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3181,12 +3463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "6abfc0cec5648e6ccc6a8053533383ecaf4dbdb4"
+                "reference": "cc83247f5c71d816eb6227788d9abee579527a71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/6abfc0cec5648e6ccc6a8053533383ecaf4dbdb4",
-                "reference": "6abfc0cec5648e6ccc6a8053533383ecaf4dbdb4",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/cc83247f5c71d816eb6227788d9abee579527a71",
+                "reference": "cc83247f5c71d816eb6227788d9abee579527a71",
                 "shasum": ""
             },
             "require": {
@@ -3223,7 +3505,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-28 06:53:57"
+            "time": "2016-04-29 09:21:21"
         },
         {
             "name": "phpspec/php-diff",
