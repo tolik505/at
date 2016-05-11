@@ -13,12 +13,6 @@ return [
     'bootstrap' => ['log', 'fileProcessor', 'config'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'request' => [
-            'class' => 'frontend\modules\request\Module',
-        ],
-        'popups' => [
-            'class' => 'frontend\modules\popups\Module',
-        ],
         'sitemap' => [
             'class' => 'himiklab\sitemap\Sitemap',
             'models' => [

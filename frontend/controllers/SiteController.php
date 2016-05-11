@@ -2,7 +2,6 @@
 namespace frontend\controllers;
 
 use common\models\Robots;
-use frontend\assets\AppAsset;
 use frontend\components\FrontendController;
 use frontend\models\Sample;
 use yii\helpers\Url;
@@ -16,6 +15,8 @@ class SiteController extends FrontendController
 {
     public function actionIndex()
     {
+        Sample::register();
+
         return $this->render('index');
     }
 

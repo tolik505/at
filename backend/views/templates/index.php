@@ -18,11 +18,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="panel-body">
 
-        <?php if($searchModel->showCreateButton){ ?>
         <p>
             <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'create btn btn-success']) ?>
         </p>
-        <?php } ?>
 
         <?= GridView::widget([
             'dataProvider' => $dataProvider,

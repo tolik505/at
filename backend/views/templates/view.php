@@ -17,22 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="panel-body">
         <p>
-            <?php if ($model->showUpdateButton) { ?>
-                <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?php } ?>
+            <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?php if (!$model instanceof Robots) { ?>
-                <?php if ($model->showDeleteButton) { ?>
-                    <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-                        'class' => $model->showUpdateButton ? 'btn btn-danger' : 'btn btn-danger btn-danger-alone',
-                        'data' => [
-                            'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                            'method' => 'post',
-                        ],
-                    ]) ?>
-                <?php } ?>
-                <?php if ($model->showCreateButton) { ?>
-                    <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
-                <?php } ?>
+                <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                        'method' => 'post',
+                    ],
+                ]) ?>
+                <?= Html::a(Yii::t('app', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
             <?php } ?>
         </p>
 
