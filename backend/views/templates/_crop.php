@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \backend\modules\project\models\Project $model
+ * @var \common\components\model\ActiveRecord $model
  */
 use metalguardian\fileProcessor\helpers\FPM;
 use yii\helpers\Html;

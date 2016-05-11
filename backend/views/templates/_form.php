@@ -1,12 +1,14 @@
 <?php
 
+use wbraganca\dynamicform\DynamicFormWidget;
 use yii\helpers\Html;
-use metalguardian\fileProcessor\helpers\FPM;
 use  \backend\components\FormBuilder;
 
 /* @var $this yii\web\View */
-/* @var $model \backend\components\BackendModel */
+/* @var $model \common\components\model\ActiveRecord */
 /* @var $form yii\bootstrap\ActiveForm */
+//\udokmeci\yii2kt\assets\CustomSirTrevorAsset::register($this);
+
 $translationModels = [];
 if ($model instanceof \common\components\model\Translateable) {
     $translationModels = $model->getTranslationModels();
@@ -22,9 +24,10 @@ $action = isset($action) ? $action : '';
         ]
     );
     ?>
-    <?php /** @var FormBuilder $form */ $form = FormBuilder::begin([
+    <?php /** @var FormBuilder $form */
+    $form = FormBuilder::begin([
         'action' => $action,
-        'enableClientValidation' => false,
+        'enableClientValidation' => true,
         'options' => [
             'id' => 'main-form',
             'enctype' => 'multipart/form-data',
@@ -34,40 +37,36 @@ $action = isset($action) ? $action : '';
     <?php
     $items = [];
 
-
     $formConfig = $model->getFormConfig();
 
-    $content = null;
-    foreach ($formConfig as $attribute => $element) {
-        $content .= Html::beginTag('div', ['class' => 'row']);
-        $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
-        $content .= $form->renderField($model, $attribute, $element);
-        $content .= $form->renderUploadedFile($model, $attribute, $element);
-        if ($model instanceof \common\components\model\Translateable && $model->isTranslateAttribute($attribute)) {
-            foreach ($translationModels as $languageModel) {
-                $content .= Html::beginTag('div', ['class' => 'row']);
-                $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
-                $content .= $form->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $element);
-                $content .= $form->renderUploadedFile($languageModel, $attribute, $element, $languageModel->language);
-                $content .= Html::endTag('div');
-                $content .= Html::endTag('div');
-            }
+    if (isset($formConfig['form-set'])) {
+        $i = 0;
+        foreach ($formConfig['form-set'] as $tabName => $tabConfig) {
+            $class = 'tab_content_' . ++$i;
+            $items[] = [
+                'label' => $tabName,
+                'content' => $form->prepareRows($model, $tabConfig, $translationModels, true),
+                'options' => [
+                    'class' => $class,
+                ],
+                'linkOptions' => [
+                    'class' => $class,
+                ],
+            ];
         }
-        $content .= Html::endTag('div');
-        $content .= Html::endTag('div');
+    } else {
+        $items[] = [
+            'label' => 'Content',
+            'content' => $form->prepareRows($model, $formConfig, $translationModels),
+            'active' => true,
+            'options' => [
+                'class' => 'tab_content_content',
+            ],
+            'linkOptions' => [
+                'class' => 'tab_content',
+            ],
+        ];
     }
-
-    $items[] = [
-        'label' => 'Content',
-        'content' => $content,
-        'active' => true,
-        'options' => [
-            'class' => 'tab_content_content',
-        ],
-        'linkOptions' => [
-            'class' => 'tab_content',
-        ],
-    ];
 
     $seo = $model->getBehavior('seo');
     if ($seo && $seo instanceof \notgosu\yii2\modules\metaTag\components\MetaTagBehavior) {

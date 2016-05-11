@@ -76,9 +76,9 @@ class ImageUpload extends Widget
         foreach ($existModelImages as $image) {
             $fileName = $image->file->base_name.'.'.$image->file->extension;
             $previewImages[] = Html::img(FPM::originalSrc($image->file_id), [
-                    'class' => 'file-preview-image',
-                    'id' => 'preview-image-'.$image->file_id
-                ]);
+                'class' => 'file-preview-image',
+                'id' => 'preview-image-' . $image->file_id
+            ]);
             $previewImagesConfig[] = [
                 'caption' => $fileName,
                 'width' => '120px',
@@ -92,10 +92,18 @@ class ImageUpload extends Widget
         $output = Html::hiddenInput('urlForSorting', ImagesUploadModel::sortImagesUrl(), ['id' => 'urlForSorting']);
         $output .= Html::hiddenInput('aspectRatio', $this->aspectRatio, ['class' => 'aspect-ratio']);
 
+        $index = $this->model->relModelIndex;
+        $attribute = $index === null ? $this->attribute : "[$index]$this->attribute";
+        $uploadUrl = ImagesUploadModel::uploadUrl([
+            'model_name' => $this->model->className(),
+            'attribute' => $attribute,
+            'entity_attribute' => $this->saveAttribute,
+        ]);
+
         $output .= FileInput::widget(
             [
                 'model' => $this->model,
-                'attribute' => $this->attribute,
+                'attribute' => $attribute,
                 'options' => [
                     'multiple' => $this->multiple,
                     'accept' => 'image/*'
@@ -108,7 +116,7 @@ class ImageUpload extends Widget
                     'removeIcon' => '<i class="glyphicon glyphicon-trash"></i> ',
                     'uploadClass' => "btn btn-info",
                     'uploadIcon' => '<i class="glyphicon glyphicon-upload"></i> ',
-                    'uploadUrl' => Url::to($this->uploadUrl),
+                    'uploadUrl' => $uploadUrl,
                     'allowedFileTypes' => ['image'],
                     'allowedPreviewTypes' => ['image'],
                     'uploadExtraData' => $extraData,
