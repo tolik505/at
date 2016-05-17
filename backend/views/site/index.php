@@ -5,5 +5,10 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-    <?= \backend\modules\menu\widgets\MenuTree::widget() ?>
+    <?= \tolik505\tree\TreeWidget::widget([
+        'items' => Yii::$app->params['menuItems'],
+        'options' => [
+            'minOpenLevels' => 5
+        ]
+    ]); ?>
 </div>

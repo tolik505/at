@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d108348cc8c0ddaff0da5d2e42e0c85",
-    "content-hash": "676a6fa01a00709da9a95f50ad74e125",
+    "hash": "fb9d874c31b7dfa92f5d3185833074af",
+    "content-hash": "80f85a0c1f50192a075b179eaa7fcb9f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -678,80 +678,6 @@
             "time": "2016-01-19 17:31:24"
         },
         {
-            "name": "dvixi/phpbu",
-            "version": "3.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/athl64/phpbu-separated.git",
-                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/athl64/phpbu-separated/zipball/02790fd01b4bee0eecca1b2821d588a296e2792d",
-                "reference": "02790fd01b4bee0eecca1b2821d588a296e2792d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-json": "*",
-                "ext-spl": "*",
-                "phpunit/php-timer": "~1.0.2",
-                "sebastian/environment": "~1.1",
-                "sebastian/version": "~1.0",
-                "swiftmailer/swiftmailer": "~5.3",
-                "symfony/event-dispatcher": "~2.6"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "~3.10",
-                "dropbox/dropbox-sdk": "~1.1",
-                "phpseclib/phpseclib": "~2.0",
-                "softlayer/objectstorage": "dev-master"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "Require '~3.10' to sync to Amazon S3",
-                "dropbox/dropbox-sdk": "Require '~1.1' to sync to Dropbox",
-                "phpseclib/phpseclib": "Require '~2.0' to use SFTP sync",
-                "softlayer/objectstorage": "Require 'dev-master' to sync to Softlayer"
-            },
-            "bin": [
-                "phpbu"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "phpbu\\App\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Feldmann",
-                    "email": "sebastian@phpbu.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "PHP Backup utility.",
-            "homepage": "http://phpbu.de/",
-            "keywords": [
-                "backup",
-                "cloud",
-                "mongodb",
-                "mysql",
-                "rsync",
-                "sftp",
-                "tar"
-            ],
-            "time": "2016-04-17 11:48:10"
-        },
-        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.7.0",
             "source": {
@@ -948,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-star-rating.git",
-                "reference": "2443b49d33139a59e6e40aa60872bfb4fd76fa59"
+                "reference": "3d0ac4b92f85333f42169c4299026d18a0845668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-star-rating/zipball/2443b49d33139a59e6e40aa60872bfb4fd76fa59",
-                "reference": "2443b49d33139a59e6e40aa60872bfb4fd76fa59",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-star-rating/zipball/3d0ac4b92f85333f42169c4299026d18a0845668",
+                "reference": "3d0ac4b92f85333f42169c4299026d18a0845668",
                 "shasum": ""
             },
             "type": "library",
@@ -984,7 +910,7 @@
                 "star",
                 "svg"
             ],
-            "time": "2016-03-22 14:58:18"
+            "time": "2016-05-12 17:37:56"
         },
         {
             "name": "kartik-v/dependent-dropdown",
@@ -1177,12 +1103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "314f3b31990870856dbdf5f9bf5192ee683a386a"
+                "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/314f3b31990870856dbdf5f9bf5192ee683a386a",
-                "reference": "314f3b31990870856dbdf5f9bf5192ee683a386a",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/7f7a45ffe193fe673f72b9effc01b08499f2a454",
+                "reference": "7f7a45ffe193fe673f72b9effc01b08499f2a454",
                 "shasum": ""
             },
             "require": {
@@ -1220,7 +1146,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-28 03:01:32"
+            "time": "2016-05-07 19:45:52"
         },
         {
             "name": "kartik-v/yii2-nav-x",
@@ -1228,18 +1154,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-nav-x.git",
-                "reference": "1b53c652dc921ff46bb0fe4c4588711e690f1adb"
+                "reference": "9f0dc9fde53bf9231d7d139e93383b5cf144c519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-nav-x/zipball/1b53c652dc921ff46bb0fe4c4588711e690f1adb",
-                "reference": "1b53c652dc921ff46bb0fe4c4588711e690f1adb",
+                "url": "https://api.github.com/repos/kartik-v/yii2-nav-x/zipball/9f0dc9fde53bf9231d7d139e93383b5cf144c519",
+                "reference": "9f0dc9fde53bf9231d7d139e93383b5cf144c519",
                 "shasum": ""
             },
             "require": {
                 "kartik-v/yii2-dropdown-x": "*"
             },
             "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "kartik\\nav\\": ""
@@ -1267,7 +1198,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-04-21 15:19:34"
+            "time": "2016-05-01 19:17:24"
         },
         {
             "name": "kartik-v/yii2-widget-activeform",
@@ -1780,12 +1711,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-rating.git",
-                "reference": "e3110576b60ecb6098bc8389efb5ef3a402b6e61"
+                "reference": "3327e9cecf1f1fec2c614afbdb6545091a87fc56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-rating/zipball/e3110576b60ecb6098bc8389efb5ef3a402b6e61",
-                "reference": "e3110576b60ecb6098bc8389efb5ef3a402b6e61",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-rating/zipball/3327e9cecf1f1fec2c614afbdb6545091a87fc56",
+                "reference": "3327e9cecf1f1fec2c614afbdb6545091a87fc56",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1759,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-27 19:26:00"
+            "time": "2016-05-13 03:22:54"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
@@ -2494,47 +2425,6 @@
             "time": "2015-11-01 10:15:28"
         },
         {
-            "name": "phpunit/php-timer",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Utility class for timing",
-            "homepage": "https://github.com/sebastianbergmann/php-timer/",
-            "keywords": [
-                "timer"
-            ],
-            "time": "2015-06-21 08:01:12"
-        },
-        {
             "name": "rmrevin/yii2-postman",
             "version": "2.3.0",
             "source": {
@@ -2585,102 +2475,17 @@
             "time": "2016-03-25 10:13:01"
         },
         {
-            "name": "sebastian/environment",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
-            "description": "Provides functionality to handle HHVM/PHP environments",
-            "homepage": "http://www.github.com/sebastianbergmann/environment",
-            "keywords": [
-                "Xdebug",
-                "environment",
-                "hhvm"
-            ],
-            "time": "2016-02-26 18:40:46"
-        },
-        {
-            "name": "sebastian/version",
-            "version": "1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
-                "reference": "58b3a85e7999757d6ad81c787a1fbf5ff6c628c6",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Library that helps with managing the version number of Git-hosted PHP projects",
-            "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2015-06-21 13:59:46"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9"
+                "reference": "1460e98b53d2f916f1b4123069c96c90844a1a4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
-                "reference": "fffbc0e2a7e376dbb0a4b5f2ff6847330f20ccf9",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/1460e98b53d2f916f1b4123069c96c90844a1a4d",
+                "reference": "1460e98b53d2f916f1b4123069c96c90844a1a4d",
                 "shasum": ""
             },
             "require": {
@@ -2720,7 +2525,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-01-03 15:42:47"
+            "time": "2016-05-11 12:36:48"
         },
         {
             "name": "symfony/css-selector",
@@ -2831,46 +2636,27 @@
             "time": "2015-07-09 16:02:48"
         },
         {
-            "name": "symfony/event-dispatcher",
-            "version": "2.8.x-dev",
+            "name": "tolik505/yii2-easy-tree",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6"
+                "url": "https://github.com/tolik505/yii2-easy-tree.git",
+                "reference": "cd5c5c5167a96a1f8d3e6ada3e8b424f81e76408"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
-                "reference": "81c4c51f7fd6d0d40961bd53dd60cade32db6ed6",
+                "url": "https://api.github.com/repos/tolik505/yii2-easy-tree/zipball/cd5c5c5167a96a1f8d3e6ada3e8b424f81e76408",
+                "reference": "cd5c5c5167a96a1f8d3e6ada3e8b424f81e76408",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "yiisoft/yii2": "*"
             },
-            "require-dev": {
-                "psr/log": "~1.0",
-                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
-                "symfony/dependency-injection": "~2.6|~3.0.0",
-                "symfony/expression-language": "~2.6|~3.0.0",
-                "symfony/stopwatch": "~2.3|~3.0.0"
-            },
-            "suggest": {
-                "symfony/dependency-injection": "",
-                "symfony/http-kernel": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
+            "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\EventDispatcher\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
+                    "tolik505\\tree\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2878,17 +2664,20 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
+                    "name": "Anatolii Pipko",
+                    "email": "videoller@gmail.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Symfony EventDispatcher Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-04-05 16:36:54"
+            "description": "Widget for menu displaying in tree format. Based on http://www.easyjstree.com. Optimized for yii bootstrap Nav",
+            "keywords": [
+                "easy-tree",
+                "extension",
+                "menu-tree",
+                "tree",
+                "yii2"
+            ],
+            "time": "2016-05-17 20:54:42"
         },
         {
             "name": "tolik505/yii2-related-form",
@@ -2896,12 +2685,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tolik505/yii2-related-form.git",
-                "reference": "118130b9e55f817f31e938c44e79fc89ae0f9246"
+                "reference": "3710251384f378fd26f98e63bfe6e80daf0e74c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tolik505/yii2-related-form/zipball/118130b9e55f817f31e938c44e79fc89ae0f9246",
-                "reference": "118130b9e55f817f31e938c44e79fc89ae0f9246",
+                "url": "https://api.github.com/repos/tolik505/yii2-related-form/zipball/3710251384f378fd26f98e63bfe6e80daf0e74c6",
+                "reference": "3710251384f378fd26f98e63bfe6e80daf0e74c6",
                 "shasum": ""
             },
             "require": {
@@ -2932,7 +2721,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-04-04 13:17:13"
+            "time": "2016-05-17 21:04:49"
         },
         {
             "name": "vadymsemeniuk/yii2-file-processor-module",
@@ -2940,12 +2729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vadimsemenykv/yii2-file-processor-module.git",
-                "reference": "e32b7da00724d9cc749a5d73c6d17c6a609fb6e5"
+                "reference": "994ba4535b926390420d08ab0d03514ad6bce915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vadimsemenykv/yii2-file-processor-module/zipball/e32b7da00724d9cc749a5d73c6d17c6a609fb6e5",
-                "reference": "e32b7da00724d9cc749a5d73c6d17c6a609fb6e5",
+                "url": "https://api.github.com/repos/vadimsemenykv/yii2-file-processor-module/zipball/994ba4535b926390420d08ab0d03514ad6bce915",
+                "reference": "994ba4535b926390420d08ab0d03514ad6bce915",
                 "shasum": ""
             },
             "require": {
@@ -2980,7 +2769,7 @@
                 "upload",
                 "yii2"
             ],
-            "time": "2016-04-05 09:57:32"
+            "time": "2016-04-27 19:22:39"
         },
         {
             "name": "vova07/yii2-imperavi-widget",
@@ -3050,12 +2839,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "0d3c7aa71311f779c658972cd74ded95a59b42d7"
+                "reference": "5ed762ebf18945ef3282d0910d1a8b03603c7a7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/0d3c7aa71311f779c658972cd74ded95a59b42d7",
-                "reference": "0d3c7aa71311f779c658972cd74ded95a59b42d7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5ed762ebf18945ef3282d0910d1a8b03603c7a7b",
+                "reference": "5ed762ebf18945ef3282d0910d1a8b03603c7a7b",
                 "shasum": ""
             },
             "require": {
@@ -3136,7 +2925,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-04-28 21:02:23"
+            "time": "2016-05-15 22:11:47"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3463,12 +3252,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "cc83247f5c71d816eb6227788d9abee579527a71"
+                "reference": "191fc2b648e1b00ad4725fcae0ab0729537725c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/cc83247f5c71d816eb6227788d9abee579527a71",
-                "reference": "cc83247f5c71d816eb6227788d9abee579527a71",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/191fc2b648e1b00ad4725fcae0ab0729537725c8",
+                "reference": "191fc2b648e1b00ad4725fcae0ab0729537725c8",
                 "shasum": ""
             },
             "require": {
@@ -3505,7 +3294,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 09:21:21"
+            "time": "2016-05-10 09:22:13"
         },
         {
             "name": "phpspec/php-diff",
@@ -3690,12 +3479,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "62eddfcbf377353777742b3ceaf2b75dc81178e3"
+                "reference": "ad215b7f8c679e11e70ff3dc29c7306f28cef576"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/62eddfcbf377353777742b3ceaf2b75dc81178e3",
-                "reference": "62eddfcbf377353777742b3ceaf2b75dc81178e3",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/ad215b7f8c679e11e70ff3dc29c7306f28cef576",
+                "reference": "ad215b7f8c679e11e70ff3dc29c7306f28cef576",
                 "shasum": ""
             },
             "require": {
@@ -3735,7 +3524,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-04-21 13:19:47"
+            "time": "2016-05-12 20:54:42"
         }
     ],
     "aliases": [],

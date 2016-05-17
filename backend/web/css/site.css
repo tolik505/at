@@ -174,9 +174,9 @@ div.required label:after {
 }
 
 /*For menu tree*/
-.site-index {
+/*.site-index {
     text-align: center;
-}
+}*/
 .site-index .navbar-nav {
     display:inline-block;
     float: none!important;
@@ -260,4 +260,7 @@ div.required label:after {
 }
 .content-append .form-group .checkbox label.active::before {
     border: 1px solid white;
+}
+a.btn-block {
+    padding-top: 20px;
 }

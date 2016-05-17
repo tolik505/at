@@ -125,6 +125,10 @@ echo \Yii::$app->config->get('key');
 
 5.[Configuration form builder](docs/Configuration.md)
 
+6.[Related form widget](docs/RelatedFormWidget.md) - Простой способ редактирования основной таблицы и связанных в одном месте.
+
+7.[Создание табов в редактировании модели](docs/AddTabs.md)
+
 
 
 ### SEO
