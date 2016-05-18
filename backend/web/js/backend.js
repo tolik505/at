@@ -263,7 +263,7 @@ function checkTabErrors() {
             var that = $(el);
             if (that.find('.has-error').length) {
                 var id = that.attr('id');
-                $('a[href="#' + id + '"]').click();
+                $('a[href="#' + id + '"]').addClass('tab-error');
             }
         });
     }

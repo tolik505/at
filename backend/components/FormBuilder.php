@@ -80,22 +80,13 @@ class FormBuilder extends ActiveFormBuilder
                     }
                 }
             } else {
-                $content .= Html::beginTag('div', ['class' => 'row']);
-                $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
-                $content .= $this->renderField($model, $attribute, $element);
-                $content .= $this->renderUploadedFile($model, $attribute, $element);
-                if (!empty($translationModels) && $model->isTranslateAttribute($attribute)) {
-                    foreach ($translationModels as $languageModel) {
-                        $content .= Html::beginTag('div', ['class' => 'row']);
-                        $content .= Html::beginTag('div', ['class' => 'col-sm-12']);
-                        $content .= $this->renderField($languageModel, '[' . $languageModel->language . ']' . $attribute, $element);
-                        $content .= $this->renderUploadedFile($languageModel, $attribute, $element, $languageModel->language);
-                        $content .= Html::endTag('div');
-                        $content .= Html::endTag('div');
-                    }
-                }
-                $content .= Html::endTag('div');
-                $content .= Html::endTag('div');
+                $content .= $this->render('//templates/_form_row', [
+                    'model' => $model,
+                    'attribute' => $attribute,
+                    'element' => $element,
+                    'translationModels' => $translationModels,
+                    'form' => $this
+                ]);
             }
         }
 

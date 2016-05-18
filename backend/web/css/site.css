@@ -264,3 +264,6 @@ div.required label:after {
 a.btn-block {
     padding-top: 20px;
 }
+.panel-body .nav-tabs a.tab-error, .panel-body .nav-tabs li.active a.tab-error {
+    border-bottom: solid 3px #FF7373;
+}
