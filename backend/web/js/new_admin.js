@@ -37,9 +37,9 @@ function customSelect2(){
 
 	customSelect.select2({
 		containerCssClass       : "select2-custom",
-		dropdownCssClass        : "select2-custom-drop",
-		showSearchBox           : false,
-		minimumResultsForSearch : -1,
+		dropdownCssClass        : "select2-custom-drop  select2-drop-filters",
+		// showSearchBox           : false,
+		// minimumResultsForSearch : -1,
 		dropdownAutoWidth       : true
 	});
 
