@@ -22,6 +22,13 @@ return [
                         'width' => 100,
                         'height' => 100,
                     ]
+                ],
+                'recipe' => [
+                    'preview' => [
+                        'action' => FPM::ACTION_ADAPTIVE_THUMBNAIL,
+                        'width' => 420,
+                        'height' => 370,
+                    ]
                 ]
             ],
         ],

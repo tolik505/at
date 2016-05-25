@@ -15,6 +15,7 @@ use tolik505\relatedform\RelatedFormWidget;
 use Yii;
 use yii\db\Exception;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
@@ -199,9 +200,10 @@ trait RelatedFormTrait
             'replaces' => [
                 [
                     'what' => ".$container .content-append:last-child",
-                    'data' => $this->renderAjax('//templates/_related_form_fields', ['relModels' => $relModels])
+                    'data' => $this->renderAjax('//templates/_related_form_fields', ['relModels' => $relModels]),
                 ]
-            ]
+            ],
+            'js' => Html::script('customSelect2()')
         ]);
     }
 }

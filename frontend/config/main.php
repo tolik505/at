@@ -88,7 +88,15 @@ return [
             'class' => '\common\components\ConfigurationComponent',
         ],
         'user' => [
-            'loginUrl' => ['/user/login'],
+            'enableSession' => false,
+            'loginUrl' => null,
+        ],
+        'request' => [
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => false,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -101,6 +109,8 @@ return [
         ],
         'urlManager' => [
             'enableLanguageDetection' => false,
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
             //'languages' => ['ru'],
         ],
         'errorHandler' => [

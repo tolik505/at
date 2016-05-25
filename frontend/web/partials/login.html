@@ -1,0 +1,36 @@
+<h1>Login</h1>
+
+<p>Please fill out the following fields to login:</p>
+
+
+<div ng-controller="LoginController" layout="column" ng-cloak>
+    <md-content layout-padding>
+        <form ng-submit="login()" name="loginForm" id="login-form" method="post" role="form" >
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email</label>
+                    <input required name="email" ng-model="user.email" />
+                    <div class="hint" ng-if="showHints">Tell us what we should call you!</div>
+                    <div ng-messages="loginForm.email.$error" ng-if="!showHints" class="md-input-message-animation">
+                        {{ error['email'] }}
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Password</label>
+                    <input name="password" required ng-model="user.password" />
+                    <div class="hint" ng-show="showHints">How can we reach you?</div>
+                    <div ng-messages="loginForm.password.$error" ng-if="!showHints" class="md-input-message-animation">
+                        {{ error['password'] }}
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <md-button ng-click="login()" class="md-raised md-primary">Primary</md-button>
+                </md-input-container>
+            </div>
+        </form>
+    </md-content>
+</div>

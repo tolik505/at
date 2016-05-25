@@ -89,3 +89,47 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+{
+    /* NOTE: Check the demo's HTML to see some additional RTL support CSS */
+    /* Setup animations similar to the ng-messages */ }
+/*.hint {
+    !* Position the hint *!
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+    !* Copy styles from ng-messages *!
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    !* Set our own color *!
+    color: grey;
+}
+.hint.ng-hide,
+.hint.ng-enter,
+.hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0;
+}
+.hint.ng-leave,
+.hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1;
+}*/
+
+/*.ingredients md-content.autocomplete {
+    min-height: 200px; }
+.ingredients input[type=number] {
+    width: 110px; }
+.ingredients .veggie-option {
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+    padding: 0 8px; }
+.ingredients .veggie-option .md-item-text {
+    padding: 8px;
+    background: #f0f0f0;
+    border-radius: 3px; }
+.ingredients .veggie-option .md-item-text h3, .ingredients .veggie-option .md-item-text p {
+    padding: 0;
+    margin: 0; }*/

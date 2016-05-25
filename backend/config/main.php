@@ -49,8 +49,11 @@ return [
                 Module::FORMAT_DATETIME => 'dd-MM-yyyy HH:mm',
             ],
         ],
-        'first' => [
-            'class' => 'backend\modules\first\Module',
+        'ingredient' => [
+            'class' => 'backend\modules\ingredient\Module',
+        ],
+        'recipe' => [
+            'class' => 'backend\modules\recipe\Module',
         ],
     ],
     'components' => [

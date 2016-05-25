@@ -2,6 +2,19 @@
 
 return [
     [
+        'label' => Yii::t('app', 'Recipes'),
+        'items' => [
+            [
+                'label' => Yii::t('app', 'Recipes'),
+                'url' => ['/recipe/recipe/index'],
+            ],
+            [
+                'label' => Yii::t('app', 'Ingredients'),
+                'url' => ['/ingredient/ingredient/index'],
+            ],
+        ],
+    ],
+    [
         'label' => Yii::t('app', 'Translations'),
         'items' => [
             [

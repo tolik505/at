@@ -11,13 +11,11 @@ use yii\web\NotFoundHttpException;
 /**
  * Site controller
  */
-class SiteController extends FrontendController
+class SiteController extends Controller
 {
     public function actionIndex()
     {
-        Sample::register();
-
-        return $this->render('index');
+        return $this->renderContent(null);
     }
 
     public function actionRobots()

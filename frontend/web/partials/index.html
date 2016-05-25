@@ -1,0 +1,186 @@
+<div ng-controller="IngredientController">
+    <!-- Titlebar
+================================================== -->
+    <section id="titlebar" class="browse-all">
+        <!-- Container -->
+        <div class="container">
+
+            <div class="eight columns">
+                <h2>Browse Recipes</h2>
+            </div>
+
+        </div>
+        <!-- Container / End -->
+    </section>
+
+
+    <!-- Container -->
+    <div class="advanced-search-container">
+        <div class="container">
+            <div class="sixteen columns">
+                <div id="advanced-search">
+
+                    <!-- Choose ingredients -->
+                    <div class="select included-ingredients" on-document-click="changeIngredient()">
+                        <label>Select one or more ingredients that should be included in recipe</label>
+                        <select data-placeholder="Included Ingredients" class="chosen-select ingredient-select" multiple>
+                            <option
+                                    ng-repeat="ingredient in notSelectedIngredients"
+                                    on-finish-render="ngRepeatFinished"
+                                    value="{{ingredient.id}}"
+                                    class="ingredient-option"
+                            >
+                                {{ingredient.label}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Choose -->
+                    <div class="select">
+                        <label>Recipe needs to have</label>
+                        <select data-placeholder="Choose Category" class="chosen-select">
+                            <option value="1">All of selected ingredients </option>
+                            <option value="2">Any of selected ingredients</option>
+                        </select>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- Search Input -->
+                    <nav class="search-by-keyword">
+                        <form action="browse-recipes.html#" method="get">
+                            <button><span>Search for Recipes</span><i class="fa fa-search"></i></button>
+                            <input class="search-field" type="text" placeholder="Search by keyword" value=""/>
+                        </form>
+                    </nav>
+                    <div class="clearfix"></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="margin-top-35"></div>
+
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Headline -->
+        <div class="sixteen columns">
+            <h3 class="headline">All Recipes</h3>
+            <span class="line margin-bottom-35"></span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+
+
+        <!-- Isotope -->
+        <div class="isotope">
+
+            <!-- Recipe #1 -->
+            <div class="four isotope-box columns" ng-repeat="recipe in recipes">
+
+                <!-- Thumbnail -->
+                <div class="thumbnail-holder">
+                    <a href="recipe-page-1.html">
+                        <img src="{{recipe.titleImage}}" alt=""/>
+                        <div class="hover-cover"></div>
+                        <div class="hover-icon">View Recipe</div>
+                    </a>
+                </div>
+
+                <!-- Content -->
+                <div class="recipe-box-content">
+                    <h3><a href="recipe-page-1.html">{{recipe.label}}</a></h3>
+
+                    <div class="rating five-stars">
+                        <div class="star-rating"></div>
+                        <div class="star-bg"></div>
+                    </div>
+
+                    <div class="recipe-meta"><i class="fa fa-clock-o"></i> 30 min</div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+
+        <!-- Pagination -->
+        <div class="sixteen columns">
+            <div class="pagination-container">
+                <nav class="pagination">
+                    <ul>
+                        <li><a href="browse-recipes.html#" class="current-page">1</a></li>
+                        <li><a href="browse-recipes.html#">2</a></li>
+                        <li><a href="browse-recipes.html#">3</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="pagination-next-prev">
+                    <ul>
+                        <li><a href="browse-recipes.html#" class="prev"></a></li>
+                        <li><a href="browse-recipes.html#" class="next"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<div layout="row">
+    <div flex ng-controller="IngredientController" class="ingredients">
+        <md-content class="md-padding" layout="column">
+            <h2 class="md-title">Use <code>md-autocomplete</code>  to build an ordered set of chips.</h2>
+
+            <md-chips
+                    ng-model="ingredients"
+                    md-on-add="addIngredient($chip)"
+                    md-on-remove="removeIngredient($chip)"
+                    md-require-match="true"
+            >
+                <md-autocomplete
+                        md-selected-item="selectedItem"
+                        md-search-text="searchText"
+                        md-items="item in querySearch(searchText)"
+                        md-item-text="item.label"
+                        md-no-cache="true"
+                        placeholder="Search for a vegetable"
+                >
+                    <span md-highlight-text="searchText">{{item.label}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                <span>
+                  <strong>{{$chip.label}}</strong>
+                </span>
+                </md-chip-template>
+            </md-chips>
+
+            <br>
+            <h2 class="md-title">Vegetable Options</h2>
+
+            <md-list>
+                <md-list-item
+                        class="md-2-line veggie-option"
+                        ng-repeat="ingredient in notSelectedIngredients"
+                        ng-click="addIngredient(ingredient, 1)"
+                        layout-wrap=""
+                >
+                    <div class="md-item-text md-whiteframe-z1">
+                        <h3>{{ingredient.label}}</h3>
+                    </div>
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+    </div>
+    <div flex>
+        second side
+    </div>
+</div>-->

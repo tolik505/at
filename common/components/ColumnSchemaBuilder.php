@@ -17,7 +17,7 @@ class ColumnSchemaBuilder extends \yii\db\ColumnSchemaBuilder
     /**
      * @var
      */
-    protected $comment;
+    public $comment;
 
     /**
      * Build full string for create the column's schema
